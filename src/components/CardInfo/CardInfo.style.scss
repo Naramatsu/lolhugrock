@@ -19,6 +19,8 @@
     font-size: 24px;
     margin: auto;
     transform: translateY(-50%);
+    position: relative;
+    z-index: 2;
   }
 
   .cardinfo__content {

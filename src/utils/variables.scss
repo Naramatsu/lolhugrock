@@ -10,7 +10,7 @@ $border-radius: 20px;
 $border-radius-cards: solid 2px rgba(0, 0, 0, 0.5);
 
 //text -shadow
-$text-shadow-title: 0 0 40px rgba(0, 0, 0, 0.5);
+$text-shadow-title: 2px 4px 6px rgba(0, 0, 0, 1);
 $text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
 $text-shadowY4: 0 4px 4px rgba(0, 0, 0, 0.5);
 
@@ -29,15 +29,16 @@ $background-rainbow: linear-gradient(
 
 @mixin border-card {
   border: $border-radius-cards;
-  border: solid 2px rgba($color: #000, $alpha: 0.5);
+  border: solid 2px rgba($color: #000, $alpha: 0.1);
   border-top: none;
+  border-right: none;
 }
 
 @mixin rainbow-text {
   background: $background-rainbow;
   background-clip: text;
   padding: 5px;
-  text-shadow: $text-shadow-title;
+  filter: drop-shadow($text-shadow-title);
   font-weight: 700;
   font-size: 48px;
   width: fit-content;
