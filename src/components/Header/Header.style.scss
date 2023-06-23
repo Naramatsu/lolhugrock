@@ -1,0 +1,61 @@
+@import "../../utils/variables.scss";
+
+header {
+  @include bd-blur-black;
+  position: relative;
+  height: 70px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+
+  .container {
+    position: relative;
+
+    img {
+      position: absolute;
+      top: 0px;
+      width: 150px;
+      height: 150px;
+      left: 0;
+    }
+
+    .herader__content {
+      display: flex;
+      align-items: center;
+      height: 75px;
+      padding-left: 200px;
+      justify-content: space-between;
+
+      .leagueoflegends {
+        @include bd-blur-white;
+        text-shadow: $text-shadow;
+        box-shadow: none;
+        color: #fff;
+        font-weight: 700;
+        padding: 12px 29px;
+        border-radius: 10px;
+      }
+
+      .header__btns {
+        display: flex;
+        gap: 15px;
+
+        .btn {
+          background: transparent;
+          border: none;
+          border: solid 1px;
+          border-radius: 10px;
+          color: #fff;
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 12px 27px;
+          text-shadow: $text-shadow;
+        }
+      }
+    }
+  }
+}

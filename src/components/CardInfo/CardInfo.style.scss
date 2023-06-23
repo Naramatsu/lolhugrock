@@ -1,0 +1,38 @@
+@import "../../utils/variables.scss";
+
+.cardinfo {
+  @include bd-blur-gradient;
+  @include border-card;
+  border-radius: $border-radius;
+  text-shadow: $text-shadow;
+  width: 350px;
+  height: 400px;
+  color: #fff;
+  position: relative;
+
+  .cardinfo__title {
+    font-weight: 700;
+    color: #fff;
+    text-shadow: $text-shadow;
+    width: fit-content;
+    padding: 24px 43px;
+    font-size: 24px;
+    margin: auto;
+    transform: translateY(-50%);
+  }
+
+  .cardinfo__content {
+    padding: 26px;
+    padding-top: 0;
+  }
+
+  .icon {
+    padding: 15px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    text-shadow: $text-shadow;
+    box-shadow: $box-shadow50;
+    cursor: pointer;
+  }
+}

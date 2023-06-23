@@ -1,0 +1,57 @@
+@import "../../utils/variables.scss";
+
+.boosting {
+  @include background-img;
+  padding-top: 150px;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    clip-path: polygon(0 60%, 100% 45%, 100% 100%, 0% 100%);
+    background: #000;
+  }
+
+  .title {
+    width: fit-content;
+    padding: 0 56px;
+  }
+
+  .cardinfo__group {
+    margin-top: 75px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 1363px) {
+  .boosting {
+    .cardinfo__group {
+      justify-content: center;
+
+      .cardinfo:nth-last-child(1) {
+        margin-top: 50px;
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .boosting {
+    .cardinfo__group {
+      .cardinfo {
+        margin-top: 50px;
+
+        &:nth-child(1) {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}

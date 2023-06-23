@@ -1,0 +1,14 @@
+@import "../../utils/variables.scss";
+
+.btn__settings {
+  width: 75px;
+  height: 75px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: $box-shadow50;
+  filter: drop-shadow($box-shadow50);
+}

@@ -1,0 +1,83 @@
+@import "./utils/variables.scss";
+
+* {
+  font-family: "Exo", sans-serif;
+  font-style: normal;
+  text-align: center;
+}
+
+.boosting-text {
+  color: $color-purple-boosting;
+}
+
+.coaching-text {
+  color: $color-green-coaching;
+}
+
+.purple {
+  @include purple-boosting;
+}
+
+.green {
+  @extend .purple;
+  background-color: $color-green-coaching;
+}
+
+.blue {
+  @extend .purple;
+  background-color: $color-blue-placements;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+}
+
+.btn {
+  cursor: pointer;
+  position: relative;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  z-index: 10;
+
+  &.main {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (min-width: 1600px) {
+  .container {
+    width: 70%;
+  }
+}
+
+@media (max-width: 1150px) {
+  .logo.main {
+    margin: 0;
+  }
+}
+
+@media (max-width: 1150px) {
+  .home {
+    padding-top: 250px;
+    padding-bottom: 50px;
+  }
+
+  .logo.main {
+    top: 125px;
+  }
+}
+
+@media (max-width: 425px) {
+  .container {
+    width: 350px;
+  }
+}

@@ -1,0 +1,28 @@
+@import "../../utils/variables.scss";
+
+.title {
+  @include bd-blur-black;
+  border-radius: $border-radius;
+  @include border-card;
+
+  h2 {
+    @include rainbow-text;
+    margin: auto;
+  }
+}
+
+@media (max-width: 1030px) {
+  .title {
+    h2 {
+      font-size: 40px;
+    }
+  }
+}
+
+@media (max-width: 880px) {
+  .title {
+    h2 {
+      font-size: 32px;
+    }
+  }
+}
