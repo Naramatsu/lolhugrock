@@ -1,15 +1,16 @@
 @import "../../utils/variables.scss";
 
 .card__plan {
-  background: rgba(0, 0, 0, 0.5);
   @include bd-blur-black;
   @include border-card;
+  background: rgba(0, 0, 0, 0.5);
   border-radius: $border-radius;
-  width: 350px;
-  height: 450px;
   color: #fff;
+  cursor: default;
+  height: 450px;
   padding: 26px;
   text-shadow: $text-shadow;
+  width: 350px;
 
   .card__plan__title {
     margin: 15px auto;
@@ -18,7 +19,7 @@
 
   .card__plan__info {
     font-size: 18px;
-    text-align: left;
     margin-bottom: 15px;
+    text-align: left;
   }
 }

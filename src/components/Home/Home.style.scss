@@ -4,20 +4,20 @@
   @include background-img;
 
   .cards__plans__group {
+    align-items: center;
     display: flex;
     justify-content: space-between;
     margin-top: 50px;
-    align-items: center;
   }
 }
 
 @media (max-width: 880px) {
   .home {
     .cards__plans__group {
-      margin-top: 50px;
-      padding-bottom: 50px;
       flex-direction: column;
       gap: 15px;
+      margin-top: 50px;
+      padding-bottom: 50px;
     }
   }
 }

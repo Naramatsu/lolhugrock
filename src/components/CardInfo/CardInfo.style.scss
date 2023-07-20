@@ -1,40 +1,44 @@
 @import "../../utils/variables.scss";
 
-.cardinfo {
-  @include bd-blur-gradient;
-  @include border-card;
-  border-radius: $border-radius;
-  text-shadow: $text-shadow;
-  width: 350px;
-  height: 400px;
-  color: #fff;
-  position: relative;
+.cardinfo__box {
+  @include card__box(350px, 400px);
+
+  .cardinfo {
+    @include bd-blur-gradient;
+    @include border-card;
+    border-radius: $border-radius;
+    height: 400px;
+    position: absolute;
+    text-shadow: $text-shadow;
+    width: 350px;
+  }
 
   .cardinfo__title {
-    font-weight: 700;
     color: #fff;
-    text-shadow: $text-shadow;
-    width: fit-content;
-    padding: 24px 43px;
+    cursor: default;
     font-size: 24px;
+    font-weight: 700;
     margin: auto;
-    transform: translateY(-50%);
+    padding: 24px 43px;
+    position: absolute;
     position: relative;
-    z-index: 2;
+    text-shadow: $text-shadow;
+    // transform: translateY(-50%);
+    transform: translateY(-35%) translateZ(50px);
+    width: fit-content;
   }
 
   .cardinfo__content {
+    color: #fff;
+    cursor: default;
     padding: 26px;
     padding-top: 0;
+    position: relative;
+    text-shadow: $text-shadow;
+    z-index: 2;
   }
 
   .icon {
-    padding: 15px;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    text-shadow: $text-shadow;
-    box-shadow: $box-shadow50;
-    cursor: pointer;
+    @include icon__button;
   }
 }

@@ -2,11 +2,11 @@
 
 header {
   @include bd-blur-black;
-  position: relative;
   height: 70px;
+  left: 0;
+  position: relative;
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
   z-index: 10;
 
@@ -14,28 +14,28 @@ header {
     position: relative;
 
     img {
+      height: 150px;
+      left: 0;
       position: absolute;
       top: 0px;
       width: 150px;
-      height: 150px;
-      left: 0;
     }
 
     .herader__content {
-      display: flex;
       align-items: center;
+      display: flex;
       height: 75px;
-      padding-left: 200px;
       justify-content: space-between;
+      padding-left: 200px;
 
       .leagueoflegends {
         @include bd-blur-white;
-        text-shadow: $text-shadow;
+        border-radius: 10px;
         box-shadow: none;
         color: #fff;
         font-weight: 700;
         padding: 12px 29px;
-        border-radius: 10px;
+        text-shadow: $text-shadow;
       }
 
       .header__btns {
@@ -43,16 +43,16 @@ header {
         gap: 15px;
 
         .btn {
+          align-items: center;
           background: transparent;
           border: none;
           border: solid 1px;
           border-radius: 10px;
           color: #fff;
-          text-decoration: none;
           display: flex;
-          align-items: center;
           gap: 12px;
           padding: 12px 27px;
+          text-decoration: none;
           text-shadow: $text-shadow;
         }
       }

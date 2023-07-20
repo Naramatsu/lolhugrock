@@ -18,7 +18,8 @@ const CardInfo = ({ title, color, path, children }) => {
   }, []);
 
   return (
-    <section className="cardinfo" ref={tilt}>
+    <section className="cardinfo__box" ref={tilt}>
+      <section className="cardinfo"></section>
       <h3 className={`cardinfo__title ${color}`}>{title}</h3>
       <section className="cardinfo__content">{children}</section>
       <FaArrowRight className={`icon ${color}`} />
