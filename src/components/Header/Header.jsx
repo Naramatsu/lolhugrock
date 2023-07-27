@@ -5,7 +5,7 @@ import "./Header.style.scss";
 
 const Header = () => (
   <header>
-    <section className="container">
+    <section className="container-lg">
       <Link to="/">
         <img className="logo header__logo" src="Logo.png" alt="logo" />
       </Link>

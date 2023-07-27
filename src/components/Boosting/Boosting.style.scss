@@ -16,9 +16,13 @@
     width: 100%;
   }
 
-  .title {
-    padding: 0 56px;
-    width: fit-content;
+  a {
+    text-decoration: none;
+
+    .title {
+      padding: 0 56px;
+      width: fit-content;
+    }
   }
 
   .cardinfo__group {

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import VanillaTilt from "vanilla-tilt";
+import { Link, useHistory } from "react-router-dom";
 import "./CardInfo.style.scss";
 
 const options = {
@@ -12,6 +13,8 @@ const options = {
 
 const CardInfo = ({ title, color, path, children }) => {
   const tilt = useRef(null);
+  const history = useHistory();
+  const { pathname } = history.location;
 
   useEffect(() => {
     VanillaTilt.init(tilt.current, options);
@@ -22,7 +25,9 @@ const CardInfo = ({ title, color, path, children }) => {
       <section className="cardinfo"></section>
       <h3 className={`cardinfo__title ${color}`}>{title}</h3>
       <section className="cardinfo__content">{children}</section>
-      <FaArrowRight className={`icon ${color}`} />
+      <Link to={`${pathname}/${path}`} className={`icon ${color}`}>
+        <FaArrowRight />
+      </Link>
     </section>
   );
 };

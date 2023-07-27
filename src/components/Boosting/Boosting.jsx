@@ -3,6 +3,8 @@ import CardInfo from "../CardInfo";
 import Header from "../Header";
 import Title from "../Title";
 import "./Boosting.style.scss";
+import { Switch, Route, Link } from "react-router-dom";
+import BackgroundAnimated from "../BackgroundAnimated/BackgroundAnimated";
 
 const list = [
   {
@@ -27,7 +29,9 @@ const Boosting = () => {
     <>
       <Header />
       <section className="boosting">
-        <Title title="Boosting" />
+        <Link to="/boosting">
+          <Title title="Boosting" />
+        </Link>
         <section className="cardinfo__group container">
           {list.map(({ title, color, path }, index) => (
             <CardInfo key={index} title={title} color={color} path={path}>
@@ -44,6 +48,11 @@ const Boosting = () => {
           ))}
         </section>
       </section>
+      <Switch>
+        <Route exact path="/boosting/divisionboost">
+          <BackgroundAnimated></BackgroundAnimated>
+        </Route>
+      </Switch>
     </>
   );
 };

@@ -6,6 +6,10 @@
   text-align: center;
 }
 
+.App {
+  position: relative;
+}
+
 .boosting-text {
   color: $color-purple-boosting;
 }
@@ -31,6 +35,11 @@
 .container {
   margin: auto;
   width: 80%;
+}
+
+.container-lg {
+  margin: auto;
+  width: 90%;
 }
 
 .btn {

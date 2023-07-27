@@ -40,5 +40,10 @@
 
   .icon {
     @include icon__button;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
   }
 }
