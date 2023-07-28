@@ -3,7 +3,7 @@ import BackgroundAnimated from "../BackgroundAnimated/BackgroundAnimated";
 import GridLayout from "../GridLayout/GridLayout";
 import PreferencePanel from "../PreferencePanel/PreferencePanel";
 import { convertColor } from "../../utils";
-import { serverForm, queueForm } from "./data";
+import { serverAndQueueForm } from "./data";
 import "./BoostingSection.style.scss";
 
 const BoostingSection = ({ title, color }) => {
@@ -15,19 +15,16 @@ const BoostingSection = ({ title, color }) => {
           <h2 style={{ color: colorFormatted }}>{title}</h2>
           <GridLayout>
             <GridLayout>
-              <PreferencePanel
-                title={serverForm.title}
-                formName={serverForm.name}
-                form={serverForm}
-                color={colorFormatted}
-                type="chip"
-              />
-              <PreferencePanel
-                title={queueForm.title}
-                formName={queueForm.name}
-                form={queueForm}
-                color={colorFormatted}
-              />
+              {serverAndQueueForm.map((form, index) => (
+                <PreferencePanel
+                  key={index}
+                  title={form.title}
+                  formName={form.name}
+                  form={form}
+                  color={colorFormatted}
+                  shape={form.shape}
+                />
+              ))}
             </GridLayout>
           </GridLayout>
         </section>

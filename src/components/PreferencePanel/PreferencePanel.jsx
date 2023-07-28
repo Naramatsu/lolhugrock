@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { isSelected } from "../../utils";
 import "./PreferencePanel.style.scss";
 
-const PreferencePanel = ({ title, form, color, formName, type = "" }) => {
+const PreferencePanel = ({ title, form, color, formName, shape = "" }) => {
   const [preferences, setPreferences] = useState({});
   const addPreferences = (name, item) => {
     setPreferences({
@@ -20,7 +20,7 @@ const PreferencePanel = ({ title, form, color, formName, type = "" }) => {
         {form.items.map(({ name, value }, index) => (
           <label
             key={index}
-            className={`form__choose ${type} ${isSelected(
+            className={`form__choose ${shape} ${isSelected(
               preferences[formName],
               value
             )}`}
