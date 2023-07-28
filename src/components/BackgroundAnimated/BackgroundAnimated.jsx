@@ -29,7 +29,9 @@ const BackgroundAnimated = ({ children }) => (
         }}
       ></div>
     ))}
-    <section className="lines__container kromac-scroll">{children}</section>
+    <section className="lines__container kromac-scroll container-lg">
+      {children}
+    </section>
   </section>
 );
 

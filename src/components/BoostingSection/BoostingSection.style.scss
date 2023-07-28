@@ -1,0 +1,12 @@
+@import "../../utils/variables.scss";
+
+.boosting__section {
+  position: relative;
+
+  h2 {
+    margin-bottom: 80px;
+    text-align: center;
+    text-shadow: $text-shadowY4;
+    font-size: 48px;
+  }
+}
