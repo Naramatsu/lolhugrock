@@ -1,11 +1,12 @@
 import React from "react";
 import CardPlan from "../CardPlan";
 import Title from "../Title";
+import logo from "../../assets/Logo.png";
 import "./Home.style.scss";
 
 const Home = () => (
   <section role="main" className="home">
-    <img className="logo main" src="Logo.png" alt="logo" />
+    <img className="logo main" src={logo} alt="logo" />
     <Title title="¿CUAL ES TU SERVICIO REQUERIDO?" />
     <section className="cards__plans__group container">
       <CardPlan title="boosting">

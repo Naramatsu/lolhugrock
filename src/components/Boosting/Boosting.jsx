@@ -1,7 +1,7 @@
 import React from "react";
 import CardInfo from "../CardInfo";
-import Header from "../Header";
 import Title from "../Title";
+import Header from "../Header";
 import { Switch, Route, Link } from "react-router-dom";
 import { list } from "./data";
 import BoostingSection from "../BoostingSection/BoostingSection";
