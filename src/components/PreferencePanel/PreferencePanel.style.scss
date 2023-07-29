@@ -1,11 +1,21 @@
 @import "../../utils/variables.scss";
 
+.displayFlex {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  height: 100%;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
 .preference__panel {
   @include bd-blur-gradient;
   backdrop-filter: blur(5px);
   border: 1px solid $color-purple-boosting;
   border-radius: $border-radius;
   height: auto;
+  margin-bottom: 20px;
   max-height: 190px;
   min-height: 120px;
   position: relative;
@@ -26,12 +36,12 @@
   }
 
   .form__container {
-    align-items: center;
-    display: flex;
-    gap: 10px;
-    height: 100%;
-    justify-content: space-evenly;
-    width: 100%;
+    @extend .displayFlex;
+
+    .form__select {
+      @extend .displayFlex;
+      padding: 2em;
+    }
 
     .form__choose {
       align-items: center;
