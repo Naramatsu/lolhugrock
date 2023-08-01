@@ -4,6 +4,7 @@
   @include background-img;
   padding-top: 150px;
   position: relative;
+  z-index: 1;
 
   &::before {
     background: #000;
