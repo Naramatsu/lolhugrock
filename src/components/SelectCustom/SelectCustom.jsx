@@ -7,7 +7,7 @@ const isFilled = (item) => {
   return "filled";
 };
 
-const SelectCustom = ({ label, options, onSelect }) => {
+const SelectCustom = ({ label, options, onSelect, noImage = false }) => {
   const [optionSelected, setOptionSelected] = useState("");
 
   const addPreferences = (event) => {
@@ -19,7 +19,7 @@ const SelectCustom = ({ label, options, onSelect }) => {
   return (
     <section className="select__custom">
       <label>{label}</label>
-      <img src={imgBuilder(optionSelected)} alt="roll" />
+      {!noImage && <img src={imgBuilder(optionSelected)} alt="roll" />}
       <section className="select__section__options">
         <label className="select__arrow"></label>
         <select

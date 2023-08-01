@@ -3,7 +3,7 @@ import BackgroundAnimated from "../BackgroundAnimated/BackgroundAnimated";
 import GridLayout from "../GridLayout/GridLayout";
 import PreferencePanel from "../PreferencePanel/PreferencePanel";
 import { convertColor } from "../../utils";
-import { formPreferences } from "./data";
+import { formAdditionalPreferences, formPreferences } from "./data";
 import "./BoostingSection.style.scss";
 
 const BoostingSection = ({ title, color }) => {
@@ -14,7 +14,7 @@ const BoostingSection = ({ title, color }) => {
         <section className="boosting__section">
           <h2 style={{ color: colorFormatted }}>{title}</h2>
           <GridLayout template="2fr 1fr">
-            <GridLayout template="50% 50%">
+            <GridLayout template="1fr 1fr">
               {formPreferences.map((form, index) => (
                 <PreferencePanel
                   key={index}
@@ -26,6 +26,15 @@ const BoostingSection = ({ title, color }) => {
                   shape={form.shape}
                 />
               ))}
+              <GridLayout template="3fr" gridColumn="span 2">
+                <PreferencePanel
+                  type={formAdditionalPreferences.type}
+                  title={formAdditionalPreferences.title}
+                  formName={formAdditionalPreferences.name}
+                  form={formAdditionalPreferences}
+                  color={colorFormatted}
+                />
+              </GridLayout>
             </GridLayout>
           </GridLayout>
         </section>

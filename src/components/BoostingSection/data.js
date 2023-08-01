@@ -1,6 +1,8 @@
+import { champions } from "./allChamps";
+
 export const formPreferences = [
   {
-    title: "Servidor",
+    title: "Server",
     name: "server",
     shape: "chip",
     items: [
@@ -71,3 +73,24 @@ export const formPreferences = [
     ],
   },
 ];
+
+export const formAdditionalPreferences = {
+  title: "Preferences",
+  name: "preferences",
+  type: "multiple",
+  items: [
+    {
+      label: "Pool de campeones",
+      type: "select",
+      options: champions,
+    },
+    {
+      label: "Duo Queue",
+      type: "toggle",
+    },
+    {
+      label: "Orden Premium",
+      type: "toggle",
+    },
+  ],
+};

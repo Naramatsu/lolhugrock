@@ -1,5 +1,9 @@
 @import "../../utils/variables.scss";
 
+.kromac-toggle .kromac-checkbox input {
+  margin: 0 !important;
+}
+
 .displayFlex {
   align-items: center;
   display: flex;
@@ -7,6 +11,20 @@
   height: 100%;
   justify-content: space-evenly;
   width: 100%;
+}
+
+.form__select__champions {
+  position: relative;
+
+  .label__free {
+    color: #fff;
+    font-size: 14px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(120%, 25%);
+    width: max-content;
+  }
 }
 
 .preference__panel {
