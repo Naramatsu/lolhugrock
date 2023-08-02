@@ -17,6 +17,19 @@
     width: 100%;
   }
 
+  &::after {
+    backdrop-filter: blur(10px);
+    background: #000;
+    bottom: -25px;
+    box-shadow: 0 0 10px #000, 0 0 20px #000, 0 0 30px #000 0 0 50px #000;
+    content: "";
+    filter: blur(10px);
+    height: 50px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+  }
+
   a {
     text-decoration: none;
 

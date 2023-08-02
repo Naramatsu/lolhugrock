@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { isSelected } from "../../utils";
 import SelectCustom from "../SelectCustom/SelectCustom";
+import Panel from "../Panel/Panel";
 import Toggle from "kromac-ui-18/dist/Toggle";
 import "./PreferencePanel.style.scss";
 
@@ -100,22 +101,17 @@ const PreferencePanel = ({
   };
 
   return (
-    <section className={`preference__panel`}>
-      <p className="preference__panel__title" style={{ background: color }}>
-        {title}
-      </p>
-      <section className="form__container" style={{ "--cl": color }}>
-        {sectionBuilder(
-          type,
-          form,
-          addPreferences,
-          shape,
-          preferences,
-          formName,
-          color
-        )}
-      </section>
-    </section>
+    <Panel title={title} color={color}>
+      {sectionBuilder(
+        type,
+        form,
+        addPreferences,
+        shape,
+        preferences,
+        formName,
+        color
+      )}
+    </Panel>
   );
 };
 

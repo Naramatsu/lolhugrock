@@ -1,0 +1,31 @@
+@import "../../utils/variables.scss";
+
+.preference__panel {
+  @include bd-blur-gradient;
+  backdrop-filter: blur(5px);
+  border: 1px solid $color-purple-boosting;
+  border-radius: $border-radius;
+  height: auto;
+  margin-bottom: 20px;
+  min-height: 120px;
+  position: relative;
+  width: 100%;
+
+  .preference__panel__title {
+    border-radius: 10px;
+    box-shadow: $box-shadow25;
+    color: #fff;
+    font-size: 20px;
+    left: 50%;
+    padding: 0 20px;
+    position: absolute;
+    text-align: center;
+    text-shadow: $text-shadowY4;
+    top: 0;
+    transform: translate(-50%, -50%);
+  }
+
+  .form__container {
+    @include displayFlex;
+  }
+}

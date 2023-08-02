@@ -4,15 +4,6 @@
   margin: 0 !important;
 }
 
-.displayFlex {
-  align-items: center;
-  display: flex;
-  gap: 10px;
-  height: 100%;
-  justify-content: space-evenly;
-  width: 100%;
-}
-
 .form__select__champions {
   position: relative;
 
@@ -27,64 +18,35 @@
   }
 }
 
-.preference__panel {
-  @include bd-blur-gradient;
-  backdrop-filter: blur(5px);
-  border: 1px solid $color-purple-boosting;
-  border-radius: $border-radius;
-  height: auto;
-  margin-bottom: 20px;
-  max-height: 190px;
-  min-height: 120px;
-  position: relative;
-  width: 100%;
-
-  .preference__panel__title {
-    border-radius: 10px;
-    box-shadow: $box-shadow25;
-    color: #fff;
-    font-size: 20px;
-    left: 50%;
-    padding: 0 20px;
-    position: absolute;
-    text-align: center;
-    text-shadow: $text-shadowY4;
-    top: 0;
-    transform: translate(-50%, -50%);
+.form__container {
+  .form__select {
+    @include displayFlex;
+    padding: 2em;
   }
 
-  .form__container {
-    @extend .displayFlex;
+  .form__choose {
+    align-items: center;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: $box-shadow25;
+    color: #000;
+    cursor: pointer;
+    display: flex;
+    font-size: 16px;
+    justify-content: center;
+    padding: 10px 24px;
+    text-align: center;
+    text-shadow: $text-shadowY4;
+    width: fit-content;
 
-    .form__select {
-      @extend .displayFlex;
-      padding: 2em;
+    &.chip {
+      border-radius: 50%;
+      width: 50px;
     }
 
-    .form__choose {
-      align-items: center;
-      background: #fff;
-      border-radius: 20px;
-      box-shadow: $box-shadow25;
-      color: #000;
-      cursor: pointer;
-      display: flex;
-      font-size: 16px;
-      justify-content: center;
-      padding: 10px 24px;
-      text-align: center;
-      text-shadow: $text-shadowY4;
-      width: fit-content;
-
-      &.chip {
-        border-radius: 50%;
-        width: 50px;
-      }
-
-      &.selected {
-        background: var(--cl);
-        color: #fff;
-      }
+    &.selected {
+      background: var(--cl);
+      color: #fff;
     }
   }
 }

@@ -23,7 +23,6 @@
     position: absolute;
     position: relative;
     text-shadow: $text-shadow;
-    // transform: translateY(-50%);
     transform: translateY(-35%) translateZ(50px);
     width: fit-content;
   }
@@ -42,8 +41,8 @@
     @include icon__button;
 
     svg {
-      width: 100%;
       height: 100%;
+      width: 100%;
     }
   }
 }
