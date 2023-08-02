@@ -1,18 +1,41 @@
-import Flash from "../assets/Flash.png";
-import Cleanse from "../assets/Cleanse.png";
-import Exhaust from "../assets/Exhaust.png";
-import Barrier from "../assets/Barrier.png";
-import Ghost from "../assets/Ghost.png";
-import Heal from "../assets/Heal.png";
-import Ignite from "../assets/Ignite.png";
-import Smite from "../assets/Smite.png";
-import Teleport from "../assets/Teleport.png";
+import Flash from "../assets/summoners/Flash.png";
+import Cleanse from "../assets/summoners/Cleanse.png";
+import Exhaust from "../assets/summoners/Exhaust.png";
+import Barrier from "../assets/summoners/Barrier.png";
+import Ghost from "../assets/summoners/Ghost.png";
+import Heal from "../assets/summoners/Heal.png";
+import Ignite from "../assets/summoners/Ignite.png";
+import Smite from "../assets/summoners/Smite.png";
+import Teleport from "../assets/summoners/Teleport.png";
+
 import All from "../assets/Icon_All.svg";
-import Top from "../assets/Icon_Top.svg";
-import Jungle from "../assets/Icon_Jungle.svg";
-import Mid from "../assets/Icon_Mid.svg";
-import Adc from "../assets/Icon_Adc.svg";
-import Support from "../assets/Icon_Support.svg";
+
+import Top from "../assets/lanes/Icon_Top.svg";
+import Jungle from "../assets/lanes/Icon_Jungle.svg";
+import Mid from "../assets/lanes/Icon_Mid.svg";
+import Adc from "../assets/lanes/Icon_Adc.svg";
+import Support from "../assets/lanes/Icon_Support.svg";
+
+import Unranked from "../assets/divisions/Unranked.png";
+import Iron from "../assets/divisions/Iron.png";
+import Bronze from "../assets/divisions/Bronze.png";
+import Silver from "../assets/divisions/Silver.png";
+import Gold from "../assets/divisions/Gold.png";
+import Platinum from "../assets/divisions/Platinum.png";
+import Diamond from "../assets/divisions/Diamond.png";
+import Master from "../assets/divisions/Master.png";
+import GrandMaster from "../assets/divisions/GrandMaster.png";
+import Challenger from "../assets/divisions/Challenger.png";
+
+import IronFrame from "../assets/divisions/IronFrame.png";
+import BronzeFrame from "../assets/divisions/BronzeFrame.png";
+import SilverFrame from "../assets/divisions/SilverFrame.png";
+import GoldFrame from "../assets/divisions/GoldFrame.png";
+import PlatinumFrame from "../assets/divisions/PlatinumFrame.png";
+import DiamondFrame from "../assets/divisions/DiamondFrame.png";
+import MasterFrame from "../assets/divisions/MasterFrame.png";
+import GrandMasterFrame from "../assets/divisions/GrandMasterFrame.png";
+import ChallengerFrame from "../assets/divisions/ChallengerFrame.png";
 
 export const convertColor = (color) => {
   switch (color) {
@@ -64,6 +87,58 @@ export const imgBuilder = (option) => {
       return Adc;
     case "Support":
       return Support;
+    default:
+      return All;
+  }
+};
+
+export const divisionImgBuilder = (option) => {
+  switch (option) {
+    case "Unranked":
+      return Unranked;
+    case "Iron":
+      return Iron;
+    case "Bronze":
+      return Bronze;
+    case "Silver":
+      return Silver;
+    case "Gold":
+      return Gold;
+    case "Platinum":
+      return Platinum;
+    case "Diamond":
+      return Diamond;
+    case "Master":
+      return Master;
+    case "GrandMaster":
+      return GrandMaster;
+    case "Challenger":
+      return Challenger;
+    default:
+      return All;
+  }
+};
+
+export const divisionFrameBuilder = (option) => {
+  switch (option) {
+    case "IronFrame":
+      return IronFrame;
+    case "BronzeFrame":
+      return BronzeFrame;
+    case "SilverFrame":
+      return SilverFrame;
+    case "GoldFrame":
+      return GoldFrame;
+    case "PlatinumFrame":
+      return PlatinumFrame;
+    case "DiamondFrame":
+      return DiamondFrame;
+    case "MasterFrame":
+      return MasterFrame;
+    case "GrandMasterFrame":
+      return GrandMasterFrame;
+    case "ChallengerFrame":
+      return ChallengerFrame;
     default:
       return All;
   }

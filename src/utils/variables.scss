@@ -14,12 +14,25 @@ $text-shadow-title: 2px 4px 6px rgba(0, 0, 0, 1);
 $text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
 $text-shadowY4: 0 4px 4px rgba(0, 0, 0, 0.5);
 
+// division colors
+$color-iron: #4a3d38;
+$color-bronze: #563833;
+$color-silver: #516c7e;
+$color-gold: #734c20;
+$color-platinum: #019a91;
+$color-diamond: #4464b4;
+$color-master: #9a3dac;
+$color-grandmaster: #652324;
+$color-challenger: #02224f;
+$color-gray: #6b6b6b;
+
 // background
+$color-green-whatsapp: #41c653;
 $color-purple-boosting: #d441ff;
 $color-green-coaching: #00de8a;
 $color-blue-placements: #39c5d6;
 $color-red-coaching: #ff3147;
-$color-gold: #c8aa6e;
+$color-gold-coach: #c8aa6e;
 $background-rainbow: linear-gradient(
   90deg,
   #d441ff 0%,

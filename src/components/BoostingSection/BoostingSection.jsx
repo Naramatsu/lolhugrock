@@ -5,6 +5,8 @@ import PreferencePanel from "../PreferencePanel/PreferencePanel";
 import { convertColor } from "../../utils";
 import { formAdditionalPreferences, formPreferences } from "./data";
 import "./BoostingSection.style.scss";
+import Panel from "../Panel/Panel";
+import CardDivision from "../CardDivision/CardDivision";
 
 const BoostingSection = ({ title, color }) => {
   const colorFormatted = convertColor(color);
@@ -34,6 +36,11 @@ const BoostingSection = ({ title, color }) => {
                   form={formAdditionalPreferences}
                   color={colorFormatted}
                 />
+              </GridLayout>
+              <GridLayout template="3fr" gridColumn="span 2">
+                <Panel title="Boosting Rank" color={colorFormatted}>
+                  <CardDivision />
+                </Panel>
               </GridLayout>
             </GridLayout>
           </GridLayout>
