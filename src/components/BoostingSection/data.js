@@ -94,3 +94,40 @@ export const formAdditionalPreferences = {
     },
   ],
 };
+
+export const formBoostingRank = [
+  {
+    title: "Boosting Rank",
+    name: "boostingRank",
+    label: "Rango Actual",
+    items: [
+      "Unranked",
+      "Iron",
+      "Bronze",
+      "Silver",
+      "Gold",
+      "Platinum",
+      "Diamond",
+      "Master",
+      "GrandMaster",
+      "Challenger",
+    ],
+  },
+  {
+    title: "Boosting Rank",
+    name: "desiredRank",
+    label: "Rango Deseado",
+    items: [
+      "Unranked",
+      "Iron",
+      "Bronze",
+      "Silver",
+      "Gold",
+      "Platinum",
+      "Diamond",
+      "Master",
+      "GrandMaster",
+      "Challenger",
+    ],
+  },
+];

@@ -47,6 +47,25 @@
   position: relative;
 }
 
+.division__icon,
+.division__chip {
+  align-items: center;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: $box-shadow50;
+  cursor: pointer;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  width: 40px;
+}
+
+.division__chip {
+  border-radius: 20px;
+  padding: 0 16px;
+  width: fit-content;
+}
+
 .logo {
   height: 100px;
   width: 100px;

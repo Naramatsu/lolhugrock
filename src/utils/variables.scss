@@ -135,3 +135,7 @@ $background-rainbow: linear-gradient(
   justify-content: space-evenly;
   width: 100%;
 }
+
+@mixin generate__bg($color, $alpha) {
+  background: rgba($color, $alpha);
+}

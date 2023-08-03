@@ -121,25 +121,25 @@ export const divisionImgBuilder = (option) => {
 
 export const divisionFrameBuilder = (option) => {
   switch (option) {
-    case "IronFrame":
+    case "Iron":
       return IronFrame;
-    case "BronzeFrame":
+    case "Bronze":
       return BronzeFrame;
-    case "SilverFrame":
+    case "Silver":
       return SilverFrame;
-    case "GoldFrame":
+    case "Gold":
       return GoldFrame;
-    case "PlatinumFrame":
+    case "Platinum":
       return PlatinumFrame;
-    case "DiamondFrame":
+    case "Diamond":
       return DiamondFrame;
-    case "MasterFrame":
+    case "Master":
       return MasterFrame;
-    case "GrandMasterFrame":
+    case "GrandMaster":
       return GrandMasterFrame;
-    case "ChallengerFrame":
+    case "Challenger":
       return ChallengerFrame;
     default:
-      return All;
+      return "";
   }
 };

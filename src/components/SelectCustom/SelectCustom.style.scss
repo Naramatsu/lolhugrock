@@ -13,6 +13,7 @@
   }
 
   img {
+    filter: drop-shadow($box-shadow25);
     height: 50px;
     width: 50px;
   }
@@ -36,6 +37,7 @@
     select {
       align-items: center;
       appearance: none;
+      border: none;
       border-radius: 20px;
       box-shadow: $box-shadow25;
       cursor: pointer;
@@ -44,8 +46,14 @@
       gap: 10px;
       height: 50px;
       justify-content: center;
+      outline: none;
       position: relative;
       width: 150px;
+
+      &:active {
+        border: none;
+        outline: none;
+      }
 
       option {
         background-color: #fff;
@@ -53,7 +61,7 @@
       }
 
       &.filled {
-        background: var(--purple-boosting, #d441ff);
+        background: var(--bg);
         color: #fff;
       }
     }
