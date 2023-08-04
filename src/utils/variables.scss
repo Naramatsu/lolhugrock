@@ -139,3 +139,12 @@ $background-rainbow: linear-gradient(
 @mixin generate__bg($color, $alpha) {
   background: rgba($color, $alpha);
 }
+
+@mixin content {
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}

@@ -3,22 +3,18 @@ import classnames from "classnames";
 import VanillaTilt from "vanilla-tilt";
 import { useHistory } from "react-router-dom";
 import "./CardPlan.style.scss";
+import { titlOptions } from "../../utils";
 
-const options = {
-  max: 25,
-  speed: 400,
-  glare: true,
-  "max-glare": 0.5,
-};
+const options = titlOptions();
 
 const CardPlan = ({ title, children }) => {
   const tilt = useRef(null);
+  const history = useHistory();
 
   useEffect(() => {
     VanillaTilt.init(tilt.current, options);
   }, []);
 
-  const history = useHistory();
   const titleClassNames = classnames(
     "card__plan__title",
     title === "boosting" ? "boosting-text" : "coaching-text"

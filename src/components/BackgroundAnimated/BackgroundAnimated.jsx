@@ -17,7 +17,7 @@ const circles = () => {
   return result;
 };
 
-const BackgroundAnimated = ({ children }) => (
+const BackgroundAnimated = ({ color, children }) => (
   <section className="lines">
     {circles().map((circle, index) => (
       <div
@@ -26,6 +26,7 @@ const BackgroundAnimated = ({ children }) => (
         style={{
           left: `calc(${randomLeft(index)} + 2%)`,
           animationDelay: `${circle}s`,
+          "--bg": color,
         }}
       ></div>
     ))}

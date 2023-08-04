@@ -2,14 +2,10 @@ import React, { useEffect, useRef } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import VanillaTilt from "vanilla-tilt";
 import { Link, useHistory } from "react-router-dom";
+import { titlOptions } from "../../utils";
 import "./CardInfo.style.scss";
 
-const options = {
-  max: 25,
-  speed: 400,
-  glare: true,
-  "max-glare": 0.5,
-};
+const options = titlOptions();
 
 const CardInfo = ({ title, color, path, children }) => {
   const tilt = useRef(null);

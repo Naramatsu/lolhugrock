@@ -1,6 +1,8 @@
 import React from "react";
 import BackgroundAnimated from "../BackgroundAnimated/BackgroundAnimated";
+import CardDivision from "../CardDivision/CardDivision";
 import GridLayout from "../GridLayout/GridLayout";
+import Panel from "../Panel/Panel";
 import PreferencePanel from "../PreferencePanel/PreferencePanel";
 import { convertColor } from "../../utils";
 import {
@@ -8,14 +10,12 @@ import {
   formBoostingRank,
   formPreferences,
 } from "./data";
-import Panel from "../Panel/Panel";
-import CardDivision from "../CardDivision/CardDivision";
 import "./BoostingSection.style.scss";
 
 const BoostingSection = ({ title, color }) => {
   const colorFormatted = convertColor(color);
   return (
-    <BackgroundAnimated>
+    <BackgroundAnimated color={colorFormatted}>
       <section className="boosting__section">
         <h2 style={{ color: colorFormatted }}>{title}</h2>
         <GridLayout template="2fr 1fr">

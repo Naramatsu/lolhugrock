@@ -22,11 +22,11 @@
 .circle {
   animation: animale-lines 20s linear infinite;
   aspect-ratio: 1/1;
-  background-color: $color-purple-boosting;
+  background: var(--bg);
   border-radius: 50%;
   bottom: 0;
-  box-shadow: 0 0 10px $color-purple-boosting, 0 0 20px $color-purple-boosting,
-    0 0 30px $color-purple-boosting, 0 0 40px $color-purple-boosting;
+  box-shadow: 0 0 10px var(--bg), 0 0 20px var(--bg), 0 0 30px var(--bg),
+    0 0 40px var(--bg);
   opacity: 0;
   position: fixed;
   width: 20px;
@@ -36,7 +36,7 @@
   }
 
   &::before {
-    background: linear-gradient($color-purple-boosting, transparent);
+    background: linear-gradient(var(--bg), transparent);
     content: "";
     height: 100vh;
     left: 25%;

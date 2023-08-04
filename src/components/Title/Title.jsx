@@ -1,13 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import VanillaTilt from "vanilla-tilt";
 import "./Title.style.scss";
+import { titlOptions } from "../../utils";
 
-const options = {
-  max: 10,
-  speed: 400,
-  glare: true,
-  "max-glare": 0.5,
-};
+const options = titlOptions({ max: 5 });
 
 const Title = ({ title }) => {
   const tilt = useRef(null);

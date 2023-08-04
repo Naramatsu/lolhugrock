@@ -1,10 +1,10 @@
 import React from "react";
+import BoostingSection from "../BoostingSection/BoostingSection";
 import CardInfo from "../CardInfo";
-import Title from "../Title";
 import Header from "../Header";
+import Title from "../Title";
 import { Switch, Route, Link } from "react-router-dom";
 import { list } from "./data";
-import BoostingSection from "../BoostingSection/BoostingSection";
 import "./Boosting.style.scss";
 
 const Boosting = () => {

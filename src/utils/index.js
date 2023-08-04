@@ -143,3 +143,11 @@ export const divisionFrameBuilder = (option) => {
       return "";
   }
 };
+
+export const titlOptions = (options = {}) => ({
+  max: 25,
+  speed: 400,
+  glare: true,
+  "max-glare": 0.5,
+  ...options,
+});

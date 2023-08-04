@@ -97,7 +97,6 @@ export const formAdditionalPreferences = {
 
 export const formBoostingRank = [
   {
-    title: "Boosting Rank",
     name: "boostingRank",
     label: "Rango Actual",
     items: [
@@ -114,7 +113,6 @@ export const formBoostingRank = [
     ],
   },
   {
-    title: "Boosting Rank",
     name: "desiredRank",
     label: "Rango Deseado",
     items: [

@@ -1,21 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
 import SelectCustom from "../SelectCustom/SelectCustom";
 import VanillaTilt from "vanilla-tilt";
-import { divisionsConfig } from "./data";
 import {
   divisionFrameBuilder,
   divisionImgBuilder,
   isSelected,
+  titlOptions,
 } from "../../utils";
+import { divisionsConfig } from "./data";
 import "./CardDivision.style.scss";
 
-const options = {
-  max: 5,
-  speed: 200,
-  "max-glare": 0.5,
-};
+const options = titlOptions({ max: 5, speed: 200, glare: false });
 
-const CardDivision = ({ title, formName, label, items }) => {
+const CardDivision = ({ formName, label, items }) => {
   const [preferences, setPreferences] = useState({});
   const [divisionSelected, setDivisionSelected] = useState("Unranked");
   const tilt = useRef(null);
