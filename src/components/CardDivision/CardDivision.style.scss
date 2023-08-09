@@ -6,9 +6,9 @@
 }
 
 .card__division {
-  background: var(--bgOpacity);
+  background: linear-gradient(to bottom, var(--bgOpacity), transparent);
   border-radius: 20px 20px 100px 100px;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: $box-shadow50;
   height: 470px;
   margin: 2em;
   margin-bottom: 80px;
@@ -39,6 +39,12 @@
   .select__custom {
     gap: 0;
     margin-top: -10px;
+
+    .select__section__options {
+      select {
+        width: 175px;
+      }
+    }
   }
 
   .card__division__icons {

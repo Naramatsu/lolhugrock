@@ -2,4 +2,8 @@
   display: grid;
   gap: 40px;
   width: 100%;
+
+  &:nth-last-child(1) {
+    margin-bottom: 50px;
+  }
 }
