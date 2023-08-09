@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import SelectCustom from "../SelectCustom/SelectCustom";
 import VanillaTilt from "vanilla-tilt";
 import {
@@ -7,12 +7,14 @@ import {
   isSelected,
   titlOptions,
 } from "../../utils";
+import { AppContext } from "../../context";
 import { divisionsConfig } from "./data";
 import "./CardDivision.style.scss";
 
 const options = titlOptions({ max: 5, speed: 200, glare: false });
 
-const CardDivision = ({ formName, label, items }) => {
+const CardDivision = ({ title, label, items }) => {
+  const { setForm } = useContext(AppContext);
   const [preferences, setPreferences] = useState({});
   const [divisionSelected, setDivisionSelected] = useState("Unranked");
   const tilt = useRef(null);
@@ -28,6 +30,16 @@ const CardDivision = ({ formName, label, items }) => {
     });
     if (name === "league") setDivisionSelected(item);
   };
+
+  useEffect(() => {
+    if (preferences)
+      setForm({
+        title,
+        property: label,
+        item: preferences,
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [preferences]);
 
   const color = divisionsConfig[divisionSelected].color;
   const colorOpacity = color + "8C";

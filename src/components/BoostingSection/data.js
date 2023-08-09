@@ -2,8 +2,7 @@ import { champions } from "./allChamps";
 
 export const formPreferences = [
   {
-    title: "Server",
-    name: "server",
+    name: "Server",
     shape: "chip",
     items: [
       { value: "NA", name: "NA" },
@@ -13,31 +12,28 @@ export const formPreferences = [
     ],
   },
   {
-    title: "Queue",
-    name: "queue",
+    name: "Queue",
     items: [
       { value: "soloq", name: "Solo Queue" },
       { value: "flex", name: "Flex Queue" },
     ],
   },
   {
-    title: "Roll",
-    name: "roll",
+    name: "Roll",
     type: "select",
     items: [
       {
         label: "Principal",
-        options: ["Any", "Top", "Jungle", "Mid", "Adc", "Support"],
+        options: ["Any", "TOP", "JG", "MID", "ADC", "SUPP"],
       },
       {
         label: "Secundario",
-        options: ["Any", "Top", "Jungle", "Mid", "Adc", "Support"],
+        options: ["Any", "TOP", "JG", "MID", "ADC", "SUPP"],
       },
     ],
   },
   {
-    title: "Summoners",
-    name: "summoners",
+    name: "Summoners",
     type: "select",
     items: [
       {
@@ -75,8 +71,7 @@ export const formPreferences = [
 ];
 
 export const formAdditionalPreferences = {
-  title: "Preferences",
-  name: "preferences",
+  name: "Preferences",
   type: "multiple",
   items: [
     {

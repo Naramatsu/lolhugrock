@@ -6,6 +6,7 @@ import Title from "../Title";
 import { Switch, Route, Link } from "react-router-dom";
 import { list } from "./data";
 import "./Boosting.style.scss";
+import FormState from "../../context/form/FormState";
 
 const Boosting = () => {
   return (
@@ -23,11 +24,13 @@ const Boosting = () => {
           ))}
         </section>
       </section>
-      <Switch>
-        <Route exact path="/boosting/divisionboost">
-          <BoostingSection title="Division Boost" color="purple" />
-        </Route>
-      </Switch>
+      <FormState>
+        <Switch>
+          <Route exact path="/boosting/divisionboost">
+            <BoostingSection title="Division Boost" color="purple" />
+          </Route>
+        </Switch>
+      </FormState>
     </>
   );
 };

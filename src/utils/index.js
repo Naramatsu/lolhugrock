@@ -77,15 +77,15 @@ export const imgBuilder = (option) => {
       return Smite;
     case "Teleport":
       return Teleport;
-    case "Top":
+    case "TOP":
       return Top;
-    case "Jungle":
+    case "JG":
       return Jungle;
-    case "Mid":
+    case "MID":
       return Mid;
-    case "Adc":
+    case "ADC":
       return Adc;
-    case "Support":
+    case "SUPP":
       return Support;
     default:
       return All;

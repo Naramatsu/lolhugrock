@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { isSelected } from "../../utils";
 import SelectCustom from "../SelectCustom/SelectCustom";
 import Panel from "../Panel/Panel";
 import Toggle from "kromac-ui-18/dist/Toggle";
 import "./PreferencePanel.style.scss";
+import { AppContext } from "../../context";
 
 const sectionBuilder = (
   formtype,
@@ -85,26 +86,32 @@ const sectionBuilder = (
 
 const PreferencePanel = ({
   title,
-  form,
+  form: formItems,
   color,
   formName,
   shape = "",
   type = "",
 }) => {
   const [preferences, setPreferences] = useState({});
+  const { setForm } = useContext(AppContext);
 
   const addPreferences = (name, item) => {
     setPreferences({
       ...preferences,
       [name]: item,
     });
+    setForm({
+      title,
+      property: name,
+      item,
+    });
   };
 
   return (
-    <Panel title={title} color={color}>
+    <Panel title={formName} color={color}>
       {sectionBuilder(
         type,
-        form,
+        formItems,
         addPreferences,
         shape,
         preferences,

@@ -27,7 +27,7 @@ const BoostingSection = ({ title, color }) => {
                 <PreferencePanel
                   key={index}
                   type={form.type}
-                  title={form.title}
+                  title={title}
                   formName={form.name}
                   form={form}
                   color={colorFormatted}
@@ -37,7 +37,7 @@ const BoostingSection = ({ title, color }) => {
               <GridLayout template="3fr" gridColumn="span 2">
                 <PreferencePanel
                   type={formAdditionalPreferences.type}
-                  title={formAdditionalPreferences.title}
+                  title={title}
                   formName={formAdditionalPreferences.name}
                   form={formAdditionalPreferences}
                   color={colorFormatted}
@@ -48,7 +48,7 @@ const BoostingSection = ({ title, color }) => {
                   {formBoostingRank.map((form, index) => (
                     <CardDivision
                       key={index}
-                      title={form.title}
+                      title={title}
                       formName={form.name}
                       label={form.label}
                       items={form.items}
