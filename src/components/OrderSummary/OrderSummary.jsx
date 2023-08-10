@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Panel from "../Panel/Panel";
 import SelectCustom from "../SelectCustom/SelectCustom";
 import { AppContext } from "../../context";
-import { summaryBuilder } from "../../utils";
+import { isBtnAvailable, summaryBuilder } from "../../utils";
 import "./OrderSummary.style.scss";
 
 const OrderSummary = () => {
@@ -10,6 +10,11 @@ const OrderSummary = () => {
   const formName = Object.keys(form).join("");
   const formProperties = form[formName];
   const orderSummary = formName ? summaryBuilder(formProperties) : {};
+  const isBtnPayDisabled = formName
+    ? !isBtnAvailable(formProperties, formName)
+    : false;
+  const isBtnDisabledClass = isBtnPayDisabled ? "disabled" : "";
+
   return (
     <section className="order__summary">
       <Panel>
@@ -38,7 +43,13 @@ const OrderSummary = () => {
               noLabel
             />
           </section>
-          <button className="btn__pay">Pagar</button>
+          <button
+            className={`btn__pay ${isBtnDisabledClass}`}
+            disabled={isBtnPayDisabled}
+            onClick={() => alert("Pending...")}
+          >
+            Pagar
+          </button>
           <section></section>
         </section>
       </Panel>

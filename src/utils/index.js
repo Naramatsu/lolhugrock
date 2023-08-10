@@ -174,6 +174,12 @@ export const objBuilder = (indexName, items, item, key) => {
       items: [...(items[indexName]?.items || []), `${key} (${item[key]}) `],
     };
   }
+  if (indexName === "Campeones") {
+    return {
+      label: indexName,
+      items: [...(items[indexName]?.items || []), `${item[key].join(", ")}`],
+    };
+  }
   if (indexName === "Desde" || indexName === "Hasta") {
     return {
       label: indexName,
@@ -213,6 +219,10 @@ export const summaryBuilder = (item) => {
         indexName = "Hasta";
         result[indexName] = objBuilder(indexName, result, item, key);
         break;
+      case "Pool de campeones":
+        indexName = "Campeones";
+        result[indexName] = objBuilder(indexName, result, item, key);
+        break;
       default:
         indexName = key;
         result[indexName] = objBuilder(indexName, result, item, key);
@@ -220,4 +230,22 @@ export const summaryBuilder = (item) => {
     }
   });
   return Object.values(result) || [];
+};
+
+export const isBtnAvailable = (item, formName) => {
+  if (formName === "Division Boost") {
+    if (
+      item["Queue"] &&
+      item["Server"] &&
+      item["Rango Actual"]?.league &&
+      (item["Rango Actual"]?.division || item["Rango Actual"]?.lps) &&
+      (item["Rango Actual"]?.lpGroup || item["Rango Actual"]?.lpGain) &&
+      item["Rango Deseado"]?.league &&
+      (item["Rango Deseado"]?.division || item["Rango Deseado"]?.lps) &&
+      (item["Rango Deseado"]?.lpGroup || item["Rango Deseado"]?.lpGain)
+    ) {
+      return true;
+    }
+  }
+  return false;
 };
