@@ -106,7 +106,7 @@ const CardDivision = ({ title, label, items }) => {
             placeholder="0"
             onChange={(event) => addPreferences("lps", event.target.value)}
             className="lps__textfield"
-          />{" "}
+          />
           LP
         </section>
       )}

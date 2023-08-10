@@ -14,12 +14,12 @@ export const formPreferences = [
   {
     name: "Queue",
     items: [
-      { value: "soloq", name: "Solo Queue" },
-      { value: "flex", name: "Flex Queue" },
+      { value: "Solo Queue", name: "Solo Queue" },
+      { value: "Flex Queue", name: "Flex Queue" },
     ],
   },
   {
-    name: "Roll",
+    name: "Rol",
     type: "select",
     items: [
       {

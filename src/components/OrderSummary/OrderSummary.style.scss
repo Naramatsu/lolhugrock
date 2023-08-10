@@ -24,7 +24,7 @@
       p {
         font-size: 14px;
         font-weight: 100;
-        padding: 5px 40px;
+        padding: 5px 20px;
         text-align: left;
 
         b {
@@ -36,6 +36,10 @@
 
     .order__summary__total {
       position: relative;
+
+      h3 {
+        margin-top: 20px;
+      }
 
       .btn__pay {
         @include displayFlex;

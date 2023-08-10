@@ -151,3 +151,73 @@ export const titlOptions = (options = {}) => ({
   "max-glare": 0.5,
   ...options,
 });
+
+const divisionCondition = (league, item, key) => {
+  const highElo = ["Master", "GrandMaster", "Challenger"];
+  if (highElo.includes(league))
+    return [
+      item[key]?.league || "",
+      item[key]?.lps ? ` ${item[key].lps} LP` : "",
+      item[key]?.lpGain ? `, (${item[key].lpGain} LP)` : "",
+    ];
+  return [
+    item[key]?.league || "",
+    item[key]?.division ? ` ${item[key].division}` : "",
+    item[key]?.lpGroup ? `, (${item[key].lpGroup} LP)` : "",
+  ];
+};
+
+export const objBuilder = (indexName, items, item, key) => {
+  if (indexName === "Summoners" || indexName === "Roles") {
+    return {
+      label: indexName,
+      items: [...(items[indexName]?.items || []), `${key} (${item[key]}) `],
+    };
+  }
+  if (indexName === "Desde" || indexName === "Hasta") {
+    return {
+      label: indexName,
+      items: item[key]?.league
+        ? divisionCondition(item[key].league, item, key)
+        : null,
+    };
+  }
+  return {
+    label: key,
+    items:
+      typeof item[key] === "boolean" ? (item[key] ? "Yes" : "No") : item[key],
+  };
+};
+
+export const summaryBuilder = (item) => {
+  const keys = Object.keys(item);
+  const result = {};
+  keys.forEach((key) => {
+    let indexName = "";
+    switch (key) {
+      case "Principal":
+      case "Secundario":
+        indexName = "Roles";
+        result[indexName] = objBuilder(indexName, result, item, key);
+        break;
+      case "D":
+      case "F":
+        indexName = "Summoners";
+        result[indexName] = objBuilder(indexName, result, item, key);
+        break;
+      case "Rango Actual":
+        indexName = "Desde";
+        result[indexName] = objBuilder(indexName, result, item, key);
+        break;
+      case "Rango Deseado":
+        indexName = "Hasta";
+        result[indexName] = objBuilder(indexName, result, item, key);
+        break;
+      default:
+        indexName = key;
+        result[indexName] = objBuilder(indexName, result, item, key);
+        break;
+    }
+  });
+  return Object.values(result) || [];
+};
