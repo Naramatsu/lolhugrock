@@ -1,5 +1,10 @@
 @import "../../utils/variables.scss";
 
+.filled {
+  background: var(--bg);
+  color: #fff;
+}
+
 .select__custom {
   align-items: center;
   display: flex;
@@ -59,9 +64,20 @@
       }
 
       &.filled {
-        background: var(--bg);
-        color: #fff;
+        @extend .filled;
       }
+    }
+  }
+
+  .select__custom__multiple {
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    bottom: -60%;
+
+    .division__chip.filled {
+      @extend .filled;
+      width: max-content;
     }
   }
 }

@@ -31,7 +31,7 @@ const sectionBuilder = (
       );
     case "multiple":
       return (
-        <section className="form__select">
+        <section className="form__select" style={{ paddingBottom: "75px" }}>
           {form.items.map(({ label, options, type }, index) => {
             if (type === "select") {
               const isFree =
@@ -42,6 +42,7 @@ const sectionBuilder = (
                     label={label}
                     options={options}
                     noImage
+                    multiple
                     onSelect={addPreferences}
                   />
                   {isFree && <label className="label__free">Gratis</label>}

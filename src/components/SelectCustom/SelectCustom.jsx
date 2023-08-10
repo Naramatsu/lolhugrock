@@ -13,14 +13,30 @@ const SelectCustom = ({
   onSelect,
   noImage = false,
   noLabel = false,
+  multiple = false,
   color = "#d441ff",
 }) => {
   const [optionSelected, setOptionSelected] = useState("");
+  const [optionsSelected, setOptionsSelected] = useState([]);
 
   const addPreferences = (event) => {
     const { value } = event.target;
-    setOptionSelected(value);
-    onSelect(label, value);
+    if (multiple) {
+      if (optionsSelected.length < 3 && !optionsSelected.includes(value)) {
+        const optionsTemp = [...(optionsSelected || []), value];
+        setOptionsSelected([...(optionsSelected || []), value]);
+        onSelect(label, optionsTemp);
+      }
+    } else {
+      setOptionSelected(value);
+      onSelect(label, value);
+    }
+  };
+
+  const onRemoveOption = (item) => {
+    const optionsTemp = optionsSelected.filter((option) => option !== item);
+    setOptionsSelected(optionsTemp);
+    onSelect(label, optionsTemp);
   };
 
   return (
@@ -41,6 +57,20 @@ const SelectCustom = ({
           ))}
         </select>
       </section>
+      {multiple && (
+        <section className="select__custom__multiple">
+          {optionsSelected.map((option, index) => (
+            <label
+              className="division__chip filled"
+              style={{ "--bg": color }}
+              key={index}
+              onClick={() => onRemoveOption(option)}
+            >
+              {option}
+            </label>
+          ))}
+        </section>
+      )}
     </section>
   );
 };
