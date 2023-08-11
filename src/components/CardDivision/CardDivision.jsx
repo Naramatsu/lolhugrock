@@ -28,6 +28,7 @@ const CardDivision = ({ title, label, items }) => {
   useEffect(() => {
     resetForm();
     setPreferences({});
+    setDivisionSelected("Unranked");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [history.location.pathname]);
 

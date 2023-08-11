@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { imgBuilder } from "../../utils";
+import { useHistory } from "react-router-dom";
 import "./SelectCustom.style.scss";
 
 const isFilled = (item) => {
@@ -18,6 +19,13 @@ const SelectCustom = ({
 }) => {
   const [optionSelected, setOptionSelected] = useState("");
   const [optionsSelected, setOptionsSelected] = useState([]);
+  const history = useHistory();
+
+  useEffect(() => {
+    setOptionSelected("");
+    setOptionsSelected([]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [history.location.pathname]);
 
   const addPreferences = (event) => {
     const { value } = event.target;
@@ -49,6 +57,7 @@ const SelectCustom = ({
           className={`${isFilled(optionSelected)}`}
           onChange={addPreferences}
           style={{ "--bg": color }}
+          value={optionSelected}
         >
           {options.map((option, index) => (
             <option key={index} value={option}>
