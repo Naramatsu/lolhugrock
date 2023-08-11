@@ -1,4 +1,4 @@
-import { SET_FORM } from "./types";
+import { RESET_FORM, SET_FORM } from "./types";
 
 const reducer = (state, action) => {
   const { type, payload } = action;
@@ -14,7 +14,8 @@ const reducer = (state, action) => {
           },
         },
       };
-
+    case RESET_FORM:
+      return payload;
     default:
       return state;
   }

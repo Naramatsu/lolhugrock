@@ -9,19 +9,27 @@ import {
 } from "../../utils";
 import { AppContext } from "../../context";
 import { divisionsConfig } from "./data";
+import { useHistory } from "react-router-dom";
 import "./CardDivision.style.scss";
 
 const options = titlOptions({ max: 5, speed: 200, glare: false });
 
 const CardDivision = ({ title, label, items }) => {
-  const { setForm } = useContext(AppContext);
+  const { setForm, resetForm } = useContext(AppContext);
   const [preferences, setPreferences] = useState({});
   const [divisionSelected, setDivisionSelected] = useState("Unranked");
   const tilt = useRef(null);
+  const history = useHistory();
 
   useEffect(() => {
     VanillaTilt.init(tilt.current, options);
   }, []);
+
+  useEffect(() => {
+    resetForm();
+    setPreferences({});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [history.location.pathname]);
 
   const addPreferences = (name, item) => {
     setPreferences({

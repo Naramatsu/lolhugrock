@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import FormReducer from "./FormReducer";
-import { SET_FORM } from "./types";
+import { RESET_FORM, SET_FORM } from "./types";
 import { AppContext } from "..";
 
 const FormState = ({ children }) => {
@@ -16,8 +16,16 @@ const FormState = ({ children }) => {
     });
   };
 
+  const resetForm = () => {
+    dispatch({
+      type: RESET_FORM,
+      payload: initialState,
+    });
+  };
+
   const combineFunctions = {
     setForm,
+    resetForm,
   };
 
   return (

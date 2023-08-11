@@ -1,10 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { isSelected } from "../../utils";
 import SelectCustom from "../SelectCustom/SelectCustom";
 import Panel from "../Panel/Panel";
 import Toggle from "kromac-ui-18/dist/Toggle";
 import "./PreferencePanel.style.scss";
 import { AppContext } from "../../context";
+import { useHistory } from "react-router-dom";
 
 const sectionBuilder = (
   formtype,
@@ -24,6 +25,7 @@ const sectionBuilder = (
               key={index}
               label={label}
               options={options}
+              color={color}
               onSelect={addPreferences}
             />
           ))}
@@ -43,6 +45,7 @@ const sectionBuilder = (
                     options={options}
                     noImage
                     multiple
+                    color={color}
                     onSelect={addPreferences}
                   />
                   {isFree && <label className="label__free">Gratis</label>}
@@ -55,6 +58,7 @@ const sectionBuilder = (
                   <Toggle
                     onColor={color}
                     offColor="#fff"
+                    checked={preferences[label] || false}
                     onChange={(event) => {
                       addPreferences(label, event.target.checked);
                     }}
@@ -94,7 +98,14 @@ const PreferencePanel = ({
   type = "",
 }) => {
   const [preferences, setPreferences] = useState({});
-  const { setForm } = useContext(AppContext);
+  const { setForm, resetForm } = useContext(AppContext);
+  const history = useHistory();
+
+  useEffect(() => {
+    resetForm();
+    setPreferences({});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [history.location.pathname]);
 
   const addPreferences = (name, item) => {
     setPreferences({

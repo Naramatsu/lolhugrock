@@ -1,36 +1,42 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Panel from "../Panel/Panel";
 import SelectCustom from "../SelectCustom/SelectCustom";
 import { AppContext } from "../../context";
 import { isBtnAvailable, summaryBuilder } from "../../utils";
+import { useHistory } from "react-router-dom";
 import "./OrderSummary.style.scss";
 
-const OrderSummary = () => {
-  const { form } = useContext(AppContext);
+const OrderSummary = ({ color }) => {
+  const { form, resetForm } = useContext(AppContext);
+  const history = useHistory();
   const formName = Object.keys(form).join("");
   const formProperties = form[formName];
-  const orderSummary = formName ? summaryBuilder(formProperties) : {};
+  const orderSummary = formName ? summaryBuilder(formProperties) : [];
   const isBtnPayDisabled = formName
     ? !isBtnAvailable(formProperties, formName)
     : false;
   const isBtnDisabledClass = isBtnPayDisabled ? "disabled" : "";
 
+  useEffect(() => {
+    resetForm();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [history.location.pathname]);
+
   return (
-    <section className="order__summary">
-      <Panel>
+    <section className="order__summary" style={{ "--cl": color }}>
+      <Panel color={color}>
         <h3>Su pedido</h3>
         <section className="order__summary__container">
-          {orderSummary.length &&
-            orderSummary.map(({ label, items }, index) =>
-              items && items.length ? (
-                <p key={index}>
-                  <b>{label}: </b>
-                  {items}
-                </p>
-              ) : (
-                <span key={index} />
-              )
-            )}
+          {orderSummary.map(({ label, items }, index) =>
+            items && items.length ? (
+              <p key={index}>
+                <b>{label}: </b>
+                {items}
+              </p>
+            ) : (
+              <span key={index} />
+            )
+          )}
         </section>
         <section className="order__summary__total">
           <h3>Total</h3>
@@ -39,6 +45,7 @@ const OrderSummary = () => {
             <SelectCustom
               options={["USD", "COP"]}
               onSelect={() => {}}
+              color={color}
               noImage
               noLabel
             />
