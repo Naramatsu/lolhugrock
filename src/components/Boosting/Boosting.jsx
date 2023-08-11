@@ -29,6 +29,12 @@ const Boosting = () => {
           <Route exact path="/boosting/divisionboost">
             <BoostingSection title="Division Boost" color="purple" />
           </Route>
+          <Route exact path="/boosting/placements">
+            <BoostingSection title="Placements" color="blue" />
+          </Route>
+          <Route exact path="/boosting/netwins">
+            <BoostingSection title="Net Wins" color="green" />
+          </Route>
         </Switch>
       </FormState>
     </>

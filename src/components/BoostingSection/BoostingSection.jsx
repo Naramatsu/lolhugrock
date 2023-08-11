@@ -57,7 +57,7 @@ const BoostingSection = ({ title, color }) => {
                 </Panel>
               </GridLayout>
             </GridLayout>
-            <OrderSummary />
+            <OrderSummary color={colorFormatted} />
           </GridLayout>
         </section>
       </BackgroundAnimated>

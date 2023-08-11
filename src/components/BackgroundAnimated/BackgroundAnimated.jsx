@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { useHistory } from "react-router-dom";
 import "./BackgroundAnimated.style.scss";
 
 const circlesLength = 20;
@@ -19,10 +20,11 @@ const circles = () => {
 
 const BackgroundAnimated = ({ color, children }) => {
   const ref = useRef(null);
+  const history = useHistory();
 
   useEffect(() => {
     if (ref) ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, [ref]);
+  }, [ref, history.location.pathname]);
 
   return (
     <section className="lines" ref={ref}>

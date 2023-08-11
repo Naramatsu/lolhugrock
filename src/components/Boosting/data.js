@@ -18,8 +18,8 @@ export const list = [
     ),
   },
   {
-    path: "placement",
-    title: "Placement",
+    path: "placements",
+    title: "Placements",
     color: "blue",
     description: () => (
       <>
