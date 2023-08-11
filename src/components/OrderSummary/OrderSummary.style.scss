@@ -16,7 +16,7 @@
     }
 
     .order__summary__container {
-      background-color: $color-purple-boosting;
+      background-color: var(--cl);
       height: 100%;
       padding: 20px;
       width: 100%;
@@ -43,7 +43,7 @@
 
       .btn__pay {
         @include displayFlex;
-        background-color: $color-purple-boosting;
+        background-color: var(--cl);
         border: none;
         border-radius: 20px;
         box-shadow: $box-shadow50;

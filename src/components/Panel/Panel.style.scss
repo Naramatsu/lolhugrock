@@ -3,7 +3,7 @@
 .preference__panel {
   @include bd-blur-gradient;
   backdrop-filter: blur(5px);
-  border: 1px solid $color-purple-boosting;
+  border: 1px solid var(--cl);
   border-radius: $border-radius;
   height: auto;
   margin-bottom: 20px;
