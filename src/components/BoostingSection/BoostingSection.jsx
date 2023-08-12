@@ -1,21 +1,18 @@
 import React from "react";
 import BackgroundAnimated from "../BackgroundAnimated/BackgroundAnimated";
 import CardDivision from "../CardDivision/CardDivision";
+import Footer from "../Footer/Footer";
 import GridLayout from "../GridLayout/GridLayout";
+import OrderSummary from "../OrderSummary/OrderSummary";
 import Panel from "../Panel/Panel";
 import PreferencePanel from "../PreferencePanel/PreferencePanel";
-import { convertColor } from "../../utils";
-import {
-  formAdditionalPreferences,
-  formBoostingRank,
-  formPreferences,
-} from "./data";
+import { convertColor, formRankBuilder } from "../../utils";
+import { formAdditionalPreferences, formPreferences } from "./data";
 import "./BoostingSection.style.scss";
-import Footer from "../Footer/Footer";
-import OrderSummary from "../OrderSummary/OrderSummary";
 
 const BoostingSection = ({ title, color }) => {
   const colorFormatted = convertColor(color);
+  const formRank = formRankBuilder(title);
   return (
     <>
       <BackgroundAnimated color={colorFormatted}>
@@ -44,14 +41,18 @@ const BoostingSection = ({ title, color }) => {
                 />
               </GridLayout>
               <GridLayout template="3fr" gridColumn="span 2">
-                <Panel title="Boosting Rank" color={colorFormatted}>
-                  {formBoostingRank.map((form, index) => (
+                <Panel title={title} color={colorFormatted}>
+                  {formRank.map((form, index) => (
                     <CardDivision
                       key={index}
                       title={title}
                       formName={form.name}
                       label={form.label}
                       items={form.items}
+                      type={form.type}
+                      color={colorFormatted}
+                      max={form.max}
+                      min={form.min}
                     />
                   ))}
                 </Panel>

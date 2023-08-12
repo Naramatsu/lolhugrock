@@ -5,6 +5,29 @@
   color: #fff;
 }
 
+.text-number__input {
+  align-items: center;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 600;
+  gap: 10px;
+  justify-content: center;
+  text-shadow: $text-shadowY4;
+
+  .lps__textfield {
+    background: #fff;
+    border: 1px solid var(--bg);
+    border-radius: 20px;
+    box-shadow: $box-shadow25;
+    color: #000;
+    font-size: 24px;
+    font-weight: 700;
+    padding: 10px 24px;
+    text-shadow: $text-shadowY4;
+    width: 112px;
+  }
+}
+
 .card__division {
   background: linear-gradient(to bottom, var(--bgOpacity), transparent);
   border-radius: 20px 20px 100px 100px;
@@ -69,26 +92,7 @@
     }
 
     &.lps {
-      align-items: center;
-      color: #fff;
-      font-size: 24px;
-      font-weight: 600;
-      gap: 10px;
-      justify-content: center;
-      text-shadow: $text-shadowY4;
-
-      .lps__textfield {
-        background: #fff;
-        border: 1px solid var(--bg);
-        border-radius: 20px;
-        box-shadow: $box-shadow25;
-        color: #000;
-        font-size: 24px;
-        font-weight: 700;
-        padding: 10px 24px;
-        text-shadow: $text-shadowY4;
-        width: 112px;
-      }
+      @extend .text-number__input;
     }
 
     &.lps__gain {
@@ -108,6 +112,46 @@
   }
 }
 
+.card__division__range__input {
+  @include displayFlex;
+  background: linear-gradient(to bottom, #000, transparent);
+  text-shadow: $text-shadowY4;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow50;
+  height: 400px;
+  margin: 2em;
+  margin-bottom: 80px;
+  position: relative;
+  width: 320px;
+  color: #fff;
+  flex-direction: column;
+  justify-content: center;
+
+  label {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .card__division__range__butons {
+    @include displayFlex;
+    margin: 60px auto;
+    justify-content: center;
+    height: fit-content;
+
+    svg {
+      cursor: pointer;
+    }
+
+    &.range {
+      margin: 0;
+    }
+
+    .card__division__icons.lps {
+      @extend .text-number__input;
+    }
+  }
+}
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -116,4 +160,8 @@ input[type="number"]::-webkit-outer-spin-button {
 
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+input[type="range"] {
+  accent-color: var(--cl);
 }

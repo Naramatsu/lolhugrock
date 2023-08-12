@@ -1,3 +1,4 @@
+import { allDivisionsList, allLanesList, allSummonersList } from "../../utils";
 import { champions } from "./allChamps";
 
 export const formPreferences = [
@@ -24,11 +25,11 @@ export const formPreferences = [
     items: [
       {
         label: "Principal",
-        options: ["Any", "TOP", "JG", "MID", "ADC", "SUPP"],
+        options: allLanesList,
       },
       {
         label: "Secundario",
-        options: ["Any", "TOP", "JG", "MID", "ADC", "SUPP"],
+        options: allLanesList,
       },
     ],
   },
@@ -38,33 +39,11 @@ export const formPreferences = [
     items: [
       {
         label: "D",
-        options: [
-          "Any",
-          "Flash",
-          "Cleanse",
-          "Exhaust",
-          "Barrier",
-          "Ghost",
-          "Heal",
-          "Ignite",
-          "Smite",
-          "Teleport",
-        ],
+        options: allSummonersList,
       },
       {
         label: "F",
-        options: [
-          "Any",
-          "Flash",
-          "Cleanse",
-          "Exhaust",
-          "Barrier",
-          "Ghost",
-          "Heal",
-          "Ignite",
-          "Smite",
-          "Teleport",
-        ],
+        options: allSummonersList,
       },
     ],
   },
@@ -94,33 +73,45 @@ export const formBoostingRank = [
   {
     name: "boostingRank",
     label: "Rango Actual",
-    items: [
-      "Unranked",
-      "Iron",
-      "Bronze",
-      "Silver",
-      "Gold",
-      "Platinum",
-      "Diamond",
-      "Master",
-      "GrandMaster",
-      "Challenger",
-    ],
+    type: "divisional",
+    items: allDivisionsList,
   },
   {
     name: "desiredRank",
     label: "Rango Deseado",
-    items: [
-      "Unranked",
-      "Iron",
-      "Bronze",
-      "Silver",
-      "Gold",
-      "Platinum",
-      "Diamond",
-      "Master",
-      "GrandMaster",
-      "Challenger",
-    ],
+    type: "divisional",
+    items: allDivisionsList,
+  },
+];
+
+export const formPlacementsRank = [
+  {
+    name: "placementsRank",
+    label: "Rango Anterior",
+    type: "divisional",
+    items: allDivisionsList,
+  },
+  {
+    name: "nroPlacements",
+    label: "Número de juegos",
+    type: "range",
+    min: 1,
+    max: 5,
+  },
+];
+
+export const formNetWinsRank = [
+  {
+    name: "nwtWinsRank",
+    label: "Rango Actual",
+    type: "divisional",
+    items: allDivisionsList,
+  },
+  {
+    name: "nroNetWins",
+    label: "Número de juegos",
+    type: "range",
+    min: 1,
+    max: 10,
   },
 ];

@@ -37,6 +37,12 @@ import MasterFrame from "../assets/divisions/MasterFrame.png";
 import GrandMasterFrame from "../assets/divisions/GrandMasterFrame.png";
 import ChallengerFrame from "../assets/divisions/ChallengerFrame.png";
 
+import {
+  formBoostingRank,
+  formNetWinsRank,
+  formPlacementsRank,
+} from "../components/BoostingSection/data";
+
 export const convertColor = (color) => {
   switch (color) {
     case "purple":
@@ -249,3 +255,42 @@ export const isBtnAvailable = (item, formName) => {
   }
   return false;
 };
+
+export const formRankBuilder = (title) => {
+  switch (title) {
+    case "Placements":
+      return formPlacementsRank;
+    case "Net Wins":
+      return formNetWinsRank;
+    default:
+      return formBoostingRank;
+  }
+};
+
+export const allDivisionsList = [
+  "Unranked",
+  "Iron",
+  "Bronze",
+  "Silver",
+  "Gold",
+  "Platinum",
+  "Diamond",
+  "Master",
+  "GrandMaster",
+  "Challenger",
+];
+
+export const allLanesList = ["Any", "TOP", "JG", "MID", "ADC", "SUPP"];
+
+export const allSummonersList = [
+  "Any",
+  "Flash",
+  "Cleanse",
+  "Exhaust",
+  "Barrier",
+  "Ghost",
+  "Heal",
+  "Ignite",
+  "Smite",
+  "Teleport",
+];
