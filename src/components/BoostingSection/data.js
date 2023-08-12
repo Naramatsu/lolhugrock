@@ -1,5 +1,32 @@
-import { allDivisionsList, allLanesList, allSummonersList } from "../../utils";
 import { champions } from "./allChamps";
+
+const allDivisionsList = [
+  "Unranked",
+  "Iron",
+  "Bronze",
+  "Silver",
+  "Gold",
+  "Platinum",
+  "Diamond",
+  "Master",
+  "GrandMaster",
+  "Challenger",
+];
+
+const allLanesList = ["Any", "TOP", "JG", "MID", "ADC", "SUPP"];
+
+const allSummonersList = [
+  "Any",
+  "Flash",
+  "Cleanse",
+  "Exhaust",
+  "Barrier",
+  "Ghost",
+  "Heal",
+  "Ignite",
+  "Smite",
+  "Teleport",
+];
 
 export const formPreferences = [
   {
@@ -109,7 +136,7 @@ export const formNetWinsRank = [
   },
   {
     name: "nroNetWins",
-    label: "Número de juegos",
+    label: "Número de victorias",
     type: "range",
     min: 1,
     max: 10,

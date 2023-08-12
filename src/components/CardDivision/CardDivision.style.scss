@@ -118,7 +118,7 @@
   text-shadow: $text-shadowY4;
   border-radius: $border-radius;
   box-shadow: $box-shadow50;
-  height: 400px;
+  height: 470px;
   margin: 2em;
   margin-bottom: 80px;
   position: relative;
@@ -140,6 +140,8 @@
 
     svg {
       cursor: pointer;
+      box-shadow: $box-shadow50;
+      border-radius: 50%;
     }
 
     &.range {

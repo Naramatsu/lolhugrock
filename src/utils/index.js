@@ -186,12 +186,22 @@ export const objBuilder = (indexName, items, item, key) => {
       items: [...(items[indexName]?.items || []), `${item[key].join(", ")}`],
     };
   }
-  if (indexName === "Desde" || indexName === "Hasta") {
+  if (
+    indexName === "Desde" ||
+    indexName === "Hasta" ||
+    indexName === "Rango Anterior"
+  ) {
     return {
       label: indexName,
       items: item[key]?.league
         ? divisionCondition(item[key].league, item, key)
         : null,
+    };
+  }
+  if (indexName === "Victorias" || indexName === "Juegos de posicionamiento") {
+    return {
+      label: indexName,
+      items: item[key]?.nroGames ? item[key].nroGames + "" : "",
     };
   }
   return {
@@ -210,45 +220,65 @@ export const summaryBuilder = (item) => {
       case "Principal":
       case "Secundario":
         indexName = "Roles";
-        result[indexName] = objBuilder(indexName, result, item, key);
         break;
       case "D":
       case "F":
         indexName = "Summoners";
-        result[indexName] = objBuilder(indexName, result, item, key);
         break;
       case "Rango Actual":
         indexName = "Desde";
-        result[indexName] = objBuilder(indexName, result, item, key);
         break;
       case "Rango Deseado":
         indexName = "Hasta";
-        result[indexName] = objBuilder(indexName, result, item, key);
         break;
       case "Pool de campeones":
         indexName = "Campeones";
-        result[indexName] = objBuilder(indexName, result, item, key);
+        break;
+      case "Número de victorias":
+        indexName = "Victorias";
+        break;
+      case "Número de juegos":
+        indexName = "Juegos de posicionamiento";
         break;
       default:
         indexName = key;
-        result[indexName] = objBuilder(indexName, result, item, key);
         break;
     }
+    result[indexName] = objBuilder(indexName, result, item, key);
   });
   return Object.values(result) || [];
 };
 
 export const isBtnAvailable = (item, formName) => {
+  if (!item["Queue"] || !item["Server"]) return false;
   if (formName === "Division Boost") {
     if (
-      item["Queue"] &&
-      item["Server"] &&
       item["Rango Actual"]?.league &&
       (item["Rango Actual"]?.division || item["Rango Actual"]?.lps) &&
       (item["Rango Actual"]?.lpGroup || item["Rango Actual"]?.lpGain) &&
       item["Rango Deseado"]?.league &&
       (item["Rango Deseado"]?.division || item["Rango Deseado"]?.lps) &&
       (item["Rango Deseado"]?.lpGroup || item["Rango Deseado"]?.lpGain)
+    ) {
+      return true;
+    }
+  }
+  if (formName === "Net Wins") {
+    if (
+      item["Rango Actual"]?.league &&
+      (item["Rango Actual"]?.division || item["Rango Actual"]?.lps) &&
+      (item["Rango Actual"]?.lpGroup || item["Rango Actual"]?.lpGain) &&
+      item["Número de victorias"]?.nroGames > 0
+    ) {
+      return true;
+    }
+  }
+  if (formName === "Placements") {
+    if (
+      item["Rango Anterior"]?.league &&
+      (item["Rango Anterior"]?.division || item["Rango Anterior"]?.lps) &&
+      (item["Rango Anterior"]?.lpGroup || item["Rango Anterior"]?.lpGain) &&
+      item["Número de juegos"]?.nroGames > 0
     ) {
       return true;
     }
@@ -266,31 +296,3 @@ export const formRankBuilder = (title) => {
       return formBoostingRank;
   }
 };
-
-export const allDivisionsList = [
-  "Unranked",
-  "Iron",
-  "Bronze",
-  "Silver",
-  "Gold",
-  "Platinum",
-  "Diamond",
-  "Master",
-  "GrandMaster",
-  "Challenger",
-];
-
-export const allLanesList = ["Any", "TOP", "JG", "MID", "ADC", "SUPP"];
-
-export const allSummonersList = [
-  "Any",
-  "Flash",
-  "Cleanse",
-  "Exhaust",
-  "Barrier",
-  "Ghost",
-  "Heal",
-  "Ignite",
-  "Smite",
-  "Teleport",
-];

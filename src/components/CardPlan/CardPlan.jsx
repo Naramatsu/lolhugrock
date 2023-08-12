@@ -2,8 +2,8 @@ import React, { useEffect, useRef } from "react";
 import classnames from "classnames";
 import VanillaTilt from "vanilla-tilt";
 import { useHistory } from "react-router-dom";
-import "./CardPlan.style.scss";
 import { titlOptions } from "../../utils";
+import "./CardPlan.style.scss";
 
 const options = titlOptions();
 
