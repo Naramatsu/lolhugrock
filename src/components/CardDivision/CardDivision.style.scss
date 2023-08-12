@@ -115,17 +115,17 @@
 .card__division__range__input {
   @include displayFlex;
   background: linear-gradient(to bottom, #000, transparent);
-  text-shadow: $text-shadowY4;
   border-radius: $border-radius;
   box-shadow: $box-shadow50;
+  color: #fff;
+  flex-direction: column;
   height: 470px;
+  justify-content: center;
   margin: 2em;
   margin-bottom: 80px;
   position: relative;
+  text-shadow: $text-shadowY4;
   width: 320px;
-  color: #fff;
-  flex-direction: column;
-  justify-content: center;
 
   label {
     font-size: 16px;
@@ -134,14 +134,14 @@
 
   .card__division__range__butons {
     @include displayFlex;
-    margin: 60px auto;
-    justify-content: center;
     height: fit-content;
+    justify-content: center;
+    margin: 60px auto;
 
     svg {
-      cursor: pointer;
-      box-shadow: $box-shadow50;
       border-radius: 50%;
+      box-shadow: $box-shadow50;
+      cursor: pointer;
     }
 
     &.range {
