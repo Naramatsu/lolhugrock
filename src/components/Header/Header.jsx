@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { BsInfoCircle, BsHandThumbsUp } from "react-icons/bs";
 import logo from "../../assets/Logo.png";
+import { LEAGUE_OF_LEGENDS } from "../../utils/constants";
 import "./Header.style.scss";
 
 const Header = () => (
@@ -11,7 +12,7 @@ const Header = () => (
         <img className="logo header__logo" src={logo} alt="logo" />
       </Link>
       <section className="herader__content">
-        <p className="leagueoflegends">League of legends</p>
+        <p className="leagueoflegends">{LEAGUE_OF_LEGENDS}</p>
         <section className="header__btns">
           <Link className="btn" to="/works">
             <BsHandThumbsUp />

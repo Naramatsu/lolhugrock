@@ -1,8 +1,10 @@
+import { COLORS, ROUTES, TITLES } from "../../utils/constants";
+
 export const list = [
   {
-    path: "divisionboost",
-    title: "Division Boost",
-    color: "purple",
+    path: ROUTES.DIVISIONBOOST,
+    title: TITLES.DIVISIONBOOST,
+    color: COLORS.PURPLE,
     description: () => (
       <>
         <p>
@@ -18,9 +20,9 @@ export const list = [
     ),
   },
   {
-    path: "placements",
-    title: "Placements",
-    color: "blue",
+    path: ROUTES.PLACEMENTS,
+    title: TITLES.PLACEMENTS,
+    color: COLORS.BLUE,
     description: () => (
       <>
         <p>
@@ -36,9 +38,9 @@ export const list = [
     ),
   },
   {
-    path: "netwins",
-    title: "Net Wins",
-    color: "green",
+    path: ROUTES.NETWINS,
+    title: TITLES.NETWINS,
+    color: COLORS.GREEN,
     description: () => (
       <>
         <p>

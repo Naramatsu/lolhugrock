@@ -3,6 +3,7 @@ import classnames from "classnames";
 import VanillaTilt from "vanilla-tilt";
 import { useHistory } from "react-router-dom";
 import { titlOptions } from "../../utils";
+import { CLASSNAMES, COLORS } from "../../utils/constants";
 import "./CardPlan.style.scss";
 
 const options = titlOptions();
@@ -17,11 +18,13 @@ const CardPlan = ({ title, children }) => {
 
   const titleClassNames = classnames(
     "card__plan__title",
-    title === "boosting" ? "boosting-text" : "coaching-text"
+    title === CLASSNAMES.BOOSTING
+      ? CLASSNAMES.BOOSTING_TEXT
+      : CLASSNAMES.COACHING_TEXT
   );
   const typeClassNames = classnames(
     "card__plan__btn btn",
-    title === "boosting" ? "purple" : "green"
+    title === CLASSNAMES.BOOSTING ? COLORS.PURPLE : COLORS.GREEN
   );
 
   return (

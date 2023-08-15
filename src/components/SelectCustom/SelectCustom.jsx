@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { imgBuilder } from "../../utils";
 import { useHistory } from "react-router-dom";
+import { ANYFILL, FILLED } from "../../utils/constants";
 import "./SelectCustom.style.scss";
 
 const isFilled = (item) => {
-  if (item === "" || item === "Any") return "";
-  return "filled";
+  if (item === "" || item === ANYFILL) return "";
+  return FILLED;
 };
 
 const SelectCustom = ({

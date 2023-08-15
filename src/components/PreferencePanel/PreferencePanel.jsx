@@ -3,9 +3,10 @@ import { isSelected } from "../../utils";
 import SelectCustom from "../SelectCustom/SelectCustom";
 import Panel from "../Panel/Panel";
 import Toggle from "kromac-ui-18/dist/Toggle";
-import "./PreferencePanel.style.scss";
 import { AppContext } from "../../context";
 import { useHistory } from "react-router-dom";
+import { ANYFILL, FORM_TYPES } from "../../utils/constants";
+import "./PreferencePanel.style.scss";
 
 const sectionBuilder = (
   formtype,
@@ -17,7 +18,7 @@ const sectionBuilder = (
   color
 ) => {
   switch (formtype) {
-    case "select":
+    case FORM_TYPES.SELECT:
       return (
         <section className="form__select">
           {form.items.map(({ label, options }, index) => (
@@ -31,13 +32,13 @@ const sectionBuilder = (
           ))}
         </section>
       );
-    case "multiple":
+    case FORM_TYPES.MULTIPLE:
       return (
         <section className="form__select" style={{ paddingBottom: "75px" }}>
           {form.items.map(({ label, options, type }, index) => {
-            if (type === "select") {
+            if (type === FORM_TYPES.SELECT) {
               const isFree =
-                !preferences[label] || preferences[label] === "Any";
+                !preferences[label] || preferences[label] === ANYFILL;
               return (
                 <section key={index} className="form__select__champions">
                   <SelectCustom
