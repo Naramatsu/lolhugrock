@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import BackgroundAnimated from "../BackgroundAnimated/BackgroundAnimated";
 import CardDivision from "../CardDivision/CardDivision";
 import Footer from "../Footer/Footer";
@@ -8,9 +8,11 @@ import Panel from "../Panel/Panel";
 import PreferencePanel from "../PreferencePanel/PreferencePanel";
 import { convertColor, formRankBuilder } from "../../utils";
 import { formAdditionalPreferences, formPreferences } from "./data";
+import { LanguajeAppContext } from "../../context/languaje";
 import "./BoostingSection.style.scss";
 
 const BoostingSection = ({ title, color }) => {
+  const { languaje } = useContext(LanguajeAppContext);
   const colorFormatted = convertColor(color);
   const formRank = formRankBuilder(title);
   return (
@@ -25,7 +27,7 @@ const BoostingSection = ({ title, color }) => {
                   key={index}
                   type={form.type}
                   title={title}
-                  formName={form.name}
+                  formName={form.name[languaje]}
                   form={form}
                   color={colorFormatted}
                   shape={form.shape}
@@ -35,7 +37,7 @@ const BoostingSection = ({ title, color }) => {
                 <PreferencePanel
                   type={formAdditionalPreferences.type}
                   title={title}
-                  formName={formAdditionalPreferences.name}
+                  formName={formAdditionalPreferences.name[languaje]}
                   form={formAdditionalPreferences}
                   color={colorFormatted}
                 />
@@ -46,8 +48,8 @@ const BoostingSection = ({ title, color }) => {
                     <CardDivision
                       key={index}
                       title={title}
-                      formName={form.name}
-                      label={form.label}
+                      formName={form.name[languaje]}
+                      label={form.label[languaje]}
                       items={form.items}
                       type={form.type}
                       color={colorFormatted}

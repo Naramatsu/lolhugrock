@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import VanillaTilt from "vanilla-tilt";
-import "./Title.style.scss";
 import { titlOptions } from "../../utils";
+import "./Title.style.scss";
 
 const options = titlOptions({ max: 5 });
 

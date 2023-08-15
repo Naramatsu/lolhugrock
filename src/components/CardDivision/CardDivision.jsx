@@ -7,9 +7,10 @@ import {
   isSelected,
   titlOptions,
 } from "../../utils";
-import { AppContext } from "../../context";
 import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
 import { divisionsConfig } from "./data";
+import { FormAppContext } from "../../context/form";
+import { FORM_TYPES, PREFERENCES_PROPERTIES } from "../../utils/constants";
 import { useHistory } from "react-router-dom";
 import "./CardDivision.style.scss";
 
@@ -19,18 +20,20 @@ const CardDivision = ({
   title,
   label,
   items,
-  type = "divisional",
+  type = FORM_TYPES.DIVISIONAL,
   color: colorFormatted,
   min = 0,
   max = 5,
 }) => {
-  const { setForm, resetForm } = useContext(AppContext);
+  const { setForm, resetForm } = useContext(FormAppContext);
   const [preferences, setPreferences] = useState({});
-  const [divisionSelected, setDivisionSelected] = useState("Unranked");
+  const [divisionSelected, setDivisionSelected] = useState(
+    PREFERENCES_PROPERTIES.UNRANKED
+  );
   const [nroGames, setNroGames] = useState(0);
   const tilt = useRef(null);
   const history = useHistory();
-  const isDivisionalCard = type === "divisional";
+  const isDivisionalCard = type === FORM_TYPES.DIVISIONAL;
 
   useEffect(() => {
     VanillaTilt.init(tilt.current, options);
@@ -39,7 +42,7 @@ const CardDivision = ({
   useEffect(() => {
     resetForm();
     setPreferences({});
-    setDivisionSelected("Unranked");
+    setDivisionSelected(PREFERENCES_PROPERTIES.UNRANKED);
     setNroGames(0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [history.location.pathname]);
@@ -49,8 +52,8 @@ const CardDivision = ({
       ...preferences,
       [name]: item,
     });
-    if (name === "league") setDivisionSelected(item);
-    if (name === "nroGames") setNroGames(parseInt(item));
+    if (name === PREFERENCES_PROPERTIES.LEAGUE) setDivisionSelected(item);
+    if (name === PREFERENCES_PROPERTIES.NRO_GAMES) setNroGames(parseInt(item));
   };
 
   useEffect(() => {
@@ -68,13 +71,13 @@ const CardDivision = ({
 
   const handlerAddGames = () => {
     if (nroGames < max) {
-      addPreferences("nroGames", nroGames + 1);
+      addPreferences(PREFERENCES_PROPERTIES.NRO_GAMES, nroGames + 1);
     }
   };
 
   const handlerReduceGames = () => {
     if (nroGames > 0) {
-      addPreferences("nroGames", nroGames - 1);
+      addPreferences(PREFERENCES_PROPERTIES.NRO_GAMES, nroGames - 1);
     }
   };
 
@@ -94,7 +97,7 @@ const CardDivision = ({
           />
           <SelectCustom
             options={items}
-            label="league"
+            label={PREFERENCES_PROPERTIES.LEAGUE}
             onSelect={addPreferences}
             color={color}
             noImage
@@ -106,7 +109,9 @@ const CardDivision = ({
                 (division, index) => (
                   <p
                     key={index}
-                    onClick={() => addPreferences("division", division)}
+                    onClick={() =>
+                      addPreferences(PREFERENCES_PROPERTIES.DIVISION, division)
+                    }
                     className={`division__icon ${isSelected(
                       preferences?.division,
                       division
@@ -123,7 +128,9 @@ const CardDivision = ({
               {divisionsConfig[divisionSelected].lpGroup.map((lps, index) => (
                 <p
                   key={index}
-                  onClick={() => addPreferences("lpGroup", lps)}
+                  onClick={() =>
+                    addPreferences(PREFERENCES_PROPERTIES.LP_GROUP, lps)
+                  }
                   className={`division__chip ${isSelected(
                     preferences?.lpGroup,
                     lps
@@ -137,13 +144,15 @@ const CardDivision = ({
           {divisionsConfig[divisionSelected]?.lps && (
             <section className="card__division__icons lps">
               <input
-                name="lps"
-                type="number"
+                name={PREFERENCES_PROPERTIES.LPS}
+                type={FORM_TYPES.NUMBER}
                 placeholder="0"
                 max="99"
                 min="0"
                 maxLength="2"
-                onChange={(event) => addPreferences("lps", event.target.value)}
+                onChange={(event) =>
+                  addPreferences(PREFERENCES_PROPERTIES.LPS, event.target.value)
+                }
                 className="lps__textfield"
               />
               LP
@@ -155,7 +164,9 @@ const CardDivision = ({
               {divisionsConfig[divisionSelected].lpGain.map((lps, index) => (
                 <p
                   key={index}
-                  onClick={() => addPreferences("lpGain", lps)}
+                  onClick={() =>
+                    addPreferences(PREFERENCES_PROPERTIES.LP_GAIN, lps)
+                  }
                   className={`division__chip ${isSelected(
                     preferences?.lpGain,
                     lps
@@ -166,7 +177,7 @@ const CardDivision = ({
               ))}
             </section>
           )}
-          {divisionSelected !== "Unranked" && (
+          {divisionSelected !== PREFERENCES_PROPERTIES.UNRANKED && (
             <img
               className="card__division__frame"
               src={divisionFrameBuilder(divisionSelected)}
@@ -188,14 +199,17 @@ const CardDivision = ({
             0
             <input
               style={{ "--cl": colorFormatted }}
-              type="range"
+              type={FORM_TYPES.RANGE}
               min={min}
               max={max}
               step="1"
               value={nroGames}
-              name="nroGames"
+              name={PREFERENCES_PROPERTIES.NRO_GAMES}
               onChange={(event) =>
-                addPreferences("nroGames", event.target.value)
+                addPreferences(
+                  PREFERENCES_PROPERTIES.NRO_GAMES,
+                  event.target.value
+                )
               }
             />
             {max}

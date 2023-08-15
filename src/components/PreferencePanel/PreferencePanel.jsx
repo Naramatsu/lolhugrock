@@ -3,9 +3,10 @@ import { isSelected } from "../../utils";
 import SelectCustom from "../SelectCustom/SelectCustom";
 import Panel from "../Panel/Panel";
 import Toggle from "kromac-ui-18/dist/Toggle";
-import { AppContext } from "../../context";
+import { ANYFILL, FORM_TYPES, IS_FREE } from "../../utils/constants";
+import { FormAppContext } from "../../context/form";
+import { LanguajeAppContext } from "../../context/languaje";
 import { useHistory } from "react-router-dom";
-import { ANYFILL, FORM_TYPES } from "../../utils/constants";
 import "./PreferencePanel.style.scss";
 
 const sectionBuilder = (
@@ -15,7 +16,8 @@ const sectionBuilder = (
   shape,
   preferences,
   formName,
-  color
+  color,
+  languaje
 ) => {
   switch (formtype) {
     case FORM_TYPES.SELECT:
@@ -24,7 +26,7 @@ const sectionBuilder = (
           {form.items.map(({ label, options }, index) => (
             <SelectCustom
               key={index}
-              label={label}
+              label={label[languaje] || label}
               options={options}
               color={color}
               onSelect={addPreferences}
@@ -42,26 +44,28 @@ const sectionBuilder = (
               return (
                 <section key={index} className="form__select__champions">
                   <SelectCustom
-                    label={label}
+                    label={label[languaje]}
                     options={options}
                     noImage
                     multiple
                     color={color}
                     onSelect={addPreferences}
                   />
-                  {isFree && <label className="label__free">Gratis</label>}
+                  {isFree && (
+                    <label className="label__free">{IS_FREE[languaje]}</label>
+                  )}
                 </section>
               );
             } else {
               return (
                 <section className="select__custom" key={index}>
-                  <label>{label}</label>
+                  <label>{label[languaje]}</label>
                   <Toggle
                     onColor={color}
                     offColor="#fff"
-                    checked={preferences[label] || false}
+                    checked={preferences[label[languaje]] || false}
                     onChange={(event) => {
-                      addPreferences(label, event.target.checked);
+                      addPreferences(label[languaje], event.target.checked);
                     }}
                   />
                 </section>
@@ -80,7 +84,7 @@ const sectionBuilder = (
                 preferences[formName],
                 value
               )}`}
-              onClick={() => addPreferences(form.name, value)}
+              onClick={() => addPreferences(form.name[languaje], value)}
             >
               {name}
             </label>
@@ -99,7 +103,8 @@ const PreferencePanel = ({
   type = "",
 }) => {
   const [preferences, setPreferences] = useState({});
-  const { setForm, resetForm } = useContext(AppContext);
+  const { languaje } = useContext(LanguajeAppContext);
+  const { setForm, resetForm } = useContext(FormAppContext);
   const history = useHistory();
 
   useEffect(() => {
@@ -129,7 +134,8 @@ const PreferencePanel = ({
         shape,
         preferences,
         formName,
-        color
+        color,
+        languaje
       )}
     </Panel>
   );

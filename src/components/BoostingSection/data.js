@@ -1,3 +1,10 @@
+import { ENGLISH, SPANISH } from "../../context/languaje/types";
+import {
+  ANYFILL,
+  FORM_PREFERENCES_NAMES_EN,
+  FORM_PREFERENCES_NAMES_ES,
+  FORM_TYPES,
+} from "../../utils/constants";
 import { champions } from "./allChamps";
 
 const allDivisionsList = [
@@ -13,10 +20,10 @@ const allDivisionsList = [
   "Challenger",
 ];
 
-const allLanesList = ["Any", "TOP", "JG", "MID", "ADC", "SUPP"];
+const allLanesList = [ANYFILL, "TOP", "JG", "MID", "ADC", "SUPP"];
 
 const allSummonersList = [
-  "Any",
+  ANYFILL,
   "Flash",
   "Cleanse",
   "Exhaust",
@@ -30,7 +37,10 @@ const allSummonersList = [
 
 export const formPreferences = [
   {
-    name: "Server",
+    name: {
+      [SPANISH]: FORM_PREFERENCES_NAMES_ES.SERVER,
+      [ENGLISH]: FORM_PREFERENCES_NAMES_EN.SERVER,
+    },
     shape: "chip",
     items: [
       { value: "NA", name: "NA" },
@@ -40,29 +50,44 @@ export const formPreferences = [
     ],
   },
   {
-    name: "Queue",
+    name: {
+      [SPANISH]: FORM_PREFERENCES_NAMES_ES.QUEUE,
+      [ENGLISH]: FORM_PREFERENCES_NAMES_EN.QUEUE,
+    },
     items: [
       { value: "Solo Queue", name: "Solo Queue" },
       { value: "Flex Queue", name: "Flex Queue" },
     ],
   },
   {
-    name: "Rol",
-    type: "select",
+    name: {
+      [SPANISH]: FORM_PREFERENCES_NAMES_ES.ROL,
+      [ENGLISH]: FORM_PREFERENCES_NAMES_EN.ROL,
+    },
+    type: FORM_TYPES.SELECT,
     items: [
       {
-        label: "Principal",
+        label: {
+          [SPANISH]: FORM_PREFERENCES_NAMES_ES.MAIN,
+          [ENGLISH]: FORM_PREFERENCES_NAMES_EN.MAIN,
+        },
         options: allLanesList,
       },
       {
-        label: "Secundario",
+        label: {
+          [SPANISH]: FORM_PREFERENCES_NAMES_ES.SECONDARY,
+          [ENGLISH]: FORM_PREFERENCES_NAMES_EN.SECONDARY,
+        },
         options: allLanesList,
       },
     ],
   },
   {
-    name: "Summoners",
-    type: "select",
+    name: {
+      [SPANISH]: FORM_PREFERENCES_NAMES_ES.SUMMONERS,
+      [ENGLISH]: FORM_PREFERENCES_NAMES_EN.SUMMONERS,
+    },
+    type: FORM_TYPES.SELECT,
     items: [
       {
         label: "D",
@@ -77,51 +102,87 @@ export const formPreferences = [
 ];
 
 export const formAdditionalPreferences = {
-  name: "Preferences",
-  type: "multiple",
+  name: {
+    [SPANISH]: FORM_PREFERENCES_NAMES_ES.PREFERENCES,
+    [ENGLISH]: FORM_PREFERENCES_NAMES_EN.PREFERENCES,
+  },
+  type: FORM_TYPES.MULTIPLE,
   items: [
     {
-      label: "Pool de campeones",
-      type: "select",
+      label: {
+        [SPANISH]: FORM_PREFERENCES_NAMES_ES.CHAMPIONS_POOL,
+        [ENGLISH]: FORM_PREFERENCES_NAMES_EN.CHAMPIONS_POOL,
+      },
+      type: FORM_TYPES.SELECT,
       options: champions,
     },
     {
-      label: "Duo Queue",
-      type: "toggle",
+      label: {
+        [SPANISH]: FORM_PREFERENCES_NAMES_ES.DUO_QUEUE,
+        [ENGLISH]: FORM_PREFERENCES_NAMES_EN.DUO_QUEUE,
+      },
+      type: FORM_TYPES.TOGGLE,
     },
     {
-      label: "Orden Premium",
-      type: "toggle",
+      label: {
+        [SPANISH]: FORM_PREFERENCES_NAMES_ES.ORDER_PREMIUM,
+        [ENGLISH]: FORM_PREFERENCES_NAMES_EN.ORDER_PREMIUM,
+      },
+      type: FORM_TYPES.TOGGLE,
     },
   ],
 };
 
 export const formBoostingRank = [
   {
-    name: "boostingRank",
-    label: "Rango Actual",
-    type: "divisional",
+    name: {
+      [SPANISH]: FORM_PREFERENCES_NAMES_ES.BOOSTING_RANK_NAME,
+      [ENGLISH]: FORM_PREFERENCES_NAMES_EN.BOOSTING_RANK_NAME,
+    },
+    label: {
+      [SPANISH]: FORM_PREFERENCES_NAMES_ES.CURRENT_RANK,
+      [ENGLISH]: FORM_PREFERENCES_NAMES_EN.CURRENT_RANK,
+    },
+    type: FORM_TYPES.DIVISIONAL,
     items: allDivisionsList,
   },
   {
-    name: "desiredRank",
-    label: "Rango Deseado",
-    type: "divisional",
+    name: {
+      [SPANISH]: FORM_PREFERENCES_NAMES_ES.DESIRED_RANK_NAME,
+      [ENGLISH]: FORM_PREFERENCES_NAMES_EN.DESIRED_RANK_NAME,
+    },
+    label: {
+      [SPANISH]: FORM_PREFERENCES_NAMES_ES.DESIRED_RANK,
+      [ENGLISH]: FORM_PREFERENCES_NAMES_EN.DESIRED_RANK,
+    },
+    type: FORM_TYPES.DIVISIONAL,
     items: allDivisionsList,
   },
 ];
 
 export const formPlacementsRank = [
   {
-    name: "placementsRank",
-    label: "Rango Anterior",
-    type: "divisional",
+    name: {
+      [SPANISH]: FORM_PREFERENCES_NAMES_ES.PLACEMENTS_RANK_NAME,
+      [ENGLISH]: FORM_PREFERENCES_NAMES_EN.PLACEMENTS_RANK_NAME,
+    },
+    label: {
+      [SPANISH]: FORM_PREFERENCES_NAMES_ES.PREVIOUS_RANK,
+      [ENGLISH]: FORM_PREFERENCES_NAMES_EN.PREVIOUS_RANK,
+    },
+    type: FORM_TYPES.DIVISIONAL,
     items: allDivisionsList,
   },
   {
-    name: "nroPlacements",
-    label: "Número de juegos",
-    type: "range",
+    name: {
+      [SPANISH]: FORM_PREFERENCES_NAMES_ES.NRO_PLACEMENTS_RANK_NAME,
+      [ENGLISH]: FORM_PREFERENCES_NAMES_EN.NRO_PLACEMENTS_RANK_NAME,
+    },
+    label: {
+      [SPANISH]: FORM_PREFERENCES_NAMES_ES.NUMBER_OF_GAMES,
+      [ENGLISH]: FORM_PREFERENCES_NAMES_EN.NUMBER_OF_GAMES,
+    },
+    type: FORM_TYPES.RANGE,
     min: 1,
     max: 5,
   },
@@ -129,15 +190,27 @@ export const formPlacementsRank = [
 
 export const formNetWinsRank = [
   {
-    name: "nwtWinsRank",
-    label: "Rango Actual",
-    type: "divisional",
+    name: {
+      [SPANISH]: FORM_PREFERENCES_NAMES_ES.NRO_PLACEMENTS_RANK_NAME,
+      [ENGLISH]: FORM_PREFERENCES_NAMES_EN.NRO_PLACEMENTS_RANK_NAME,
+    },
+    label: {
+      [SPANISH]: FORM_PREFERENCES_NAMES_ES.CURRENT_RANK,
+      [ENGLISH]: FORM_PREFERENCES_NAMES_EN.CURRENT_RANK,
+    },
+    type: FORM_TYPES.DIVISIONAL,
     items: allDivisionsList,
   },
   {
-    name: "nroNetWins",
-    label: "Número de victorias",
-    type: "range",
+    name: {
+      [SPANISH]: FORM_PREFERENCES_NAMES_ES.NRO_NETWINS_RANK_NAME,
+      [ENGLISH]: FORM_PREFERENCES_NAMES_EN.NRO_NETWINS_RANK_NAME,
+    },
+    label: {
+      [SPANISH]: FORM_PREFERENCES_NAMES_ES.NUMBER_OF_WINS,
+      [ENGLISH]: FORM_PREFERENCES_NAMES_EN.NUMBER_OF_WINS,
+    },
+    type: FORM_TYPES.RANGE,
     min: 1,
     max: 10,
   },

@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import FormReducer from "./FormReducer";
 import { RESET_FORM, SET_FORM } from "./types";
-import { AppContext } from "..";
+import { FormAppContext } from "./";
 
 const FormState = ({ children }) => {
   const initialState = {
@@ -29,9 +29,9 @@ const FormState = ({ children }) => {
   };
 
   return (
-    <AppContext.Provider value={{ ...globalState, ...combineFunctions }}>
+    <FormAppContext.Provider value={{ ...globalState, ...combineFunctions }}>
       {children}
-    </AppContext.Provider>
+    </FormAppContext.Provider>
   );
 };
 

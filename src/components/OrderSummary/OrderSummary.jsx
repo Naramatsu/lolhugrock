@@ -1,17 +1,20 @@
 import React, { useContext, useEffect } from "react";
 import Panel from "../Panel/Panel";
 import SelectCustom from "../SelectCustom/SelectCustom";
-import { AppContext } from "../../context";
+import { FormAppContext } from "../../context/form";
 import { isBtnAvailable, summaryBuilder } from "../../utils";
+import { LanguajeAppContext } from "../../context/languaje";
+import { PAY_LABEL, YOUR_ORDER } from "../../utils/constants";
 import { useHistory } from "react-router-dom";
 import "./OrderSummary.style.scss";
 
 const OrderSummary = ({ color }) => {
-  const { form, resetForm } = useContext(AppContext);
+  const { languaje } = useContext(LanguajeAppContext);
+  const { form, resetForm } = useContext(FormAppContext);
   const history = useHistory();
   const formName = Object.keys(form).join("");
   const formProperties = form[formName];
-  const orderSummary = formName ? summaryBuilder(formProperties) : [];
+  const orderSummary = formName ? summaryBuilder(formProperties, languaje) : [];
   const isBtnPayDisabled = formName
     ? !isBtnAvailable(formProperties, formName)
     : false;
@@ -25,7 +28,7 @@ const OrderSummary = ({ color }) => {
   return (
     <section className="order__summary" style={{ "--cl": color }}>
       <Panel color={color}>
-        <h3>Su pedido</h3>
+        <h3>{YOUR_ORDER[languaje]}</h3>
         <section className="order__summary__container">
           {orderSummary.map(({ label, items }, index) =>
             items && items.length ? (
@@ -55,7 +58,7 @@ const OrderSummary = ({ color }) => {
             disabled={isBtnPayDisabled}
             onClick={() => alert("Pending...")}
           >
-            Pagar
+            {PAY_LABEL[languaje]}
           </button>
           <section></section>
         </section>

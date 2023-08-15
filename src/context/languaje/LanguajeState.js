@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import LanguajeReducer from "./LanguajeReducer";
-import { AppContext } from "..";
+import { LanguajeAppContext } from "./";
 import { CHANGE_LANGUAJE, SPANISH } from "./types";
 
 const LanguajeState = ({ children }) => {
@@ -21,9 +21,9 @@ const LanguajeState = ({ children }) => {
   };
 
   return (
-    <AppContext.Provider value={{ ...globalState, combineFunctions }}>
+    <LanguajeAppContext.Provider value={{ ...globalState, combineFunctions }}>
       {children}
-    </AppContext.Provider>
+    </LanguajeAppContext.Provider>
   );
 };
 

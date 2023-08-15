@@ -42,18 +42,25 @@ import {
   formNetWinsRank,
   formPlacementsRank,
 } from "../components/BoostingSection/data";
+import {
+  COLORS,
+  FORM_PREFERENCES_NAMES_EN,
+  FORM_PREFERENCES_NAMES_ES,
+  TITLES,
+} from "./constants";
+import { SPANISH } from "../context/languaje/types";
 
 export const convertColor = (color) => {
   switch (color) {
-    case "purple":
+    case COLORS.PURPLE:
       return "#d441ff";
-    case "green":
+    case COLORS.GREEN:
       return "#00de8a";
-    case "blue":
+    case COLORS.BLUE:
       return "#39c5d6";
-    case "red":
+    case COLORS.RED:
       return "#ff3147";
-    case "gold":
+    case COLORS.GOLD:
       return "#c8aa6e";
     default:
       return "#000";
@@ -174,22 +181,33 @@ const divisionCondition = (league, item, key) => {
 };
 
 export const objBuilder = (indexName, items, item, key) => {
-  if (indexName === "Summoners" || indexName === "Roles") {
+  if (
+    indexName === FORM_PREFERENCES_NAMES_EN.SUMMONERS ||
+    indexName === FORM_PREFERENCES_NAMES_EN.ROL ||
+    indexName === FORM_PREFERENCES_NAMES_ES.SUMMONERS ||
+    indexName === FORM_PREFERENCES_NAMES_ES.ROL
+  ) {
     return {
       label: indexName,
       items: [...(items[indexName]?.items || []), `${key} (${item[key]}) `],
     };
   }
-  if (indexName === "Campeones") {
+  if (
+    indexName === FORM_PREFERENCES_NAMES_ES.CHAMPIONS ||
+    indexName === FORM_PREFERENCES_NAMES_EN.CHAMPIONS
+  ) {
     return {
       label: indexName,
       items: [...(items[indexName]?.items || []), `${item[key].join(", ")}`],
     };
   }
   if (
-    indexName === "Desde" ||
-    indexName === "Hasta" ||
-    indexName === "Rango Anterior"
+    indexName === FORM_PREFERENCES_NAMES_ES.FROM ||
+    indexName === FORM_PREFERENCES_NAMES_ES.TO ||
+    indexName === FORM_PREFERENCES_NAMES_ES.PREVIOUS_RANK ||
+    indexName === FORM_PREFERENCES_NAMES_EN.FROM ||
+    indexName === FORM_PREFERENCES_NAMES_EN.TO ||
+    indexName === FORM_PREFERENCES_NAMES_EN.PREVIOUS_RANK
   ) {
     return {
       label: indexName,
@@ -198,7 +216,12 @@ export const objBuilder = (indexName, items, item, key) => {
         : null,
     };
   }
-  if (indexName === "Victorias" || indexName === "Juegos de posicionamiento") {
+  if (
+    indexName === FORM_PREFERENCES_NAMES_ES.VICTORIES ||
+    indexName === FORM_PREFERENCES_NAMES_ES.PLACEMENT_GAMES ||
+    indexName === FORM_PREFERENCES_NAMES_EN.VICTORIES ||
+    indexName === FORM_PREFERENCES_NAMES_EN.PLACEMENT_GAMES
+  ) {
     return {
       label: indexName,
       items: item[key]?.nroGames ? item[key].nroGames + "" : "",
@@ -211,34 +234,62 @@ export const objBuilder = (indexName, items, item, key) => {
   };
 };
 
-export const summaryBuilder = (item) => {
+export const summaryBuilder = (item, languaje = SPANISH) => {
   const keys = Object.keys(item);
   const result = {};
   keys.forEach((key) => {
     let indexName = "";
     switch (key) {
-      case "Principal":
-      case "Secundario":
-        indexName = "Roles";
+      case FORM_PREFERENCES_NAMES_ES.MAIN:
+      case FORM_PREFERENCES_NAMES_ES.SECONDARY:
+      case FORM_PREFERENCES_NAMES_EN.MAIN:
+      case FORM_PREFERENCES_NAMES_EN.SECONDARY:
+        indexName =
+          languaje === SPANISH
+            ? FORM_PREFERENCES_NAMES_ES.ROL
+            : FORM_PREFERENCES_NAMES_EN.ROL;
         break;
       case "D":
       case "F":
-        indexName = "Summoners";
+        indexName =
+          languaje === SPANISH
+            ? FORM_PREFERENCES_NAMES_ES.SUMMONERS
+            : FORM_PREFERENCES_NAMES_EN.SUMMONERS;
         break;
-      case "Rango Actual":
-        indexName = "Desde";
+      case FORM_PREFERENCES_NAMES_ES.CURRENT_RANK:
+      case FORM_PREFERENCES_NAMES_EN.CURRENT_RANK:
+        indexName =
+          languaje === SPANISH
+            ? FORM_PREFERENCES_NAMES_ES.FROM
+            : FORM_PREFERENCES_NAMES_EN.FROM;
         break;
-      case "Rango Deseado":
-        indexName = "Hasta";
+      case FORM_PREFERENCES_NAMES_ES.DESIRED_RANK:
+      case FORM_PREFERENCES_NAMES_EN.DESIRED_RANK:
+        indexName =
+          languaje === SPANISH
+            ? FORM_PREFERENCES_NAMES_ES.TO
+            : FORM_PREFERENCES_NAMES_EN.TO;
         break;
-      case "Pool de campeones":
-        indexName = "Campeones";
+      case FORM_PREFERENCES_NAMES_ES.CHAMPIONS_POOL:
+      case FORM_PREFERENCES_NAMES_EN.CHAMPIONS_POOL:
+        indexName =
+          languaje === SPANISH
+            ? FORM_PREFERENCES_NAMES_ES.CHAMPIONS
+            : FORM_PREFERENCES_NAMES_EN.CHAMPIONS;
         break;
-      case "Número de victorias":
-        indexName = "Victorias";
+      case FORM_PREFERENCES_NAMES_ES.NUMBER_OF_WINS:
+      case FORM_PREFERENCES_NAMES_EN.NUMBER_OF_WINS:
+        indexName =
+          languaje === SPANISH
+            ? FORM_PREFERENCES_NAMES_ES.VICTORIES
+            : FORM_PREFERENCES_NAMES_EN.VICTORIES;
         break;
-      case "Número de juegos":
-        indexName = "Juegos de posicionamiento";
+      case FORM_PREFERENCES_NAMES_ES.NUMBER_OF_GAMES:
+      case FORM_PREFERENCES_NAMES_EN.NUMBER_OF_GAMES:
+        indexName =
+          languaje === SPANISH
+            ? FORM_PREFERENCES_NAMES_ES.PLACEMENT_GAMES
+            : FORM_PREFERENCES_NAMES_EN.PLACEMENT_GAMES;
         break;
       default:
         indexName = key;
@@ -250,35 +301,72 @@ export const summaryBuilder = (item) => {
 };
 
 export const isBtnAvailable = (item, formName) => {
-  if (!item["Queue"] || !item["Server"]) return false;
-  if (formName === "Division Boost") {
+  if (
+    (!item[FORM_PREFERENCES_NAMES_ES.QUEUE] ||
+      !item[FORM_PREFERENCES_NAMES_ES.SERVER]) &&
+    (!item[FORM_PREFERENCES_NAMES_EN.QUEUE] ||
+      !item[FORM_PREFERENCES_NAMES_EN.SERVER])
+  ) {
+    return false;
+  }
+  if (formName === TITLES.DIVISIONBOOST) {
     if (
-      item["Rango Actual"]?.league &&
-      (item["Rango Actual"]?.division || item["Rango Actual"]?.lps) &&
-      (item["Rango Actual"]?.lpGroup || item["Rango Actual"]?.lpGain) &&
-      item["Rango Deseado"]?.league &&
-      (item["Rango Deseado"]?.division || item["Rango Deseado"]?.lps) &&
-      (item["Rango Deseado"]?.lpGroup || item["Rango Deseado"]?.lpGain)
+      (item[FORM_PREFERENCES_NAMES_ES.CURRENT_RANK]?.league ||
+        item[FORM_PREFERENCES_NAMES_EN.CURRENT_RANK]?.league) &&
+      (item[FORM_PREFERENCES_NAMES_ES.CURRENT_RANK]?.division ||
+        item[FORM_PREFERENCES_NAMES_EN.CURRENT_RANK]?.division ||
+        item[FORM_PREFERENCES_NAMES_EN.CURRENT_RANK]?.lps ||
+        item[FORM_PREFERENCES_NAMES_ES.CURRENT_RANK]?.lps) &&
+      (item[FORM_PREFERENCES_NAMES_ES.CURRENT_RANK]?.lpGroup ||
+        item[FORM_PREFERENCES_NAMES_EN.CURRENT_RANK]?.lpGroup ||
+        item[FORM_PREFERENCES_NAMES_ES.CURRENT_RANK]?.lpGain ||
+        item[FORM_PREFERENCES_NAMES_EN.CURRENT_RANK]?.lpGain) &&
+      (item[FORM_PREFERENCES_NAMES_ES.DESIRED_RANK]?.league ||
+        item[FORM_PREFERENCES_NAMES_EN.DESIRED_RANK]?.league) &&
+      (item[FORM_PREFERENCES_NAMES_ES.DESIRED_RANK]?.division ||
+        item[FORM_PREFERENCES_NAMES_EN.DESIRED_RANK]?.division ||
+        item[FORM_PREFERENCES_NAMES_EN.DESIRED_RANK]?.lps ||
+        item[FORM_PREFERENCES_NAMES_ES.DESIRED_RANK]?.lps) &&
+      (item[FORM_PREFERENCES_NAMES_ES.DESIRED_RANK]?.lpGroup ||
+        item[FORM_PREFERENCES_NAMES_EN.DESIRED_RANK]?.lpGroup ||
+        item[FORM_PREFERENCES_NAMES_ES.DESIRED_RANK]?.lpGain ||
+        item[FORM_PREFERENCES_NAMES_EN.DESIRED_RANK]?.lpGain)
     ) {
       return true;
     }
   }
-  if (formName === "Net Wins") {
+  if (formName === TITLES.NETWINS) {
     if (
-      item["Rango Actual"]?.league &&
-      (item["Rango Actual"]?.division || item["Rango Actual"]?.lps) &&
-      (item["Rango Actual"]?.lpGroup || item["Rango Actual"]?.lpGain) &&
-      item["Número de victorias"]?.nroGames > 0
+      (item[FORM_PREFERENCES_NAMES_ES.CURRENT_RANK]?.league ||
+        item[FORM_PREFERENCES_NAMES_EN.CURRENT_RANK]?.league) &&
+      (item[FORM_PREFERENCES_NAMES_ES.CURRENT_RANK]?.division ||
+        item[FORM_PREFERENCES_NAMES_EN.CURRENT_RANK]?.division ||
+        item[FORM_PREFERENCES_NAMES_EN.CURRENT_RANK]?.lps ||
+        item[FORM_PREFERENCES_NAMES_ES.CURRENT_RANK]?.lps) &&
+      (item[FORM_PREFERENCES_NAMES_ES.CURRENT_RANK]?.lpGroup ||
+        item[FORM_PREFERENCES_NAMES_EN.CURRENT_RANK]?.lpGroup ||
+        item[FORM_PREFERENCES_NAMES_ES.CURRENT_RANK]?.lpGain ||
+        item[FORM_PREFERENCES_NAMES_EN.CURRENT_RANK]?.lpGain) &&
+      (item[FORM_PREFERENCES_NAMES_ES.NUMBER_OF_WINS]?.nroGames > 0 ||
+        item[FORM_PREFERENCES_NAMES_EN.NUMBER_OF_WINS]?.nroGames > 0)
     ) {
       return true;
     }
   }
-  if (formName === "Placements") {
+  if (formName === TITLES.PLACEMENTS) {
     if (
-      item["Rango Anterior"]?.league &&
-      (item["Rango Anterior"]?.division || item["Rango Anterior"]?.lps) &&
-      (item["Rango Anterior"]?.lpGroup || item["Rango Anterior"]?.lpGain) &&
-      item["Número de juegos"]?.nroGames > 0
+      (item[FORM_PREFERENCES_NAMES_ES.PREVIOUS_RANK]?.league ||
+        item[FORM_PREFERENCES_NAMES_EN.PREVIOUS_RANK]?.league) &&
+      (item[FORM_PREFERENCES_NAMES_ES.PREVIOUS_RANK]?.division ||
+        item[FORM_PREFERENCES_NAMES_EN.PREVIOUS_RANK]?.division ||
+        item[FORM_PREFERENCES_NAMES_EN.PREVIOUS_RANK]?.lps ||
+        item[FORM_PREFERENCES_NAMES_ES.PREVIOUS_RANK]?.lps) &&
+      (item[FORM_PREFERENCES_NAMES_ES.PREVIOUS_RANK]?.lpGroup ||
+        item[FORM_PREFERENCES_NAMES_EN.PREVIOUS_RANK]?.lpGroup ||
+        item[FORM_PREFERENCES_NAMES_ES.PREVIOUS_RANK]?.lpGain ||
+        item[FORM_PREFERENCES_NAMES_EN.PREVIOUS_RANK]?.lpGain) &&
+      (item[FORM_PREFERENCES_NAMES_ES.NUMBER_OF_GAMES]?.nroGames > 0 ||
+        item[FORM_PREFERENCES_NAMES_EN.NUMBER_OF_GAMES]?.nroGames > 0)
     ) {
       return true;
     }
@@ -288,9 +376,9 @@ export const isBtnAvailable = (item, formName) => {
 
 export const formRankBuilder = (title) => {
   switch (title) {
-    case "Placements":
+    case TITLES.PLACEMENTS:
       return formPlacementsRank;
-    case "Net Wins":
+    case TITLES.NETWINS:
       return formNetWinsRank;
     default:
       return formBoostingRank;

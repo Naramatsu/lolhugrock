@@ -1,14 +1,16 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import classnames from "classnames";
 import VanillaTilt from "vanilla-tilt";
-import { useHistory } from "react-router-dom";
+import { CLASSNAMES, COLORS, SEE_PLANS } from "../../utils/constants";
+import { LanguajeAppContext } from "../../context/languaje";
 import { titlOptions } from "../../utils";
-import { CLASSNAMES, COLORS } from "../../utils/constants";
+import { useHistory } from "react-router-dom";
 import "./CardPlan.style.scss";
 
 const options = titlOptions();
 
 const CardPlan = ({ title, children }) => {
+  const { languaje } = useContext(LanguajeAppContext);
   const tilt = useRef(null);
   const history = useHistory();
 
@@ -35,7 +37,7 @@ const CardPlan = ({ title, children }) => {
         className={typeClassNames}
         onClick={() => history.push(`/${title}`)}
       >
-        Ver Planes
+        {SEE_PLANS[languaje]}
       </button>
     </section>
   );
