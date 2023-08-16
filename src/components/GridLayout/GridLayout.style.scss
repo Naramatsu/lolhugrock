@@ -7,3 +7,32 @@
     margin-bottom: 50px;
   }
 }
+
+@media (max-width: 1260px) {
+  .boosting__section__container {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .boosting__section__container__preferences .preference__panel {
+    grid-column: span 2 !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .grid .preference__panel .form__container .multiple {
+    flex-direction: column-reverse;
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 450px) {
+  .grid {
+    display: block;
+
+    .preference__panel {
+      margin: 50px 0;
+    }
+  }
+}

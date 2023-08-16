@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { AiOutlineMenu } from "react-icons/ai";
 import logo from "../../assets/Logo.png";
 import { BsInfoCircle, BsHandThumbsUp } from "react-icons/bs";
 import { LanguajeAppContext } from "../../context/languaje";
@@ -20,6 +21,7 @@ const Header = () => {
         </Link>
         <section className="herader__content">
           <p className="leagueoflegends">{LEAGUE_OF_LEGENDS}</p>
+          <AiOutlineMenu className="hamburguer__menu" size={40} />
           <section className="header__btns">
             <Link className="btn" to="/works">
               <BsHandThumbsUp />

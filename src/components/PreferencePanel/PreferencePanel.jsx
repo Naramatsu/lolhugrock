@@ -36,7 +36,10 @@ const sectionBuilder = (
       );
     case FORM_TYPES.MULTIPLE:
       return (
-        <section className="form__select" style={{ paddingBottom: "75px" }}>
+        <section
+          className="form__select multiple"
+          style={{ paddingBottom: "75px" }}
+        >
           {form.items.map(({ label, options, type }, index) => {
             if (type === FORM_TYPES.SELECT) {
               const isFree =

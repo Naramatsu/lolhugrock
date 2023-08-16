@@ -18,6 +18,7 @@
     .order__summary__container {
       background-color: var(--cl);
       height: 100%;
+      min-height: 170px;
       padding: 20px;
       width: 100%;
 
@@ -30,6 +31,21 @@
         b {
           font-size: 16px;
           font-weight: 700;
+        }
+      }
+
+      .no__order {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        svg {
+          filter: drop-shadow($box-shadow50);
+        }
+
+        &:nth-last-child(1) {
+          display: none;
         }
       }
     }
@@ -80,5 +96,25 @@
         }
       }
     }
+  }
+}
+
+@media (max-width: 1260px) {
+  .order__summary {
+    margin: auto;
+    max-width: 400px;
+    min-width: 350px;
+  }
+}
+
+@media (max-width: 840px) {
+  .order__summary {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .order__summary {
+    min-width: 100%;
   }
 }

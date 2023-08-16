@@ -81,3 +81,27 @@
     }
   }
 }
+
+@media (max-width: 690px) {
+  .select__custom__multiple {
+    bottom: -80% !important;
+  }
+}
+
+@media (max-width: 610px) {
+  .select__custom__multiple {
+    left: -25% !important;
+  }
+}
+
+@media (max-width: 530px) {
+  .select__custom__multiple {
+    left: 0 !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .select__custom__multiple {
+    left: initial !important;
+  }
+}

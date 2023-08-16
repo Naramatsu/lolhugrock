@@ -23,9 +23,23 @@
     text-shadow: $text-shadowY4;
     top: 0;
     transform: translate(-50%, -50%);
+    width: max-content;
   }
 
   .form__container {
     @include displayFlex;
+  }
+}
+
+@media (max-width: 690px) {
+  .preference__panel .form__container .form__select {
+    .form__select__champions {
+      .label__free {
+        left: 50%;
+        margin-top: 5px;
+        top: 100%;
+        transform: translateX(-50%);
+      }
+    }
   }
 }

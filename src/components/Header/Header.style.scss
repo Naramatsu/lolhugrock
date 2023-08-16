@@ -27,6 +27,10 @@ header {
       justify-content: space-between;
       padding-left: 200px;
 
+      .hamburguer__menu {
+        display: none;
+      }
+
       .leagueoflegends {
         @include bd-blur-white;
         border-radius: 10px;
@@ -55,6 +59,69 @@ header {
           text-shadow: $text-shadow;
         }
       }
+    }
+  }
+}
+
+@media (max-width: 935px) {
+  header .container-lg .herader__content {
+    .hamburguer__menu {
+      @include bd-blur-white;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+      display: block;
+      padding: 0.5em;
+
+      &:hover ~ .header__btns {
+        display: block !important;
+        transition: 1s ease all;
+      }
+    }
+
+    .header__btns {
+      border-radius: 10px;
+      bottom: -150%;
+      box-shadow: $box-shadow50;
+      display: none !important;
+      padding: 0.5em;
+      position: absolute;
+      right: 0;
+      transition: 1s ease all;
+      @include bd-blur-black;
+
+      &:hover {
+        display: block !important;
+        transition: 1s ease all;
+      }
+
+      a {
+        margin: 5px;
+      }
+    }
+  }
+}
+
+@media (max-width: 510px) {
+  header .container-lg .herader__content {
+    padding-left: 160px;
+  }
+}
+
+@media (max-width: 450px) {
+  header .container-lg .herader__content {
+    p {
+      font-size: 12px;
+    }
+  }
+}
+
+@media (max-width: 410px) {
+  header .container-lg .herader__content {
+    justify-content: flex-end;
+
+    p {
+      display: none;
     }
   }
 }

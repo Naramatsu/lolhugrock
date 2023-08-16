@@ -20,8 +20,14 @@ const BoostingSection = ({ title, color }) => {
       <BackgroundAnimated color={colorFormatted}>
         <section className="boosting__section">
           <h2 style={{ color: colorFormatted }}>{title}</h2>
-          <GridLayout template="2fr 1fr">
-            <GridLayout template="1fr 1fr">
+          <GridLayout
+            template="2fr 1fr"
+            classNames="boosting__section__container"
+          >
+            <GridLayout
+              template="1fr 1fr"
+              classNames="boosting__section__container__preferences"
+            >
               {formPreferences.map((form, index) => (
                 <PreferencePanel
                   key={index}
@@ -42,7 +48,11 @@ const BoostingSection = ({ title, color }) => {
                   color={colorFormatted}
                 />
               </GridLayout>
-              <GridLayout template="3fr" gridColumn="span 2">
+              <GridLayout
+                template="3fr"
+                gridColumn="span 2"
+                classNames="grid__card__division"
+              >
                 <Panel title={title} color={colorFormatted}>
                   {formRank.map((form, index) => (
                     <CardDivision

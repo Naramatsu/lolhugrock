@@ -2,7 +2,12 @@ import React, { useContext, useEffect } from "react";
 import Panel from "../Panel/Panel";
 import SelectCustom from "../SelectCustom/SelectCustom";
 import { FormAppContext } from "../../context/form";
-import { isBtnAvailable, summaryBuilder } from "../../utils";
+import { AiOutlineExclamationCircle } from "react-icons/ai";
+import {
+  isBtnAvailable,
+  isOrderEmptyValidator,
+  summaryBuilder,
+} from "../../utils";
 import { LanguajeAppContext } from "../../context/languaje";
 import { PAY_LABEL, YOUR_ORDER } from "../../utils/constants";
 import { useHistory } from "react-router-dom";
@@ -19,6 +24,7 @@ const OrderSummary = ({ color }) => {
     ? !isBtnAvailable(formProperties, formName)
     : false;
   const isBtnDisabledClass = isBtnPayDisabled ? "disabled" : "";
+  const isOrderEmpty = isOrderEmptyValidator(formProperties);
 
   useEffect(() => {
     resetForm();
@@ -37,7 +43,12 @@ const OrderSummary = ({ color }) => {
                 {items}
               </p>
             ) : (
-              <span key={index} />
+              isOrderEmpty && (
+                <section key={index} className="no__order">
+                  <AiOutlineExclamationCircle size={75} />
+                  Aun no hay preferencias seleccionadas.
+                </section>
+              )
             )
           )}
         </section>

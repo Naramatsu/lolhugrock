@@ -384,3 +384,8 @@ export const formRankBuilder = (title) => {
       return formBoostingRank;
   }
 };
+
+export const isOrderEmptyValidator = (form = {}) =>
+  Object.keys(form)
+    .map((a) => JSON.stringify(form[a]))
+    .every((a) => a === JSON.stringify({}));
