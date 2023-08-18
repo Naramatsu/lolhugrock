@@ -12,9 +12,6 @@ import "./Boosting.style.scss";
 
 const Boosting = () => {
   const { languaje } = useContext(LanguajeAppContext);
-  const hashEncoded = btoa("Garrapata");
-  const hashDecoded = atob(hashEncoded);
-  console.log({ hashEncoded, hashDecoded });
   return (
     <>
       <Header />
