@@ -150,3 +150,15 @@ export const IS_FREE = {
   [SPANISH]: "Gratis",
   [ENGLISH]: "Free",
 };
+
+export const USD = "USD";
+export const COP = "COP";
+
+export const highElo = ["Master", "GrandMaster", "Challenger"];
+
+export const SERVERS = {
+  LAN: "LAN",
+  LAS: "LAS",
+  NA: "NA",
+  BR: "BR",
+};

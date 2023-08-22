@@ -4,6 +4,7 @@ import {
   FORM_PREFERENCES_NAMES_EN,
   FORM_PREFERENCES_NAMES_ES,
   FORM_TYPES,
+  SERVERS,
 } from "../../utils/constants";
 import { champions } from "./allChamps";
 
@@ -43,10 +44,10 @@ export const formPreferences = [
     },
     shape: "chip",
     items: [
-      { value: "NA", name: "NA" },
-      { value: "LAN", name: "LAN" },
-      { value: "LAS", name: "LAS" },
-      { value: "BR", name: "BR" },
+      { value: SERVERS.NA, name: SERVERS.NA },
+      { value: SERVERS.LAN, name: SERVERS.LAN },
+      { value: SERVERS.LAS, name: SERVERS.LAS },
+      { value: SERVERS.BR, name: SERVERS.BR },
     ],
   },
   {

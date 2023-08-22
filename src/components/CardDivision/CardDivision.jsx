@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useRef, useContext } from "react";
 import SelectCustom from "../SelectCustom/SelectCustom";
 import VanillaTilt from "vanilla-tilt";
@@ -44,7 +45,6 @@ const CardDivision = ({
     setPreferences({});
     setDivisionSelected(PREFERENCES_PROPERTIES.UNRANKED);
     setNroGames(0);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [history.location.pathname]);
 
   const addPreferences = (name, item) => {
@@ -63,7 +63,6 @@ const CardDivision = ({
         property: label,
         item: preferences,
       });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [preferences]);
 
   const color = divisionsConfig[divisionSelected].color;
