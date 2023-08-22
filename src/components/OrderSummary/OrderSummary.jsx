@@ -5,6 +5,7 @@ import { FormAppContext } from "../../context/form";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
 import {
   calculateCreditsByPreferences,
+  currencyFormat,
   defineCreditsValue,
   isBtnAvailable,
   isOrderEmptyValidator,
@@ -38,16 +39,17 @@ const OrderSummary = ({ color }) => {
   }, [history.location.pathname]);
 
   useEffect(() => {
-    const formatting_options = {
-      style: "currency",
-      currency: currency,
-      minimumFractionDigits: 2,
-    };
+    const formatting_options = currencyFormat(currency);
     if (formName) {
       const price =
         defineCreditsValue(formProperties, languaje, currency) *
         totalOrderCredits;
-      setTotalCredits(price.toLocaleString("en-US", formatting_options));
+      setTotalCredits(
+        price.toLocaleString(
+          currency === USD ? "en-US" : "es-CO",
+          formatting_options
+        )
+      );
     }
   }, [form, currency, totalOrderCredits]);
 

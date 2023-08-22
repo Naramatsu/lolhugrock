@@ -546,3 +546,9 @@ export const defineCreditsValue = (form, languaje, currency) => {
   }
   return 0;
 };
+
+export const currencyFormat = (currency) => ({
+  style: "currency",
+  currency: currency,
+  minimumFractionDigits: 2,
+});
