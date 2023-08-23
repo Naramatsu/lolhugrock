@@ -5,29 +5,6 @@
   color: #fff;
 }
 
-.text-number__input {
-  align-items: center;
-  color: #fff;
-  font-size: 24px;
-  font-weight: 600;
-  gap: 10px;
-  justify-content: center;
-  text-shadow: $text-shadowY4;
-
-  .lps__textfield {
-    background: #fff;
-    border: 1px solid var(--bg);
-    border-radius: 20px;
-    box-shadow: $box-shadow25;
-    color: #000;
-    font-size: 24px;
-    font-weight: 700;
-    padding: 10px 24px;
-    text-shadow: $text-shadowY4;
-    width: 112px;
-  }
-}
-
 .card__division {
   background: linear-gradient(to bottom, var(--bgOpacity), transparent);
   border-radius: 20px 20px 100px 100px;
@@ -130,27 +107,6 @@
   label {
     font-size: 16px;
     font-weight: 700;
-  }
-
-  .card__division__range__butons {
-    @include displayFlex;
-    height: fit-content;
-    justify-content: center;
-    margin: 60px auto;
-
-    svg {
-      border-radius: 50%;
-      box-shadow: $box-shadow50;
-      cursor: pointer;
-    }
-
-    &.range {
-      margin: 0;
-    }
-
-    .card__division__icons.lps {
-      @extend .text-number__input;
-    }
   }
 }
 
