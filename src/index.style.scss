@@ -124,27 +124,6 @@ footer {
   }
 }
 
-.card__division__range__butons {
-  @include displayFlex;
-  height: fit-content;
-  justify-content: center;
-  margin: 60px auto;
-
-  svg {
-    border-radius: 50%;
-    box-shadow: $box-shadow50;
-    cursor: pointer;
-  }
-
-  &.range {
-    margin: 0;
-  }
-
-  .card__division__icons.lps {
-    @extend .text-number__input;
-  }
-}
-
 @media (min-width: 1600px) {
   .container {
     width: 70%;

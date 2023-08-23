@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useRef, useContext } from "react";
+import Counter from "../Counter/Counter";
 import SelectCustom from "../SelectCustom/SelectCustom";
 import VanillaTilt from "vanilla-tilt";
 import {
@@ -8,7 +9,6 @@ import {
   isSelected,
   titlOptions,
 } from "../../utils";
-import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
 import { divisionsConfig } from "./data";
 import { FormAppContext } from "../../context/form";
 import { FORM_TYPES, PREFERENCES_PROPERTIES } from "../../utils/constants";
@@ -152,7 +152,7 @@ const CardDivision = ({
                 onChange={(event) =>
                   addPreferences(PREFERENCES_PROPERTIES.LPS, event.target.value)
                 }
-                className="lps__textfield"
+                className="counter__value"
               />
               LP
             </section>
@@ -187,14 +187,12 @@ const CardDivision = ({
       ) : (
         <section className="card__division__range__input" ref={tilt}>
           <label>{label}</label>
-          <section className="card__division__range__butons">
-            <AiFillMinusCircle fontSize="50" onClick={handlerReduceGames} />
-            <section className="card__division__icons lps">
-              <p className="lps__textfield">{nroGames}</p>
-            </section>
-            <AiFillPlusCircle fontSize="50" onClick={handlerAddGames} />
-          </section>
-          <section className="card__division__range__butons range">
+          <Counter
+            handlerAdd={handlerAddGames}
+            handlerReduce={handlerReduceGames}
+            value={nroGames}
+          />
+          <section className="range">
             0
             <input
               style={{ "--cl": colorFormatted }}

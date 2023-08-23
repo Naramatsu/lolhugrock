@@ -14,8 +14,8 @@ const Home = () => {
       <img className="logo main" src={logo} alt="logo" />
       <Title title={HOME_TITLE[languaje]} />
       <section className="cards__plans__group container">
-        {plans[languaje].map(({ title, content }, index) => (
-          <CardPlan key={index} title={title}>
+        {plans[languaje].map(({ title, content, path }, index) => (
+          <CardPlan key={index} title={title} path={path}>
             {content()}
           </CardPlan>
         ))}

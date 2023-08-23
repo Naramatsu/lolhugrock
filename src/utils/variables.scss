@@ -149,7 +149,7 @@ $background-rainbow: linear-gradient(
   width: 100%;
 }
 
-.text-number__input {
+@mixin text-number__input {
   align-items: center;
   color: #fff;
   font-size: 24px;
@@ -158,7 +158,7 @@ $background-rainbow: linear-gradient(
   justify-content: center;
   text-shadow: $text-shadowY4;
 
-  .lps__textfield {
+  .counter__value {
     background: #fff;
     border: 1px solid var(--bg);
     border-radius: 20px;

@@ -69,7 +69,7 @@
     }
 
     &.lps {
-      @extend .text-number__input;
+      @include text-number__input;
     }
 
     &.lps__gain {
@@ -107,6 +107,12 @@
   label {
     font-size: 16px;
     font-weight: 700;
+  }
+
+  .range {
+    @include displayFlex;
+    height: fit-content;
+    justify-content: center;
   }
 }
 

@@ -5,6 +5,7 @@ export const ROUTES = {
   DIVISIONBOOST: "/boosting/divisionboost",
   PLACEMENTS: "/boosting/placements",
   NETWINS: "/boosting/netwins",
+  COACHING: "/coaching",
 };
 
 export const TITLES = {
@@ -12,12 +13,15 @@ export const TITLES = {
   DIVISIONBOOST: "Division Boost",
   PLACEMENTS: "Placements",
   NETWINS: "Net Wins",
+  COACHING: "Coaching",
+  OUR_COAUCHING: "Nuestros Coachs",
 };
 
 export const CLASSNAMES = {
   BOOSTING: "boosting",
   BOOSTING_TEXT: "boosting-text",
   COACHING_TEXT: "coaching-text",
+  COACHING: "coaching",
 };
 
 export const COLORS = {

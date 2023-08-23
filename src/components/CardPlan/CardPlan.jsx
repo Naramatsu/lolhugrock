@@ -9,7 +9,7 @@ import "./CardPlan.style.scss";
 
 const options = titlOptions();
 
-const CardPlan = ({ title, children }) => {
+const CardPlan = ({ title, children, path }) => {
   const { languaje } = useContext(LanguajeAppContext);
   const tilt = useRef(null);
   const history = useHistory();
@@ -33,10 +33,7 @@ const CardPlan = ({ title, children }) => {
     <section className="card__plan" ref={tilt}>
       <h3 className={titleClassNames}>{title}</h3>
       <section className="card__plan__info">{children}</section>
-      <button
-        className={typeClassNames}
-        onClick={() => history.push(`/${title}`)}
-      >
+      <button className={typeClassNames} onClick={() => history.push(path)}>
         {SEE_PLANS[languaje]}
       </button>
     </section>

@@ -1,0 +1,26 @@
+@import "../../utils/variables.scss";
+
+.counter {
+  @include displayFlex;
+  height: fit-content;
+  justify-content: center;
+  margin: 60px auto;
+
+  svg {
+    border-radius: 50%;
+    filter: drop-shadow($box-shadow50);
+    cursor: pointer;
+  }
+
+  &.range {
+    margin: 0;
+  }
+
+  .counter__value__container {
+    @include text-number__input;
+
+    .counter__value {
+      margin-bottom: 0;
+    }
+  }
+}

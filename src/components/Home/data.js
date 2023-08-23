@@ -1,9 +1,11 @@
 import { ENGLISH, SPANISH } from "../../context/languaje/types";
+import { ROUTES } from "../../utils/constants";
 
 export const plans = {
   [SPANISH]: [
     {
       title: "boosting",
+      path: ROUTES.BOOSTING,
       content: () => (
         <>
           <p>
@@ -20,6 +22,7 @@ export const plans = {
     },
     {
       title: "coaching",
+      path: ROUTES.COACHING,
       content: () => (
         <>
           <p>
@@ -38,6 +41,7 @@ export const plans = {
   [ENGLISH]: [
     {
       title: "boosting",
+      path: ROUTES.BOOSTING,
       content: () => (
         <>
           <p>
@@ -54,6 +58,7 @@ export const plans = {
     },
     {
       title: "coaching",
+      path: ROUTES.COACHING,
       content: () => (
         <>
           <p>
