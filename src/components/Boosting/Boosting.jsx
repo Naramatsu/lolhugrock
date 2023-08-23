@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import BoostingSection from "../BoostingSection/BoostingSection";
+import BoostingSection from "../BoostingSection";
 import CardInfo from "../CardInfo";
 import FormState from "../../context/form/FormState";
 import Header from "../Header";

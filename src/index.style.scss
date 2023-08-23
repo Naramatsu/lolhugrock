@@ -99,6 +99,52 @@ footer {
   }
 }
 
+.btn__pay {
+  @include displayFlex;
+  background-color: var(--cl);
+  border: none;
+  border-radius: 20px;
+  box-shadow: $box-shadow50;
+  color: #fff;
+  cursor: pointer;
+  justify-content: center;
+  margin: 20px auto;
+  padding: 14px;
+  text-shadow: $text-shadowY4;
+  width: 200px;
+
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+  }
+
+  &.cancel {
+    background-color: #fff;
+    color: #000;
+  }
+}
+
+.card__division__range__butons {
+  @include displayFlex;
+  height: fit-content;
+  justify-content: center;
+  margin: 60px auto;
+
+  svg {
+    border-radius: 50%;
+    box-shadow: $box-shadow50;
+    cursor: pointer;
+  }
+
+  &.range {
+    margin: 0;
+  }
+
+  .card__division__icons.lps {
+    @extend .text-number__input;
+  }
+}
+
 @media (min-width: 1600px) {
   .container {
     width: 70%;

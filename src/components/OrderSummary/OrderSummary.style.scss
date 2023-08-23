@@ -57,26 +57,6 @@
         margin-top: 20px;
       }
 
-      .btn__pay {
-        @include displayFlex;
-        background-color: var(--cl);
-        border: none;
-        border-radius: 20px;
-        box-shadow: $box-shadow50;
-        color: #fff;
-        cursor: pointer;
-        justify-content: center;
-        margin: 20px auto;
-        padding: 14px;
-        text-shadow: $text-shadowY4;
-        width: 200px;
-
-        &.disabled {
-          cursor: not-allowed;
-          opacity: 0.8;
-        }
-      }
-
       .order__summary__total__container {
         @include displayFlex;
         align-items: center;
@@ -103,7 +83,7 @@
   }
 }
 
-@media (max-width: 1260px) {
+@media (max-width: 1283px) {
   .order__summary {
     margin: auto;
     max-width: 400px;

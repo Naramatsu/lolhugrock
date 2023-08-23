@@ -99,7 +99,6 @@ const OrderSummary = ({ color }) => {
           >
             {PAY_LABEL[languaje]}
           </button>
-          <section></section>
         </section>
       </Panel>
     </section>
