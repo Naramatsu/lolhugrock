@@ -1,0 +1,38 @@
+@import "../../utils/variables.scss";
+
+.select__currency__container {
+  @include displayFlex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1em auto;
+
+  h2 {
+    margin: 0 !important;
+  }
+
+  .select__currency {
+    cursor: pointer;
+    position: relative;
+
+    .select__arrow {
+      @include select__arrow;
+    }
+
+    select {
+      @include selectStyled;
+    }
+
+    .select__currency__options {
+      label {
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 6px solid black;
+      }
+
+      select {
+        font-size: 12px;
+        width: 80px;
+      }
+    }
+  }
+}

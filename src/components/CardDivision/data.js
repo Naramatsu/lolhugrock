@@ -1,52 +1,58 @@
+import { LEAGUE_COLORS } from "../../utils/constants";
+
+const divisions = ["IV", "III", "II", "I"];
+const lpGroup = ["0-29 LP", "30-59 LP", "60-100 LP"];
+const lpGain = ["1-11", "12-14", "+15"];
+
 export const divisionsConfig = {
   Unranked: {
-    color: "#6b6b6b",
+    color: LEAGUE_COLORS.Unranked,
     divisions: [],
     lpGroup: [],
   },
   Iron: {
-    color: "#4a3d38",
-    divisions: ["IV", "III", "II", "I"],
-    lpGroup: ["0-29 LP", "30-59 LP", "60-100 LP"],
+    color: LEAGUE_COLORS.Iron,
+    divisions,
+    lpGroup,
   },
   Bronze: {
-    color: "#563833",
-    divisions: ["IV", "III", "II", "I"],
-    lpGroup: ["0-29 LP", "30-59 LP", "60-100 LP"],
+    color: LEAGUE_COLORS.Bronze,
+    divisions,
+    lpGroup,
   },
   Silver: {
-    color: "#516c7e",
-    divisions: ["IV", "III", "II", "I"],
-    lpGroup: ["0-29 LP", "30-59 LP", "60-100 LP"],
+    color: LEAGUE_COLORS.Silver,
+    divisions,
+    lpGroup,
   },
   Gold: {
-    color: "#734c20",
-    divisions: ["IV", "III", "II", "I"],
-    lpGroup: ["0-29 LP", "30-59 LP", "60-100 LP"],
+    color: LEAGUE_COLORS.Gold,
+    divisions,
+    lpGroup,
   },
   Platinum: {
-    color: "#019a91",
-    divisions: ["IV", "III", "II", "I"],
-    lpGroup: ["0-29 LP", "30-59 LP", "60-100 LP"],
+    color: LEAGUE_COLORS.Platinum,
+    divisions,
+    lpGroup,
   },
   Diamond: {
-    color: "#4464b4",
-    divisions: ["IV", "III", "II", "I"],
-    lpGroup: ["0-29 LP", "30-59 LP", "60-100 LP"],
+    color: LEAGUE_COLORS.Diamond,
+    divisions,
+    lpGroup,
   },
   Master: {
-    color: "#9a3dac",
+    color: LEAGUE_COLORS.Master,
     lps: "0",
-    lpGain: ["1-11", "12-14", "+15"],
+    lpGain,
   },
   GrandMaster: {
-    color: "#652324",
+    color: LEAGUE_COLORS.GrandMaster,
     lps: "0",
-    lpGain: ["1-11", "12-14", "+15"],
+    lpGain,
   },
   Challenger: {
-    color: "#02224f",
+    color: LEAGUE_COLORS.Challenger,
     lps: "0",
-    lpGain: ["1-11", "12-14", "+15"],
+    lpGain,
   },
 };

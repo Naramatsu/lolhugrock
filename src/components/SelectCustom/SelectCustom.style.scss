@@ -28,40 +28,11 @@
     position: relative;
 
     .select__arrow {
-      border-left: 10px solid transparent;
-      border-right: 10px solid transparent;
-      border-top: 12px solid black;
-      pointer-events: none;
-      position: absolute;
-      right: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 2;
+      @include select__arrow;
     }
 
     select {
-      @include displayFlex;
-      appearance: none;
-      border: none;
-      border-radius: $border-radius;
-      box-shadow: $box-shadow25;
-      cursor: pointer;
-      font-size: 16px;
-      height: 50px;
-      justify-content: center;
-      outline: none;
-      position: relative;
-      width: 150px;
-
-      &:active {
-        border: none;
-        outline: none;
-      }
-
-      option {
-        background-color: #fff;
-        color: #000;
-      }
+      @include selectStyled;
 
       &.filled {
         @extend .filled;

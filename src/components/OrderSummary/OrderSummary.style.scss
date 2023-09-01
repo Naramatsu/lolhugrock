@@ -56,29 +56,6 @@
       h3 {
         margin-top: 20px;
       }
-
-      .order__summary__total__container {
-        @include displayFlex;
-        align-items: center;
-        flex-wrap: wrap;
-
-        h2 {
-          font-size: 36px;
-          margin: 0;
-        }
-
-        .select__custom .select__section__options {
-          label {
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            border-top: 6px solid black;
-          }
-
-          select {
-            width: 100px;
-          }
-        }
-      }
     }
   }
 }

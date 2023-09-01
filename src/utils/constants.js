@@ -6,6 +6,7 @@ export const ROUTES = {
   PLACEMENTS: "/boosting/placements",
   NETWINS: "/boosting/netwins",
   COACHING: "/coaching",
+  ABOUTUS: "/aboutus",
 };
 
 export const TITLES = {
@@ -165,4 +166,17 @@ export const SERVERS = {
   LAS: "LAS",
   NA: "NA",
   BR: "BR",
+};
+
+export const LEAGUE_COLORS = {
+  Unranked: "#6b6b6b",
+  Iron: "#4a3d38",
+  Bronze: "#563833",
+  Silver: "#516c7e",
+  Gold: "#734c20",
+  Platinum: "#019a91",
+  Diamond: "#4464b4",
+  Master: "#9a3dac",
+  GrandMaster: "#652324",
+  Challenger: "#02224f",
 };

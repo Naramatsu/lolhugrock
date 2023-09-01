@@ -3,11 +3,11 @@ import BoostingSection from "../BoostingSection";
 import CardInfo from "../CardInfo";
 import FormState from "../../context/form/FormState";
 import Header from "../Header";
-import Title from "../Title";
+import MainBanner from "../MainBanner";
 import { boostingList } from "./data";
-import { CLASSNAMES, COLORS, ROUTES, TITLES } from "../../utils/constants";
+import { COLORS, ROUTES, TITLES } from "../../utils/constants";
 import { LanguajeAppContext } from "../../context/languaje";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import "./Boosting.style.scss";
 
 const Boosting = () => {
@@ -15,10 +15,7 @@ const Boosting = () => {
   return (
     <>
       <Header />
-      <section className={CLASSNAMES.BOOSTING}>
-        <Link to={ROUTES.BOOSTING}>
-          <Title title={TITLES.BOOSTING} />
-        </Link>
+      <MainBanner path={ROUTES.BOOSTING} title={TITLES.BOOSTING}>
         <section className="cardinfo__group container">
           {boostingList[languaje].map(
             ({ title, color, path, description }, index) => (
@@ -28,7 +25,7 @@ const Boosting = () => {
             )
           )}
         </section>
-      </section>
+      </MainBanner>
       <FormState>
         <Switch>
           <Route exact path={ROUTES.DIVISIONBOOST}>

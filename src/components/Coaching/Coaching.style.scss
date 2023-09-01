@@ -1,0 +1,35 @@
+@import "../../utils/variables.scss";
+
+.coaching__section {
+  position: relative;
+
+  h2 {
+    font-size: 48px;
+    margin-bottom: 80px;
+    text-align: center;
+    text-shadow: $text-shadowY4;
+  }
+
+  .coaching__section__cards {
+    @include displayFlex;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin-bottom: 150px;
+  }
+}
+
+@media (max-width: 1380px) {
+  .coaching__section {
+    .coaching__section__cards__container {
+      grid-template-columns: 1fr 1fr !important;
+    }
+  }
+}
+
+@media (max-width: 950px) {
+  .coaching__section {
+    .coaching__section__cards__container {
+      grid-template-columns: 1fr !important;
+    }
+  }
+}

@@ -171,3 +171,52 @@ $background-rainbow: linear-gradient(
     width: 112px;
   }
 }
+
+@mixin select__arrow {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 12px solid black;
+  pointer-events: none;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+@mixin selectStyled {
+  @include displayFlex;
+  appearance: none;
+  border: none;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow25;
+  cursor: pointer;
+  font-size: 16px;
+  height: 50px;
+  justify-content: center;
+  outline: none;
+  position: relative;
+  width: 150px;
+
+  &:active {
+    border: none;
+    outline: none;
+  }
+
+  option {
+    background-color: #fff;
+    color: #000;
+  }
+}
+
+@mixin card-coach-glass-style($width, $height) {
+  backdrop-filter: blur(10px);
+  background-color: rgba($color: #fff, $alpha: 0.1);
+  border-left: solid 1px rgba($color: #fff, $alpha: 0.75);
+  border-radius: 15px;
+  border-top: solid 1px rgba($color: #fff, $alpha: 0.75);
+  box-shadow: 0 25px 45px rgba($color: #000000, $alpha: 0.5);
+  height: $height;
+  transform-style: preserve-3d;
+  width: $width;
+}
