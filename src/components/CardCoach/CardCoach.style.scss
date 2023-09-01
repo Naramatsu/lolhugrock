@@ -102,6 +102,22 @@
         width: fit-content;
       }
 
+      .coaching__type {
+        align-items: center;
+        display: flex;
+        justify-content: space-evenly;
+
+        .division__chip {
+          color: #000000;
+          text-shadow: none;
+
+          &.selected {
+            background: var(--bg);
+            color: #fff;
+          }
+        }
+      }
+
       .card-coaching__elements__panel {
         .counter {
           margin: auto;

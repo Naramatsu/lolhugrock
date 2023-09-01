@@ -29,7 +29,7 @@ const Coaching = () => {
             template="1fr 1fr 1fr"
             classNames="coaching__section__cards__container"
           >
-            {coachesList[languaje].map((coach, index) => (
+            {coachesList.map((coach, index) => (
               <section key={index} className="coaching__section__cards">
                 <CardCoach data={coach} color={colorFormatted} />
               </section>

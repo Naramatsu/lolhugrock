@@ -552,3 +552,8 @@ export const currencyFormat = (currency) => ({
   currency: currency,
   minimumFractionDigits: 2,
 });
+
+export const translateToEn = (item) => {
+  if (item === "Inividual" || item === "Single") return "single";
+  return "team";
+};

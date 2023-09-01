@@ -20,7 +20,7 @@
     @include text-number__input;
 
     .counter__value {
-      margin-bottom: 0;
+      margin-bottom: 0 !important;
     }
   }
 }

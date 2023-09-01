@@ -19,3 +19,16 @@ export const pick = {
   [SPANISH]: "Seleccionar",
   [ENGLISH]: "Pick",
 };
+
+export const coachingType = {
+  team: {
+    [SPANISH]: "Equipo",
+    [ENGLISH]: "Team",
+  },
+  single: {
+    [SPANISH]: "Inividual",
+    [ENGLISH]: "Single",
+  },
+};
+
+export const coachingTypesPreferences = ["single", "team"];

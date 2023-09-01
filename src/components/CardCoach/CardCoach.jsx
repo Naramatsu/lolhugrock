@@ -3,8 +3,21 @@ import React, { useEffect, useRef, useState, useContext } from "react";
 import Counter from "../Counter";
 import SelectCurrency from "../SelectCurrency";
 import VanillaTilt from "vanilla-tilt";
-import { cancel, hours, lock, pick } from "./data";
-import { currencyFormat, imgBuilder, titlOptions } from "../../utils";
+import {
+  cancel,
+  coachingType,
+  coachingTypesPreferences,
+  hours,
+  lock,
+  pick,
+} from "./data";
+import {
+  currencyFormat,
+  imgBuilder,
+  isSelected,
+  titlOptions,
+  translateToEn,
+} from "../../utils";
 import { FaQuoteLeft } from "react-icons/fa";
 import { LanguajeAppContext } from "../../context/languaje";
 import { USD } from "../../utils/constants";
@@ -12,14 +25,20 @@ import "./CardCoach.style.scss";
 
 const options = titlOptions();
 
+const typeFormated = (type, languaje) => coachingType[type][languaje];
+
 const CardCoach = ({ color, data }) => {
   const { name, lanes, description, creditCost, img } = data;
   const { languaje } = useContext(LanguajeAppContext);
   const [showHoursPanel, setShowHoursPanel] = useState(false);
   const [currency, setCurrency] = useState(USD);
   const [coachHours, setCoachHours] = useState(1);
+  const [coachType, setCoachType] = useState(
+    coachingType.single[languaje] || ""
+  );
+  const coachTypeTranslated = translateToEn(coachType);
   const [coachCreditTotal, setCoachCreditTotal] = useState(
-    creditCost[currency]
+    creditCost[coachTypeTranslated][currency]
   );
   const tilt = useRef(null);
 
@@ -29,15 +48,14 @@ const CardCoach = ({ color, data }) => {
 
   useEffect(() => {
     const formatting_options = currencyFormat(currency);
-
-    const price = coachHours * creditCost[currency];
+    const price = coachHours * creditCost[coachTypeTranslated][currency];
     setCoachCreditTotal(
       price.toLocaleString(
         currency === USD ? "en-US" : "es-CO",
         formatting_options
       )
     );
-  }, [coachHours, currency]);
+  }, [coachHours, currency, coachTypeTranslated]);
 
   const handlerAddHours = () => {
     if (coachHours < 24) setCoachHours(coachHours + 1);
@@ -67,33 +85,51 @@ const CardCoach = ({ color, data }) => {
         style={{ "--cl": color }}
       >
         {showHoursPanel ? (
-          <section className="card-coaching__elements__panel">
-            <SelectCurrency
-              gold={coachCreditTotal}
-              value={currency}
-              onChange={setCurrency}
-            />
-            <Counter
-              handlerAdd={handlerAddHours}
-              handlerReduce={handlerReduceHours}
-              value={coachHours}
-            />
-            <p>{hours[languaje]}</p>
-            <section className="lock__cancel__btns">
-              <button className="btn__pay" onClick={() => {}}>
-                {lock[languaje]}
-              </button>
-              <button
-                className="btn__pay cancel"
-                onClick={() => setShowHoursPanel(false)}
-              >
-                {cancel[languaje]}
-              </button>
+          <>
+            <section className="coaching__type" style={{ "--bg": color }}>
+              {coachingTypesPreferences.map((preference, index) => (
+                <section
+                  key={index}
+                  className={`division__chip ${isSelected(
+                    coachType,
+                    typeFormated(preference, languaje)
+                  )}`}
+                  onClick={() =>
+                    setCoachType(typeFormated(preference, languaje))
+                  }
+                >
+                  {typeFormated(preference, languaje)}
+                </section>
+              ))}
             </section>
-          </section>
+            <section className="card-coaching__elements__panel">
+              <SelectCurrency
+                gold={coachCreditTotal}
+                value={currency}
+                onChange={setCurrency}
+              />
+              <Counter
+                handlerAdd={handlerAddHours}
+                handlerReduce={handlerReduceHours}
+                value={coachHours}
+              />
+              <p>{hours[languaje]}</p>
+              <section className="lock__cancel__btns">
+                <button className="btn__pay" onClick={() => {}}>
+                  {lock[languaje]}
+                </button>
+                <button
+                  className="btn__pay cancel"
+                  onClick={() => setShowHoursPanel(false)}
+                >
+                  {cancel[languaje]}
+                </button>
+              </section>
+            </section>
+          </>
         ) : (
           <>
-            <p>{description}</p>
+            <p>{description[languaje]}</p>
             <button
               className="btn__pay"
               onClick={() => setShowHoursPanel(true)}
