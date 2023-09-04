@@ -14,7 +14,9 @@
     @include displayFlex;
     flex-wrap: wrap;
     gap: 50px;
+    height: fit-content;
     margin-bottom: 150px;
+    position: relative;
   }
 }
 

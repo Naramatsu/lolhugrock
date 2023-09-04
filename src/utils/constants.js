@@ -31,6 +31,7 @@ export const COLORS = {
   GREEN: "green",
   RED: "red",
   GOLD: "gold",
+  ORANGE: "orange",
 };
 
 export const LEAGUE_OF_LEGENDS = "League of Legends";

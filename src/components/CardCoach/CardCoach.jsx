@@ -18,7 +18,7 @@ import {
   titlOptions,
   translateToEn,
 } from "../../utils";
-import { FaQuoteLeft } from "react-icons/fa";
+import { AiOutlineSolution } from "react-icons/ai";
 import { LanguajeAppContext } from "../../context/languaje";
 import { USD } from "../../utils/constants";
 import "./CardCoach.style.scss";
@@ -66,10 +66,14 @@ const CardCoach = ({ color, data }) => {
   };
 
   return (
-    <section className="card-coaching__box" ref={tilt}>
+    <section
+      className="card-coaching__box"
+      style={{ "--cl": color }}
+      ref={tilt}
+    >
       <section className="card-coaching"></section>
       <section className="card-coaching__elements bg">
-        <FaQuoteLeft className="quote" />
+        <AiOutlineSolution className="quote" />
       </section>
       <section className="card-coaching__elements img">
         <img src={img} alt="avatar" />
@@ -80,10 +84,7 @@ const CardCoach = ({ color, data }) => {
           <img key={index} className="lane" src={imgBuilder(lane)} alt="lane" />
         ))}
       </section>
-      <section
-        className="card-coaching__elements text"
-        style={{ "--cl": color }}
-      >
+      <section className="card-coaching__elements text">
         {showHoursPanel ? (
           <>
             <section className="coaching__type" style={{ "--bg": color }}>

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import "./BackgroundAnimated.style.scss";
@@ -18,12 +19,13 @@ const circles = () => {
   return result;
 };
 
-const BackgroundAnimated = ({ color, children }) => {
+const BackgroundAnimated = ({ color, children, isScrolled = true }) => {
   const ref = useRef(null);
   const history = useHistory();
 
   useEffect(() => {
-    if (ref) ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (ref && isScrolled)
+      ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
   }, [ref, history.location.pathname]);
 
   return (

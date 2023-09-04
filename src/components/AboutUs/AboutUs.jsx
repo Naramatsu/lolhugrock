@@ -20,7 +20,7 @@ import "./AboutUs.style.scss";
 
 const AboutUs = () => {
   const { languaje } = useContext(LanguajeAppContext);
-  const colorFormatted = convertColor(COLORS.RED);
+  const colorFormatted = convertColor(COLORS.ORANGE);
   const colorMainDescription = convertColor(COLORS.GOLD);
   return (
     <>
@@ -35,16 +35,16 @@ const AboutUs = () => {
           {mainDescription[languaje]()}
         </section>
       </MainBanner>
-      <section className="aboutus__container">
+      <section
+        className="aboutus__container"
+        style={{
+          "--cl": colorMainDescription,
+        }}
+      >
         <Banner img={bannerMision.img} side={bannerMision.side}>
           {bannerMision[languaje]()}
         </Banner>
-        <section
-          className="about__section"
-          style={{
-            "--cl": colorMainDescription,
-          }}
-        >
+        <section className="about__section">
           <section className="container">
             <p>{text[languaje]}</p>
           </section>
@@ -52,12 +52,7 @@ const AboutUs = () => {
         <Banner img={bannerTeam.img} side={bannerTeam.side}>
           {bannerTeam[languaje]()}
         </Banner>
-        <section
-          className="about__section"
-          style={{
-            "--cl": colorMainDescription,
-          }}
-        >
+        <section className="about__section">
           <section className="container">
             <h3>{text2.title[languaje]}</h3>
             <br />
@@ -67,12 +62,7 @@ const AboutUs = () => {
         <Banner img={bannerSecurity.img} side={bannerSecurity.side}>
           {bannerSecurity[languaje]()}
         </Banner>
-        <section
-          className="about__section"
-          style={{
-            "--cl": colorMainDescription,
-          }}
-        >
+        <section className="about__section">
           <section className="container">
             <h3>{text3.title[languaje]}</h3>
             <br />

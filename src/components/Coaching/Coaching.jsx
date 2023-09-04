@@ -13,7 +13,7 @@ import "./Coaching.style.scss";
 
 const Coaching = () => {
   const { languaje } = useContext(LanguajeAppContext);
-  const colorFormatted = convertColor(COLORS.GOLD);
+  const colorFormatted = convertColor(COLORS.GREEN);
   return (
     <>
       <Header />
@@ -22,7 +22,7 @@ const Coaching = () => {
           <p>{mainDescription[languaje]}</p>
         </section>
       </MainBanner>
-      <BackgroundAnimated color={COLORS.GOLD}>
+      <BackgroundAnimated color={COLORS.GREEN} isScrolled={false}>
         <section className="coaching__section">
           <h2 style={{ color: colorFormatted }}>{ourCoachsTitle[languaje]}</h2>
           <GridLayout

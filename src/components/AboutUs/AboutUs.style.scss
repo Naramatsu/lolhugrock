@@ -7,14 +7,19 @@
 
   .about__section {
     background-color: #000;
-    color: var(--cl);
+    color: #fff;
     font-size: 24px;
+    text-shadow: $text-shadowY4;
     width: 100%;
 
     .container {
       padding: 150px 0;
       text-align: center;
       text-shadow: $text-shadowY4;
+
+      h3 {
+        color: var(--cl);
+      }
     }
   }
 }

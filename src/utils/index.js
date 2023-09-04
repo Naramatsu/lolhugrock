@@ -66,6 +66,8 @@ export const convertColor = (color) => {
       return "#ff3147";
     case COLORS.GOLD:
       return "#c8aa6e";
+    case COLORS.ORANGE:
+      return "#F39C12";
     default:
       return "#000";
   }

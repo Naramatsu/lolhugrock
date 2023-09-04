@@ -9,12 +9,14 @@
 
   .card-coaching {
     @include card-coach-glass-style(300px, 400px);
+    @include bd-blur-gradient;
     overflow: hidden;
     position: relative;
   }
 
   .card-coaching__elements {
     @include card-coach-glass-style(100px, 100px);
+    @include bd-blur-gradient;
     left: -30px;
     position: absolute;
     top: 50px;
@@ -22,11 +24,12 @@
 
     &.bg {
       .quote {
-        color: #fff;
+        color: var(--cl);
+        filter: drop-shadow($text-shadowY4);
         font-size: 60px;
         left: 50%;
         position: absolute;
-        text-shadow: 2px 2px 5px rgba($color: #000000, $alpha: 1);
+        text-shadow: $text-shadowY4;
         top: 50%;
         transform: translate(-50%, -50%);
       }
@@ -42,9 +45,7 @@
       width: 120px;
 
       img {
-        border-left: solid 1px rgba($color: #fff, $alpha: 0.75);
         border-radius: 8px;
-        border-top: solid 1px rgba($color: #fff, $alpha: 0.75);
         height: calc(100% - 20px);
         left: 10px;
         object-fit: cover;
