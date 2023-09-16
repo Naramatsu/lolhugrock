@@ -1,11 +1,7 @@
 @import "../../utils/variables.scss";
 
 .card-coaching__box {
-  border-radius: 15px;
-  display: inline-block;
-  margin-bottom: 60px;
-  position: relative;
-  transform-style: preserve-3d;
+  @include cardBox;
 
   .card-coaching {
     @include card-coach-glass-style(300px, 400px);
@@ -16,11 +12,9 @@
 
   .card-coaching__elements {
     @include card-coach-glass-style(100px, 100px);
-    @include bd-blur-gradient;
+    @include cardBoxElements;
     left: -30px;
-    position: absolute;
     top: 50px;
-    transform: translateZ(70px);
 
     &.bg {
       .quote {
@@ -35,49 +29,7 @@
       }
     }
 
-    &.img {
-      height: 120px;
-      left: initial;
-      padding: 10px;
-      right: 60px;
-      top: 0;
-      transform: translateZ(100px);
-      width: 120px;
-
-      img {
-        border-radius: 8px;
-        height: calc(100% - 20px);
-        left: 10px;
-        object-fit: cover;
-        position: absolute;
-        width: calc(100% - 20px);
-      }
-    }
-
     &.name {
-      @include displayFlex;
-      align-items: center;
-      backdrop-filter: blur(0);
-      background: transparent;
-      border: none;
-      box-shadow: none;
-      color: #fff;
-      font-weight: 300;
-      height: fit-content;
-      justify-content: center;
-      left: initial;
-      padding: 10px;
-      text-shadow: $text-shadowY4;
-      top: 120px;
-      transform: translateZ(90px);
-      width: 100%;
-
-      p {
-        font-size: 20px;
-        margin-left: 10px;
-        text-align: center;
-      }
-
       .lane {
         height: 25px;
         width: 25px;
@@ -85,20 +37,6 @@
     }
 
     &.text {
-      bottom: 0;
-      color: #fff;
-      cursor: default;
-      font-size: 14px;
-      height: fit-content;
-      left: initial;
-      padding: 10px;
-      right: -20px;
-      text-align: center;
-      text-shadow: $text-shadow;
-      top: 170px;
-      transform: translateZ(100px);
-      width: 85%;
-
       .btn__pay {
         width: fit-content;
       }

@@ -18,7 +18,7 @@ const Coaching = () => {
     <>
       <Header />
       <MainBanner path={ROUTES.COACHING} title={TITLES.COACHING}>
-        <section className="coaching__description container">
+        <section className="banner__description container">
           <p>{mainDescription[languaje]}</p>
         </section>
       </MainBanner>
