@@ -1,14 +1,13 @@
-import React from "react";
-import BackgroundAnimated from "../BackgroundAnimated";
-import CardComments from "../CardComments";
-import Footer from "../Footer";
-import Header from "../Header";
-import MainBanner from "../MainBanner";
+import React, { useContext } from "react";
+import BackgroundAnimated from "../../layout/BackgroundAnimated";
+import CardComments from "../../components/CardComments";
+import Footer from "../../layout/Footer";
+import Header from "../../layout/Header";
+import MainBanner from "../../components/MainBanner";
 import { COLORS, RECENT_WORKS, ROUTES } from "../../utils/constants";
 import { convertColor } from "../../utils";
 import { experiencesList, mainDescription, recentWorksSubTitle } from "./data";
 import { LanguajeAppContext } from "../../context/languaje";
-import { useContext } from "react";
 import "./RecentWorks.style.scss";
 
 const RecentWorks = () => {
@@ -27,10 +26,7 @@ const RecentWorks = () => {
           <h2 style={{ color: colorFormatted }}>
             {recentWorksSubTitle[languaje]}
           </h2>
-          <section
-            className="recent-works__container 
-kromac-scroll-bg-dark"
-          >
+          <section className="recent-works__container kromac-scroll-bg-dark">
             {experiencesList.map((experience, index) => (
               <CardComments
                 key={index}

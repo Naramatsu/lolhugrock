@@ -43,7 +43,7 @@ import {
   formBoostingRank,
   formNetWinsRank,
   formPlacementsRank,
-} from "../components/BoostingSection/data";
+} from "../layout/BoostingSection/data";
 import {
   ANYFILL,
   COLORS,

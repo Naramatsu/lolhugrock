@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
-import Banner from "../Banner";
-import Header from "../Header";
-import Footer from "../Footer";
-import MainBanner from "../MainBanner";
-import { COLORS, ROUTES } from "../../utils/constants";
+import Banner from "../../components/Banner";
+import Header from "../../layout/Header";
+import Footer from "../../layout/Footer";
+import MainBanner from "../../components/MainBanner";
 import {
   bannerMision,
   bannerSecurity,
@@ -14,8 +13,9 @@ import {
   text3,
   title,
 } from "./data";
-import { LanguajeAppContext } from "../../context/languaje";
+import { COLORS, ROUTES } from "../../utils/constants";
 import { convertColor } from "../../utils";
+import { LanguajeAppContext } from "../../context/languaje";
 import "./AboutUs.style.scss";
 
 const AboutUs = () => {

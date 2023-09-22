@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import CardPlan from "../CardPlan";
+import CardPlan from "../../components/CardPlan";
 import logo from "../../assets/Logo.png";
-import Title from "../Title";
+import Title from "../../components/Title";
 import { HOME_TITLE } from "../../utils/constants";
 import { LanguajeAppContext } from "../../context/languaje";
 import { plans } from "./data";

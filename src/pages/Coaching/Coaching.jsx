@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import BackgroundAnimated from "../BackgroundAnimated";
-import CardCoach from "../CardCoach";
-import Footer from "../Footer";
-import GridLayout from "../GridLayout";
-import Header from "../Header";
-import MainBanner from "../MainBanner";
+import BackgroundAnimated from "../../layout/BackgroundAnimated";
+import CardCoach from "../../components/CardCoach";
+import Footer from "../../layout/Footer";
+import GridLayout from "../../layout/GridLayout";
+import Header from "../../layout/Header";
+import MainBanner from "../../components/MainBanner";
 import { coachesList, mainDescription, ourCoachsTitle } from "./data";
 import { COLORS, ROUTES, TITLES } from "../../utils/constants";
 import { convertColor } from "../../utils";
