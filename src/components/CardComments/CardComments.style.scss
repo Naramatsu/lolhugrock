@@ -1,0 +1,65 @@
+@import "../../utils/variables.scss";
+
+.card-comments__box {
+  @include cardBox;
+  margin: auto 20px;
+
+  .card-comments {
+    @include card-coach-glass-style(300px, 400px);
+    @include bd-blur-gradient;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .card-comments__elements {
+    @include card-coach-glass-style(100px, 100px);
+    @include cardBoxElements;
+    left: 0;
+
+    &.text {
+      width: 100%;
+      left: 0;
+    }
+
+    &.img {
+      left: 0;
+      margin: auto;
+      right: 0;
+
+      svg {
+        width: 70%;
+        height: 100%;
+        color: var(--cl);
+        filter: drop-shadow($box-shadow25);
+      }
+    }
+  }
+}
+
+@media (max-width: 440px) {
+  .card-comments__box {
+    .card-comments__elements {
+      &.bg {
+        height: 70px;
+        width: 70px;
+
+        .quote {
+          font-size: 40px;
+        }
+      }
+      &.img {
+        left: 50%;
+        transform: translate(-50%, -25%);
+      }
+
+      &.bg,
+      &.text {
+        left: 0;
+      }
+
+      &.text {
+        margin: 0px 22px;
+      }
+    }
+  }
+}
