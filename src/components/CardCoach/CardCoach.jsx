@@ -13,7 +13,7 @@ import {
 } from "./data";
 import {
   currencyFormat,
-  imgBuilder,
+  summonerAndLaneImgBuilder,
   isSelected,
   titlOptions,
   translateToEn,
@@ -23,7 +23,7 @@ import { LanguajeAppContext } from "../../context/languaje";
 import { USD } from "../../utils/constants";
 import "./CardCoach.style.scss";
 
-const options = titlOptions();
+const options = titlOptions({ max: 10 });
 
 const typeFormated = (type, languaje) => coachingType[type][languaje];
 
@@ -57,13 +57,11 @@ const CardCoach = ({ color, data }) => {
     );
   }, [coachHours, currency, coachTypeTranslated]);
 
-  const handlerAddHours = () => {
-    if (coachHours < 24) setCoachHours(coachHours + 1);
-  };
+  const handlerAddHours = () =>
+    coachHours < 24 && setCoachHours(coachHours + 1);
 
-  const handlerReduceHours = () => {
-    if (coachHours > 0) setCoachHours(coachHours - 1);
-  };
+  const handlerReduceHours = () =>
+    coachHours > 0 && setCoachHours(coachHours - 1);
 
   return (
     <section
@@ -81,7 +79,12 @@ const CardCoach = ({ color, data }) => {
       <section className="card-coaching__elements name">
         <p>{name}</p>
         {lanes.map((lane, index) => (
-          <img key={index} className="lane" src={imgBuilder(lane)} alt="lane" />
+          <img
+            key={index}
+            className="lane"
+            src={summonerAndLaneImgBuilder(lane)}
+            alt="lane"
+          />
         ))}
       </section>
       <section className="card-coaching__elements text">

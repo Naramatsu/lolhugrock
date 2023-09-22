@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import VanillaTilt from "vanilla-tilt";
 import { FaUserSecret } from "react-icons/fa";
-import "./CardComments.style.scss";
 import { titlOptions } from "../../utils";
+import "./CardComments.style.scss";
 
 const options = titlOptions();
 

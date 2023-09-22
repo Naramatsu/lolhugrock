@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { imgBuilder } from "../../utils";
-import { useHistory } from "react-router-dom";
 import { ANYFILL, FILLED } from "../../utils/constants";
+import { summonerAndLaneImgBuilder } from "../../utils";
+import { useHistory } from "react-router-dom";
 import "./SelectCustom.style.scss";
 
 const isFilled = (item) => {
@@ -51,7 +51,9 @@ const SelectCustom = ({
   return (
     <section className="select__custom">
       {!noLabel && <label>{label}</label>}
-      {!noImage && <img src={imgBuilder(optionSelected)} alt="roll" />}
+      {!noImage && (
+        <img src={summonerAndLaneImgBuilder(optionSelected)} alt="roll" />
+      )}
       <section className="select__section__options">
         <label className="select__arrow"></label>
         <select

@@ -1,10 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
-import { isSelected } from "../../utils";
-import SelectCustom from "../SelectCustom/SelectCustom";
-import Panel from "../Panel/Panel";
+import Panel from "../Panel";
+import SelectCustom from "../SelectCustom";
 import Toggle from "kromac-ui-18/dist/Toggle";
 import { ANYFILL, FORM_TYPES, IS_FREE } from "../../utils/constants";
 import { FormAppContext } from "../../context/form";
+import { isSelected } from "../../utils";
 import { LanguajeAppContext } from "../../context/languaje";
 import { useHistory } from "react-router-dom";
 import "./PreferencePanel.style.scss";

@@ -62,15 +62,13 @@ const CardDivision = ({
 
   const color = divisionsConfig[divisionSelected].color;
 
-  const handlerAddGames = () => {
-    if (nroGames < max)
-      addPreferences(PREFERENCES_PROPERTIES.NRO_GAMES, nroGames + 1);
-  };
+  const handlerAddGames = () =>
+    nroGames < max &&
+    addPreferences(PREFERENCES_PROPERTIES.NRO_GAMES, nroGames + 1);
 
-  const handlerReduceGames = () => {
-    if (nroGames > 0)
-      addPreferences(PREFERENCES_PROPERTIES.NRO_GAMES, nroGames - 1);
-  };
+  const handlerReduceGames = () =>
+    nroGames > 0 &&
+    addPreferences(PREFERENCES_PROPERTIES.NRO_GAMES, nroGames - 1);
 
   return (
     <>

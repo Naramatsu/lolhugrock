@@ -1,5 +1,12 @@
 @import "../../utils/variables.scss";
 
+.flexBox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
 .banner__main {
   @include background-img;
   padding-top: 150px;
@@ -22,19 +29,13 @@
   }
 
   .cardinfo__group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between;
+    @extend .flexBox;
     margin-top: 120px;
   }
 
   .banner__description,
   .aboutus__description {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between;
+    @extend .flexBox;
     margin-top: 300px;
 
     p,

@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import BackgroundAnimated from "../BackgroundAnimated/BackgroundAnimated";
-import CardDivision from "../../components/CardDivision/CardDivision";
-import Footer from "../Footer/Footer";
-import GridLayout from "../GridLayout/GridLayout";
-import OrderSummary from "../../components/OrderSummary/OrderSummary";
-import Panel from "../../components/Panel/Panel";
-import PreferencePanel from "../../components/PreferencePanel/PreferencePanel";
+import BackgroundAnimated from "../BackgroundAnimated";
+import CardDivision from "../../components/CardDivision";
+import Footer from "../Footer";
+import GridLayout from "../GridLayout";
+import OrderSummary from "../../components/OrderSummary";
+import Panel from "../../components/Panel";
+import PreferencePanel from "../../components/PreferencePanel";
 import { convertColor, formRankBuilder } from "../../utils";
 import { formAdditionalPreferences, formPreferences } from "./data";
 import { LanguajeAppContext } from "../../context/languaje";

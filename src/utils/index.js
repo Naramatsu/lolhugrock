@@ -50,6 +50,7 @@ import {
   COP,
   FORM_PREFERENCES_NAMES_EN,
   FORM_PREFERENCES_NAMES_ES,
+  LEAGUES,
   TITLES,
   coachTypes,
   highElo,
@@ -78,7 +79,7 @@ export const convertColor = (color) => {
 export const isSelected = (selected, actualItem) =>
   selected === actualItem ? "selected" : "";
 
-export const imgBuilder = (option) => {
+export const summonerAndLaneImgBuilder = (option) => {
   switch (option) {
     case "Flash":
       return Flash;
@@ -142,23 +143,23 @@ export const divisionImgBuilder = (option) => {
 
 export const divisionFrameBuilder = (option) => {
   switch (option) {
-    case "Iron":
+    case LEAGUES.Iron:
       return IronFrame;
-    case "Bronze":
+    case LEAGUES.Bronze:
       return BronzeFrame;
-    case "Silver":
+    case LEAGUES.Silver:
       return SilverFrame;
-    case "Gold":
+    case LEAGUES.Gold:
       return GoldFrame;
-    case "Platinum":
+    case LEAGUES.Platinum:
       return PlatinumFrame;
-    case "Diamond":
+    case LEAGUES.Diamond:
       return DiamondFrame;
-    case "Master":
+    case LEAGUES.Master:
       return MasterFrame;
-    case "GrandMaster":
+    case LEAGUES.GrandMaster:
       return GrandMasterFrame;
-    case "Challenger":
+    case LEAGUES.Challenger:
       return ChallengerFrame;
     default:
       return "";
@@ -371,23 +372,23 @@ export const decryptData = (text) => {
 
 export const divisionCredits = (option) => {
   switch (option) {
-    case "Iron":
+    case LEAGUES.Iron:
       return encryptData(process.env.REACT_APP_CREDIT_IRON);
-    case "Bronze":
+    case LEAGUES.Bronze:
       return encryptData(process.env.REACT_APP_CREDIT_BRONZE);
-    case "Silver":
+    case LEAGUES.Silver:
       return encryptData(process.env.REACT_APP_CREDIT_SILVER);
-    case "Gold":
+    case LEAGUES.Gold:
       return encryptData(process.env.REACT_APP_CREDIT_GOLD);
-    case "Platinum":
+    case LEAGUES.Platinum:
       return encryptData(process.env.REACT_APP_CREDIT_PLATINUM);
-    case "Diamond":
+    case LEAGUES.Diamond:
       return encryptData(process.env.REACT_APP_CREDIT_DIAMOND);
-    case "Master":
+    case LEAGUES.Master:
       return encryptData(process.env.REACT_APP_CREDIT_MASTER);
-    case "GrandMaster":
+    case LEAGUES.GrandMaster:
       return encryptData(process.env.REACT_APP_CREDIT_GRANDMASTER);
-    case "Challenger":
+    case LEAGUES.Challenger:
       return encryptData(process.env.REACT_APP_CREDIT_CHALLENGER);
     default:
       return 0;
@@ -454,33 +455,60 @@ export const coachCredits = (name, type, currency) => {
 };
 
 export const steps = [
-  { league: "Iron IV", credits: divisionCredits("Iron") },
-  { league: "Iron III", credits: divisionCredits("Iron") },
-  { league: "Iron II", credits: divisionCredits("Iron") },
-  { league: "Iron I", credits: divisionCredits("Iron") },
-  { league: "Bronze IV", credits: divisionCredits("Bronze") },
-  { league: "Bronze III", credits: divisionCredits("Bronze") },
-  { league: "Bronze II", credits: divisionCredits("Bronze") },
-  { league: "Bronze I", credits: divisionCredits("Bronze") },
-  { league: "Silver IV", credits: divisionCredits("Silver") },
-  { league: "Silver III", credits: divisionCredits("Silver") },
-  { league: "Silver II", credits: divisionCredits("Silver") },
-  { league: "Silver I", credits: divisionCredits("Silver") },
-  { league: "Gold IV", credits: divisionCredits("Gold") },
-  { league: "Gold III", credits: divisionCredits("Gold") },
-  { league: "Gold II", credits: divisionCredits("Gold") },
-  { league: "Gold I", credits: divisionCredits("Gold") },
-  { league: "Platinum IV", credits: divisionCredits("Platinum") },
-  { league: "Platinum III", credits: divisionCredits("Platinum") },
-  { league: "Platinum II", credits: divisionCredits("Platinum") },
-  { league: "Platinum I", credits: divisionCredits("Platinum") },
-  { league: "Diamond IV", credits: divisionCredits("Diamond") },
-  { league: "Diamond III", credits: divisionCredits("Diamond") },
-  { league: "Diamond II", credits: divisionCredits("Diamond") },
-  { league: "Diamond I", credits: divisionCredits("Diamond") },
-  { league: "Master", credits: divisionCredits("Master") },
-  { league: "GrandMaster", credits: divisionCredits("GrandMaster") },
-  { league: "Challenger", credits: divisionCredits("Challenger") },
+  { league: `${LEAGUES.Iron} IV`, credits: divisionCredits(LEAGUES.Iron) },
+  { league: `${LEAGUES.Iron} III`, credits: divisionCredits(LEAGUES.Iron) },
+  { league: `${LEAGUES.Iron} II`, credits: divisionCredits(LEAGUES.Iron) },
+  { league: `${LEAGUES.Iron} I`, credits: divisionCredits(LEAGUES.Iron) },
+  { league: `${LEAGUES.Bronze} IV`, credits: divisionCredits(LEAGUES.Bronze) },
+  { league: `${LEAGUES.Bronze} III`, credits: divisionCredits(LEAGUES.Bronze) },
+  { league: `${LEAGUES.Bronze} II`, credits: divisionCredits(LEAGUES.Bronze) },
+  { league: `${LEAGUES.Bronze} I`, credits: divisionCredits(LEAGUES.Bronze) },
+  { league: `${LEAGUES.Silver} IV`, credits: divisionCredits(LEAGUES.Silver) },
+  { league: `${LEAGUES.Silver} III`, credits: divisionCredits(LEAGUES.Silver) },
+  { league: `${LEAGUES.Silver} II`, credits: divisionCredits(LEAGUES.Silver) },
+  { league: `${LEAGUES.Silver} I`, credits: divisionCredits(LEAGUES.Silver) },
+  { league: `${LEAGUES.Gold} IV`, credits: divisionCredits(LEAGUES.Gold) },
+  { league: `${LEAGUES.Gold} III`, credits: divisionCredits(LEAGUES.Gold) },
+  { league: `${LEAGUES.Gold} II`, credits: divisionCredits(LEAGUES.Gold) },
+  { league: `${LEAGUES.Gold} I`, credits: divisionCredits(LEAGUES.Gold) },
+  {
+    league: `${LEAGUES.Platinum} IV`,
+    credits: divisionCredits(LEAGUES.Platinum),
+  },
+  {
+    league: `${LEAGUES.Platinum} III`,
+    credits: divisionCredits(LEAGUES.Platinum),
+  },
+  {
+    league: `${LEAGUES.Platinum} II`,
+    credits: divisionCredits(LEAGUES.Platinum),
+  },
+  {
+    league: `${LEAGUES.Platinum} I`,
+    credits: divisionCredits(LEAGUES.Platinum),
+  },
+  {
+    league: `${LEAGUES.Diamond} IV`,
+    credits: divisionCredits(LEAGUES.Diamond),
+  },
+  {
+    league: `${LEAGUES.Diamond} III`,
+    credits: divisionCredits(LEAGUES.Diamond),
+  },
+  {
+    league: `${LEAGUES.Diamond} II`,
+    credits: divisionCredits(LEAGUES.Diamond),
+  },
+  { league: `${LEAGUES.Diamond} I`, credits: divisionCredits(LEAGUES.Diamond) },
+  { league: `${LEAGUES.Master}`, credits: divisionCredits(LEAGUES.Master) },
+  {
+    league: `${LEAGUES.GrandMaster}`,
+    credits: divisionCredits(LEAGUES.GrandMaster),
+  },
+  {
+    league: `${LEAGUES.Challenger}`,
+    credits: divisionCredits(LEAGUES.Challenger),
+  },
 ];
 
 export const divisionFormat = (league, division) => {
@@ -505,16 +533,13 @@ export const calculateCreditsByDivisions = (rank, desired) => {
   const desiredIndex = steps.findIndex(
     (step) => step.league === desiredFormatted
   );
-  if (highElo.includes(desired.league)) {
+  if (highElo.includes(desired.league))
     return (
       (Math.round(parseFloat(decryptData(steps[desiredIndex]?.credits))) / 4) *
       desired?.lps
     );
-  }
 
-  if (rankIndex > desiredIndex) {
-    return 0;
-  }
+  if (rankIndex > desiredIndex) return 0;
 
   for (let i = rankIndex + 1; i <= desiredIndex; i++) {
     total =

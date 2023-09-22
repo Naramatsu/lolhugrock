@@ -1,5 +1,17 @@
 import { ENGLISH, SPANISH } from "../context/languaje/types";
 
+export const LEAGUES = {
+  Iron: "Iron",
+  Bronze: "Bronze",
+  Silver: "Silver",
+  Gold: "Gold",
+  Platinum: "Platinum",
+  Diamond: "Diamond",
+  Master: "Master",
+  GrandMaster: "GrandMaster",
+  Challenger: "Challenger",
+};
+
 export const ROUTES = {
   BOOSTING: "/boosting",
   DIVISIONBOOST: "/boosting/divisionboost",
@@ -117,6 +129,11 @@ export const PREFERENCES_PROPERTIES = {
   LP_GAIN: "lpGain",
 };
 
+export const QUEUES = {
+  SOLO: "Solo Queue",
+  FLEX: "Flex Queue",
+};
+
 export const SEE_PLANS = {
   [SPANISH]: "Ver Planes",
   [ENGLISH]: "See Plans",
@@ -160,7 +177,11 @@ export const IS_FREE = {
 export const USD = "USD";
 export const COP = "COP";
 
-export const highElo = ["Master", "GrandMaster", "Challenger"];
+export const highElo = [
+  LEAGUES.Master,
+  LEAGUES.GrandMaster,
+  LEAGUES.Challenger,
+];
 
 export const SERVERS = {
   LAN: "LAN",

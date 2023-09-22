@@ -4,6 +4,7 @@ import {
   FORM_PREFERENCES_NAMES_EN,
   FORM_PREFERENCES_NAMES_ES,
   FORM_TYPES,
+  QUEUES,
   SERVERS,
 } from "../../utils/constants";
 import { champions } from "./allChamps";
@@ -56,8 +57,8 @@ export const formPreferences = [
       [ENGLISH]: FORM_PREFERENCES_NAMES_EN.QUEUE,
     },
     items: [
-      { value: "Solo Queue", name: "Solo Queue" },
-      { value: "Flex Queue", name: "Flex Queue" },
+      { value: QUEUES.SOLO, name: QUEUES.SOLO },
+      { value: QUEUES.FLEX, name: QUEUES.FLEX },
     ],
   },
   {
