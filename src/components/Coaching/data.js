@@ -1,5 +1,6 @@
 import { ENGLISH, SPANISH } from "../../context/languaje/types";
-import { COP, USD } from "../../utils/constants";
+import { coachCredits, coaches, decryptData } from "../../utils";
+import { COP, USD, coachTypes } from "../../utils/constants";
 
 export const mainDescription = {
   [SPANISH]: `Las clases de coaching se hacen por discord o a preferencia del cliente, tiene una duracion de 1 hora por clase, para coordinar el horario se hace un grupo de whatsapp y siempre nos adaptamos a los horarios del cliente.`,
@@ -18,12 +19,28 @@ export const coachesList = [
     img: "https://cdn.wallpapersafari.com/64/44/gYwV8P.jpg",
     creditCost: {
       single: {
-        [USD]: 1,
-        [COP]: 1200,
+        [COP]: Math.round(
+          parseFloat(
+            decryptData(coachCredits(coaches.JUJO, coachTypes.SINGLE, COP))
+          )
+        ),
+        [USD]: Math.round(
+          parseFloat(
+            decryptData(coachCredits(coaches.JUJO, coachTypes.SINGLE, USD))
+          )
+        ),
       },
       team: {
-        [USD]: 2,
-        [COP]: 2400,
+        [COP]: Math.round(
+          parseFloat(
+            decryptData(coachCredits(coaches.JUJO, coachTypes.TEAM, COP))
+          )
+        ),
+        [USD]: Math.round(
+          parseFloat(
+            decryptData(coachCredits(coaches.JUJO, coachTypes.TEAM, USD))
+          )
+        ),
       },
     },
     description: {
@@ -39,12 +56,28 @@ export const coachesList = [
     img: "https://cdn.wallpapersafari.com/64/44/gYwV8P.jpg",
     creditCost: {
       single: {
-        [USD]: 1,
-        [COP]: 1200,
+        [COP]: Math.round(
+          parseFloat(
+            decryptData(coachCredits(coaches.HOBBLER, coachTypes.SINGLE, COP))
+          )
+        ),
+        [USD]: Math.round(
+          parseFloat(
+            decryptData(coachCredits(coaches.HOBBLER, coachTypes.SINGLE, USD))
+          )
+        ),
       },
       team: {
-        [USD]: 2,
-        [COP]: 2400,
+        [COP]: Math.round(
+          parseFloat(
+            decryptData(coachCredits(coaches.HOBBLER, coachTypes.TEAM, COP))
+          )
+        ),
+        [USD]: Math.round(
+          parseFloat(
+            decryptData(coachCredits(coaches.HOBBLER, coachTypes.TEAM, USD))
+          )
+        ),
       },
     },
     description: {
@@ -60,12 +93,28 @@ export const coachesList = [
     img: "https://cdn.wallpapersafari.com/64/44/gYwV8P.jpg",
     creditCost: {
       single: {
-        [USD]: 1,
-        [COP]: 1200,
+        [COP]: Math.round(
+          parseFloat(
+            decryptData(coachCredits(coaches.HUGROCK, coachTypes.SINGLE, COP))
+          )
+        ),
+        [USD]: Math.round(
+          parseFloat(
+            decryptData(coachCredits(coaches.HUGROCK, coachTypes.SINGLE, USD))
+          )
+        ),
       },
       team: {
-        [USD]: 2,
-        [COP]: 2400,
+        [COP]: Math.round(
+          parseFloat(
+            decryptData(coachCredits(coaches.HUGROCK, coachTypes.TEAM, COP))
+          )
+        ),
+        [USD]: Math.round(
+          parseFloat(
+            decryptData(coachCredits(coaches.HUGROCK, coachTypes.TEAM, USD))
+          )
+        ),
       },
     },
     description: {

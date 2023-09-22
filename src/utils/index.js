@@ -47,9 +47,11 @@ import {
 import {
   ANYFILL,
   COLORS,
+  COP,
   FORM_PREFERENCES_NAMES_EN,
   FORM_PREFERENCES_NAMES_ES,
   TITLES,
+  coachTypes,
   highElo,
 } from "./constants";
 import { SPANISH } from "../context/languaje/types";
@@ -392,6 +394,65 @@ export const divisionCredits = (option) => {
   }
 };
 
+export const coaches = {
+  JUJO: "Jujo",
+  HOBBLER: "Hobbler",
+  HUGROCK: "Hugrock",
+};
+
+export const coachCredits = (name, type, currency) => {
+  switch (name) {
+    case coaches.JUJO:
+      if (type === coachTypes.SINGLE) {
+        if (currency === COP)
+          return encryptData(
+            process.env.REACT_APP_CREDIT_JUJO_INDIVIDUAL_HOUR_COP
+          );
+        return encryptData(
+          process.env.REACT_APP_CREDIT_JUJO_INDIVIDUAL_HOUR_USD
+        );
+      } else {
+        if (currency === COP)
+          return encryptData(process.env.REACT_APP_CREDIT_JUJO_GROUP_HOUR_COP);
+        return encryptData(process.env.REACT_APP_CREDIT_JUJO_GROUP_HOUR_USD);
+      }
+    case coaches.HOBBLER:
+      if (type === coachTypes.SINGLE) {
+        if (currency === COP)
+          return encryptData(
+            process.env.REACT_APP_CREDIT_HOBBLER_INDIVIDUAL_HOUR_COP
+          );
+        return encryptData(
+          process.env.REACT_APP_CREDIT_HOBBLER_INDIVIDUAL_HOUR_USD
+        );
+      } else {
+        if (currency === COP)
+          return encryptData(
+            process.env.REACT_APP_CREDIT_HOBBLER_GROUP_HOUR_COP
+          );
+        return encryptData(process.env.REACT_APP_CREDIT_HOBBLER_GROUP_HOUR_USD);
+      }
+    case coaches.HUGROCK:
+      if (type === coachTypes.SINGLE) {
+        if (currency === COP)
+          return encryptData(
+            process.env.REACT_APP_CREDIT_HUGROCK_INDIVIDUAL_HOUR_COP
+          );
+        return encryptData(
+          process.env.REACT_APP_CREDIT_HUGROCK_INDIVIDUAL_HOUR_USD
+        );
+      } else {
+        if (currency === COP)
+          return encryptData(
+            process.env.REACT_APP_CREDIT_HUGROCK_GROUP_HOUR_COP
+          );
+        return encryptData(process.env.REACT_APP_CREDIT_HUGROCK_GROUP_HOUR_USD);
+      }
+    default:
+      return 0;
+  }
+};
+
 export const steps = [
   { league: "Iron IV", credits: divisionCredits("Iron") },
   { league: "Iron III", credits: divisionCredits("Iron") },
@@ -556,6 +617,10 @@ export const currencyFormat = (currency) => ({
 });
 
 export const translateToEn = (item) => {
-  if (item === "Inividual" || item === "Single") return "single";
-  return "team";
+  if (
+    item === coachTypes.INDIVIDUAL_CAPITALIZED ||
+    item === coachTypes.SINGLE_CAPITALIZED
+  )
+    return coachTypes.SINGLE;
+  return coachTypes.TEAM;
 };

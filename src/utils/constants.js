@@ -7,6 +7,7 @@ export const ROUTES = {
   NETWINS: "/boosting/netwins",
   COACHING: "/coaching",
   ABOUTUS: "/aboutus",
+  RECENTWORKS: "/works",
 };
 
 export const TITLES = {
@@ -15,7 +16,6 @@ export const TITLES = {
   PLACEMENTS: "Placements",
   NETWINS: "Net Wins",
   COACHING: "Coaching",
-  OUR_COAUCHING: "Nuestros Coachs",
 };
 
 export const CLASSNAMES = {
@@ -180,4 +180,12 @@ export const LEAGUE_COLORS = {
   Master: "#9a3dac",
   GrandMaster: "#652324",
   Challenger: "#02224f",
+};
+
+export const coachTypes = {
+  SINGLE_CAPITALIZED: "Single",
+  SINGLE: "single",
+  INDIVIDUAL_CAPITALIZED: "Inividual",
+  INDIVIDUAL: "inividual",
+  TEAM: "team",
 };
