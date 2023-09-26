@@ -395,6 +395,33 @@ export const divisionCredits = (option) => {
   }
 };
 
+export const preferencesCredits = (option, languaje) => {
+  const FORM_PREFERENCES_NAMES =
+    languaje === SPANISH
+      ? FORM_PREFERENCES_NAMES_ES
+      : FORM_PREFERENCES_NAMES_EN;
+  switch (option) {
+    case FORM_PREFERENCES_NAMES.QUEUE:
+      return encryptData(process.env.REACT_APP_CREDIT_QUEUE);
+    case FORM_PREFERENCES_NAMES.MAIN:
+      return encryptData(process.env.REACT_APP_CREDIT_MAIN_ROL);
+    case FORM_PREFERENCES_NAMES.SECONDARY:
+      return encryptData(process.env.REACT_APP_CREDIT_SECUNDARY_ROL);
+    case "D":
+      return encryptData(process.env.REACT_APP_CREDIT_SUMMONER_D);
+    case "F":
+      return encryptData(process.env.REACT_APP_CREDIT_SUMMONER_F);
+    case FORM_PREFERENCES_NAMES.CHAMPIONS_POOL:
+      return encryptData(process.env.REACT_APP_CREDIT_CHAMPIONS_POOL);
+    case FORM_PREFERENCES_NAMES.DUO_QUEUE:
+      return encryptData(process.env.REACT_APP_CREDIT_DUO_QUEUE);
+    case FORM_PREFERENCES_NAMES.ORDER_PREMIUM:
+      return encryptData(process.env.REACT_APP_CREDIT_ORDER_PREMIUM);
+    default:
+      return 0;
+  }
+};
+
 export const coaches = {
   JUJO: "Jujo",
   HOBBLER: "Hobbler",
@@ -525,6 +552,9 @@ export const calculateCreditsByNroGames = (rank, nroGames) => {
   );
 };
 
+export const calculateCreditsByOtherPreferences = (param, languaje) =>
+  Math.round(parseFloat(decryptData(preferencesCredits(param, languaje))));
+
 export const calculateCreditsByDivisions = (rank, desired) => {
   let total = 0;
   const rankFormatted = divisionFormat(rank.league, rank.division);
@@ -600,23 +630,48 @@ export const calculateCreditsByPreferences = (form, languaje) => {
     );
   }
 
-  if (form[FORM_PREFERENCES_NAMES.QUEUE]) total += 1;
+  if (form[FORM_PREFERENCES_NAMES.QUEUE])
+    total += calculateCreditsByOtherPreferences(
+      FORM_PREFERENCES_NAMES.QUEUE,
+      languaje
+    );
   if (
     form[[FORM_PREFERENCES_NAMES.MAIN]] &&
     form[[FORM_PREFERENCES_NAMES.MAIN]] !== ANYFILL
   )
-    total += 1;
+    total += calculateCreditsByOtherPreferences(
+      FORM_PREFERENCES_NAMES.MAIN,
+      languaje
+    );
   if (
     form[FORM_PREFERENCES_NAMES.SECONDARY] &&
     form[[FORM_PREFERENCES_NAMES.SECONDARY]] !== ANYFILL
   )
-    total += 1;
-  if (form.D && form.D !== ANYFILL) total += 1;
-  if (form.F && form.F !== ANYFILL) total += 1;
+    total += calculateCreditsByOtherPreferences(
+      FORM_PREFERENCES_NAMES.SECONDARY,
+      languaje
+    );
+  if (form.D && form.D !== ANYFILL)
+    total += calculateCreditsByOtherPreferences("D", languaje);
+  if (form.F && form.F !== ANYFILL)
+    total += calculateCreditsByOtherPreferences("F", languaje);
   if (form[FORM_PREFERENCES_NAMES.CHAMPIONS_POOL])
-    total = total + form[FORM_PREFERENCES_NAMES.CHAMPIONS_POOL]?.length;
-  if (form[FORM_PREFERENCES_NAMES.DUO_QUEUE]) total += 1;
-  if (form[FORM_PREFERENCES_NAMES.ORDER_PREMIUM]) total += 1;
+    total +=
+      form[FORM_PREFERENCES_NAMES.CHAMPIONS_POOL]?.length *
+      calculateCreditsByOtherPreferences(
+        FORM_PREFERENCES_NAMES.CHAMPIONS_POOL,
+        languaje
+      );
+  if (form[FORM_PREFERENCES_NAMES.DUO_QUEUE])
+    total += calculateCreditsByOtherPreferences(
+      FORM_PREFERENCES_NAMES.DUO_QUEUE,
+      languaje
+    );
+  if (form[FORM_PREFERENCES_NAMES.ORDER_PREMIUM])
+    total += calculateCreditsByOtherPreferences(
+      FORM_PREFERENCES_NAMES.ORDER_PREMIUM,
+      languaje
+    );
   return total;
 };
 
