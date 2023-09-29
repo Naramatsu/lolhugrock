@@ -1,6 +1,7 @@
 import { ENGLISH, SPANISH } from "../context/languaje/types";
 
 export const LEAGUES = {
+  Unranked: "Unranked",
   Iron: "Iron",
   Bronze: "Bronze",
   Silver: "Silver",

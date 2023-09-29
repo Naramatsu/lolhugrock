@@ -116,25 +116,25 @@ export const summonerAndLaneImgBuilder = (option) => {
 
 export const divisionImgBuilder = (option) => {
   switch (option) {
-    case "Unranked":
+    case LEAGUES.Unranked:
       return Unranked;
-    case "Iron":
+    case LEAGUES.Iron:
       return Iron;
-    case "Bronze":
+    case LEAGUES.Bronze:
       return Bronze;
-    case "Silver":
+    case LEAGUES.Silver:
       return Silver;
-    case "Gold":
+    case LEAGUES.Gold:
       return Gold;
-    case "Platinum":
+    case LEAGUES.Platinum:
       return Platinum;
-    case "Diamond":
+    case LEAGUES.Diamond:
       return Diamond;
-    case "Master":
+    case LEAGUES.Master:
       return Master;
-    case "GrandMaster":
+    case LEAGUES.GrandMaster:
       return GrandMaster;
-    case "Challenger":
+    case LEAGUES.Challenger:
       return Challenger;
     default:
       return All;
@@ -175,6 +175,7 @@ export const titlOptions = (options = {}) => ({
 });
 
 const divisionCondition = (league, item, key) => {
+  if (league === LEAGUES.Unranked) return [item[key]?.league];
   if (highElo.includes(league))
     return [
       item[key]?.league || "",
@@ -278,6 +279,13 @@ export const summaryBuilder = (item, languaje = SPANISH) => {
   return Object.values(result) || [];
 };
 
+export const validateFormCurrentDesiredRank = (type) => {
+  if (highElo.includes(type?.league)) {
+    return type?.lps && type?.lpGain;
+  }
+  return type?.division && type?.lpGroup;
+};
+
 export const isBtnAvailable = (item, formName, languaje) => {
   const FORM_PREFERENCES_NAMES =
     languaje === SPANISH
@@ -286,9 +294,9 @@ export const isBtnAvailable = (item, formName, languaje) => {
   if (
     !item[FORM_PREFERENCES_NAMES.QUEUE] ||
     !item[FORM_PREFERENCES_NAMES.SERVER]
-  ) {
+  )
     return false;
-  }
+
   if (formName === TITLES.DIVISIONBOOST) {
     if (
       calculateCreditsByDivisions(
@@ -298,27 +306,19 @@ export const isBtnAvailable = (item, formName, languaje) => {
     )
       return false;
     if (
-      item[FORM_PREFERENCES_NAMES.CURRENT_RANK]?.league &&
-      (item[FORM_PREFERENCES_NAMES.CURRENT_RANK]?.division ||
-        item[FORM_PREFERENCES_NAMES.CURRENT_RANK]?.lps) &&
-      (item[FORM_PREFERENCES_NAMES.CURRENT_RANK]?.lpGroup ||
-        item[FORM_PREFERENCES_NAMES.CURRENT_RANK]?.lpGain) &&
-      item[FORM_PREFERENCES_NAMES.DESIRED_RANK]?.league &&
-      (item[FORM_PREFERENCES_NAMES.DESIRED_RANK]?.division ||
-        item[FORM_PREFERENCES_NAMES.DESIRED_RANK]?.lps) &&
-      (item[FORM_PREFERENCES_NAMES.DESIRED_RANK]?.lpGroup ||
-        item[FORM_PREFERENCES_NAMES.DESIRED_RANK]?.lpGain)
+      validateFormCurrentDesiredRank(
+        item[FORM_PREFERENCES_NAMES.CURRENT_RANK]
+      ) &&
+      validateFormCurrentDesiredRank(item[FORM_PREFERENCES_NAMES.DESIRED_RANK])
     ) {
       return true;
     }
   }
   if (formName === TITLES.NETWINS) {
     if (
-      item[FORM_PREFERENCES_NAMES.CURRENT_RANK]?.league &&
-      (item[FORM_PREFERENCES_NAMES.CURRENT_RANK]?.division ||
-        item[FORM_PREFERENCES_NAMES.CURRENT_RANK]?.lps) &&
-      (item[FORM_PREFERENCES_NAMES.CURRENT_RANK]?.lpGroup ||
-        item[FORM_PREFERENCES_NAMES.CURRENT_RANK]?.lpGain) &&
+      validateFormCurrentDesiredRank(
+        item[FORM_PREFERENCES_NAMES.CURRENT_RANK]
+      ) &&
       item[FORM_PREFERENCES_NAMES.NUMBER_OF_WINS]?.nroGames > 0
     ) {
       return true;
@@ -326,11 +326,9 @@ export const isBtnAvailable = (item, formName, languaje) => {
   }
   if (formName === TITLES.PLACEMENTS) {
     if (
-      item[FORM_PREFERENCES_NAMES.PREVIOUS_RANK]?.league &&
-      (item[FORM_PREFERENCES_NAMES.PREVIOUS_RANK]?.division ||
-        item[FORM_PREFERENCES_NAMES.PREVIOUS_RANK]?.lps) &&
-      (item[FORM_PREFERENCES_NAMES.PREVIOUS_RANK]?.lpGroup ||
-        item[FORM_PREFERENCES_NAMES.PREVIOUS_RANK]?.lpGain) &&
+      validateFormCurrentDesiredRank(
+        item[FORM_PREFERENCES_NAMES.PREVIOUS_RANK]
+      ) &&
       item[FORM_PREFERENCES_NAMES.NUMBER_OF_GAMES]?.nroGames > 0
     ) {
       return true;
@@ -355,12 +353,11 @@ export const isOrderEmptyValidator = (form = {}) =>
     .map((a) => JSON.stringify(form[a]))
     .every((a) => a === JSON.stringify({}));
 
-export const encryptData = (text) => {
-  return cryptoJS.AES.encrypt(
+export const encryptData = (text) =>
+  cryptoJS.AES.encrypt(
     JSON.stringify(text),
     process.env.REACT_APP_SECRET_PASSWORD
   ).toString();
-};
 
 export const decryptData = (text) => {
   const bytes = cryptoJS.AES.decrypt(
@@ -372,6 +369,8 @@ export const decryptData = (text) => {
 
 export const divisionCredits = (option) => {
   switch (option) {
+    case LEAGUES.Unranked:
+      return encryptData(process.env.REACT_APP_CREDIT_UNRANKED);
     case LEAGUES.Iron:
       return encryptData(process.env.REACT_APP_CREDIT_IRON);
     case LEAGUES.Bronze:
@@ -428,60 +427,59 @@ export const coaches = {
   HUGROCK: "Hugrock",
 };
 
+export const validateCoachCreditsByTypeAndCurrency = (
+  type,
+  currency,
+  creditSingleCOP,
+  creditSingleUSD,
+  creditTeamCOP,
+  creditTeamUSD
+) => {
+  if (type === coachTypes.SINGLE) {
+    if (currency === COP) return encryptData(creditSingleCOP);
+    return encryptData(creditSingleUSD);
+  } else {
+    if (currency === COP) return encryptData(creditTeamCOP);
+    return encryptData(creditTeamUSD);
+  }
+};
+
 export const coachCredits = (name, type, currency) => {
   switch (name) {
     case coaches.JUJO:
-      if (type === coachTypes.SINGLE) {
-        if (currency === COP)
-          return encryptData(
-            process.env.REACT_APP_CREDIT_JUJO_INDIVIDUAL_HOUR_COP
-          );
-        return encryptData(
-          process.env.REACT_APP_CREDIT_JUJO_INDIVIDUAL_HOUR_USD
-        );
-      } else {
-        if (currency === COP)
-          return encryptData(process.env.REACT_APP_CREDIT_JUJO_GROUP_HOUR_COP);
-        return encryptData(process.env.REACT_APP_CREDIT_JUJO_GROUP_HOUR_USD);
-      }
+      return validateCoachCreditsByTypeAndCurrency(
+        type,
+        currency,
+        process.env.REACT_APP_CREDIT_JUJO_INDIVIDUAL_HOUR_COP,
+        process.env.REACT_APP_CREDIT_JUJO_INDIVIDUAL_HOUR_USD,
+        process.env.REACT_APP_CREDIT_JUJO_GROUP_HOUR_COP,
+        process.env.REACT_APP_CREDIT_JUJO_GROUP_HOUR_USD
+      );
     case coaches.HOBBLER:
-      if (type === coachTypes.SINGLE) {
-        if (currency === COP)
-          return encryptData(
-            process.env.REACT_APP_CREDIT_HOBBLER_INDIVIDUAL_HOUR_COP
-          );
-        return encryptData(
-          process.env.REACT_APP_CREDIT_HOBBLER_INDIVIDUAL_HOUR_USD
-        );
-      } else {
-        if (currency === COP)
-          return encryptData(
-            process.env.REACT_APP_CREDIT_HOBBLER_GROUP_HOUR_COP
-          );
-        return encryptData(process.env.REACT_APP_CREDIT_HOBBLER_GROUP_HOUR_USD);
-      }
+      return validateCoachCreditsByTypeAndCurrency(
+        type,
+        currency,
+        process.env.REACT_APP_CREDIT_HOBBLER_INDIVIDUAL_HOUR_COP,
+        process.env.REACT_APP_CREDIT_HOBBLER_INDIVIDUAL_HOUR_USD,
+        process.env.REACT_APP_CREDIT_HOBBLER_GROUP_HOUR_COP,
+        process.env.REACT_APP_CREDIT_HOBBLER_GROUP_HOUR_USD
+      );
     case coaches.HUGROCK:
-      if (type === coachTypes.SINGLE) {
-        if (currency === COP)
-          return encryptData(
-            process.env.REACT_APP_CREDIT_HUGROCK_INDIVIDUAL_HOUR_COP
-          );
-        return encryptData(
-          process.env.REACT_APP_CREDIT_HUGROCK_INDIVIDUAL_HOUR_USD
-        );
-      } else {
-        if (currency === COP)
-          return encryptData(
-            process.env.REACT_APP_CREDIT_HUGROCK_GROUP_HOUR_COP
-          );
-        return encryptData(process.env.REACT_APP_CREDIT_HUGROCK_GROUP_HOUR_USD);
-      }
+      return validateCoachCreditsByTypeAndCurrency(
+        type,
+        currency,
+        process.env.REACT_APP_CREDIT_HUGROCK_INDIVIDUAL_HOUR_COP,
+        process.env.REACT_APP_CREDIT_HUGROCK_INDIVIDUAL_HOUR_USD,
+        process.env.REACT_APP_CREDIT_HUGROCK_GROUP_HOUR_COP,
+        process.env.REACT_APP_CREDIT_HUGROCK_GROUP_HOUR_USD
+      );
     default:
       return 0;
   }
 };
 
 export const steps = [
+  { league: LEAGUES.Unranked, credits: divisionCredits(LEAGUES.Unranked) },
   { league: `${LEAGUES.Iron} IV`, credits: divisionCredits(LEAGUES.Iron) },
   { league: `${LEAGUES.Iron} III`, credits: divisionCredits(LEAGUES.Iron) },
   { league: `${LEAGUES.Iron} II`, credits: divisionCredits(LEAGUES.Iron) },
@@ -527,13 +525,13 @@ export const steps = [
     credits: divisionCredits(LEAGUES.Diamond),
   },
   { league: `${LEAGUES.Diamond} I`, credits: divisionCredits(LEAGUES.Diamond) },
-  { league: `${LEAGUES.Master}`, credits: divisionCredits(LEAGUES.Master) },
+  { league: LEAGUES.Master, credits: divisionCredits(LEAGUES.Master) },
   {
-    league: `${LEAGUES.GrandMaster}`,
+    league: LEAGUES.GrandMaster,
     credits: divisionCredits(LEAGUES.GrandMaster),
   },
   {
-    league: `${LEAGUES.Challenger}`,
+    league: LEAGUES.Challenger,
     credits: divisionCredits(LEAGUES.Challenger),
   },
 ];
@@ -556,6 +554,7 @@ export const calculateCreditsByOtherPreferences = (param, languaje) =>
   Math.round(parseFloat(decryptData(preferencesCredits(param, languaje))));
 
 export const calculateCreditsByDivisions = (rank, desired) => {
+  if (rank.league === LEAGUES.Unranked) return 0;
   let total = 0;
   const rankFormatted = divisionFormat(rank.league, rank.division);
   const rankIndex = steps.findIndex((step) => step.league === rankFormatted);
@@ -566,7 +565,7 @@ export const calculateCreditsByDivisions = (rank, desired) => {
   if (highElo.includes(desired.league))
     return (
       (Math.round(parseFloat(decryptData(steps[desiredIndex]?.credits))) / 4) *
-      desired?.lps
+        desired?.lps || 0
     );
 
   if (rankIndex > desiredIndex) return 0;
@@ -585,16 +584,8 @@ export const calculateCreditsByPreferences = (form, languaje) => {
       : FORM_PREFERENCES_NAMES_EN;
   let total = 0;
   if (
-    form[FORM_PREFERENCES_NAMES.CURRENT_RANK]?.league &&
-    (form[FORM_PREFERENCES_NAMES.CURRENT_RANK]?.division ||
-      form[FORM_PREFERENCES_NAMES.CURRENT_RANK]?.lps) &&
-    (form[FORM_PREFERENCES_NAMES.CURRENT_RANK]?.lpGroup ||
-      form[FORM_PREFERENCES_NAMES.CURRENT_RANK]?.lpGain) &&
-    form[FORM_PREFERENCES_NAMES.DESIRED_RANK]?.league &&
-    (form[FORM_PREFERENCES_NAMES.DESIRED_RANK]?.division ||
-      form[FORM_PREFERENCES_NAMES.DESIRED_RANK]?.lps) &&
-    (form[FORM_PREFERENCES_NAMES.DESIRED_RANK]?.lpGroup ||
-      form[FORM_PREFERENCES_NAMES.DESIRED_RANK]?.lpGain)
+    validateFormCurrentDesiredRank(form[FORM_PREFERENCES_NAMES.CURRENT_RANK]) &&
+    validateFormCurrentDesiredRank(form[FORM_PREFERENCES_NAMES.DESIRED_RANK])
   ) {
     total += calculateCreditsByDivisions(
       form[FORM_PREFERENCES_NAMES.CURRENT_RANK],
@@ -603,11 +594,7 @@ export const calculateCreditsByPreferences = (form, languaje) => {
   }
 
   if (
-    form[FORM_PREFERENCES_NAMES.CURRENT_RANK]?.league &&
-    (form[FORM_PREFERENCES_NAMES.CURRENT_RANK]?.division ||
-      form[FORM_PREFERENCES_NAMES.CURRENT_RANK]?.lps) &&
-    (form[FORM_PREFERENCES_NAMES.CURRENT_RANK]?.lpGroup ||
-      form[FORM_PREFERENCES_NAMES.CURRENT_RANK]?.lpGain) &&
+    validateFormCurrentDesiredRank(form[FORM_PREFERENCES_NAMES.CURRENT_RANK]) &&
     form[FORM_PREFERENCES_NAMES.NUMBER_OF_WINS]?.nroGames > 0
   ) {
     total += calculateCreditsByNroGames(
@@ -617,11 +604,9 @@ export const calculateCreditsByPreferences = (form, languaje) => {
   }
 
   if (
-    form[FORM_PREFERENCES_NAMES.PREVIOUS_RANK]?.league &&
-    (form[FORM_PREFERENCES_NAMES.PREVIOUS_RANK]?.division ||
-      form[FORM_PREFERENCES_NAMES.PREVIOUS_RANK]?.lps) &&
-    (form[FORM_PREFERENCES_NAMES.PREVIOUS_RANK]?.lpGroup ||
-      form[FORM_PREFERENCES_NAMES.PREVIOUS_RANK]?.lpGain) &&
+    validateFormCurrentDesiredRank(
+      form[FORM_PREFERENCES_NAMES.PREVIOUS_RANK]
+    ) &&
     form[FORM_PREFERENCES_NAMES.NUMBER_OF_GAMES]?.nroGames > 0
   ) {
     total += calculateCreditsByNroGames(
@@ -635,6 +620,7 @@ export const calculateCreditsByPreferences = (form, languaje) => {
       FORM_PREFERENCES_NAMES.QUEUE,
       languaje
     );
+
   if (
     form[[FORM_PREFERENCES_NAMES.MAIN]] &&
     form[[FORM_PREFERENCES_NAMES.MAIN]] !== ANYFILL
@@ -643,6 +629,7 @@ export const calculateCreditsByPreferences = (form, languaje) => {
       FORM_PREFERENCES_NAMES.MAIN,
       languaje
     );
+
   if (
     form[FORM_PREFERENCES_NAMES.SECONDARY] &&
     form[[FORM_PREFERENCES_NAMES.SECONDARY]] !== ANYFILL
@@ -651,10 +638,13 @@ export const calculateCreditsByPreferences = (form, languaje) => {
       FORM_PREFERENCES_NAMES.SECONDARY,
       languaje
     );
+
   if (form.D && form.D !== ANYFILL)
     total += calculateCreditsByOtherPreferences("D", languaje);
+
   if (form.F && form.F !== ANYFILL)
     total += calculateCreditsByOtherPreferences("F", languaje);
+
   if (form[FORM_PREFERENCES_NAMES.CHAMPIONS_POOL])
     total +=
       form[FORM_PREFERENCES_NAMES.CHAMPIONS_POOL]?.length *
@@ -662,11 +652,13 @@ export const calculateCreditsByPreferences = (form, languaje) => {
         FORM_PREFERENCES_NAMES.CHAMPIONS_POOL,
         languaje
       );
+
   if (form[FORM_PREFERENCES_NAMES.DUO_QUEUE])
     total += calculateCreditsByOtherPreferences(
       FORM_PREFERENCES_NAMES.DUO_QUEUE,
       languaje
     );
+
   if (form[FORM_PREFERENCES_NAMES.ORDER_PREMIUM])
     total += calculateCreditsByOtherPreferences(
       FORM_PREFERENCES_NAMES.ORDER_PREMIUM,
