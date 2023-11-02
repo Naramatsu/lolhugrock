@@ -1,5 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useRef, useState, useContext } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+  useContext,
+} from "react";
 import Counter from "../Counter";
 import SelectCurrency from "../SelectCurrency";
 import VanillaTilt from "vanilla-tilt";
@@ -57,11 +63,15 @@ const CardCoach = ({ color, data }) => {
     );
   }, [coachHours, currency, coachTypeTranslated]);
 
-  const handlerAddHours = () =>
-    coachHours < 24 && setCoachHours(coachHours + 1);
+  const handlerAddHours = useCallback(
+    () =>
+      coachHours < 24 && setCoachHours((prevCoachHours) => prevCoachHours + 1)
+  );
 
-  const handlerReduceHours = () =>
-    coachHours > 0 && setCoachHours(coachHours - 1);
+  const handlerReduceHours = useCallback(
+    () =>
+      coachHours > 0 && setCoachHours((prevCoachHours) => prevCoachHours - 1)
+  );
 
   return (
     <section

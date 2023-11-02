@@ -4,22 +4,23 @@ import {
   FORM_PREFERENCES_NAMES_EN,
   FORM_PREFERENCES_NAMES_ES,
   FORM_TYPES,
+  LEAGUES,
   QUEUES,
   SERVERS,
 } from "../../utils/constants";
 import { champions } from "./allChamps";
 
 const allDivisionsList = [
-  "Unranked",
-  "Iron",
-  "Bronze",
-  "Silver",
-  "Gold",
-  "Platinum",
-  "Diamond",
-  "Master",
-  "GrandMaster",
-  "Challenger",
+  LEAGUES.Unranked,
+  LEAGUES.Iron,
+  LEAGUES.Bronze,
+  LEAGUES.Silver,
+  LEAGUES.Gold,
+  LEAGUES.Platinum,
+  LEAGUES.Diamond,
+  LEAGUES.Master,
+  LEAGUES.GrandMaster,
+  LEAGUES.Challenger,
 ];
 
 const allLanesList = [ANYFILL, "TOP", "JG", "MID", "ADC", "SUPP"];
@@ -45,9 +46,9 @@ export const formPreferences = [
     },
     shape: "chip",
     items: [
-      { value: SERVERS.NA, name: SERVERS.NA },
       { value: SERVERS.LAN, name: SERVERS.LAN },
       { value: SERVERS.LAS, name: SERVERS.LAS },
+      { value: SERVERS.NA, name: SERVERS.NA },
       { value: SERVERS.BR, name: SERVERS.BR },
     ],
   },
