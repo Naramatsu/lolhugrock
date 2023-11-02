@@ -28,13 +28,13 @@ export const boostingList = {
       description: () => (
         <>
           <p>
-            ¿Elo bajo? ¿Quieres subir de liga mientras estudias, trabajas o
-            haces cualquier otra cosa?
+            Sabemos lo emocionante y estresante que es jugar nuestras primeras
+            partidas de posicionamiento
           </p>
           <br />
           <p>
-            Contamos con jugadores profesionales que subiran tu cuenta hasta
-            donde tú decidas, serás la envidia de tus amigos.
+            Nuestros expertos darán todo de ellos para que tengas un gran
+            comienzo y logres llegar a tu meta esa season.
           </p>
         </>
       ),

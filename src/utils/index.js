@@ -562,11 +562,6 @@ export const calculateCreditsByDivisions = (rank, desired) => {
   const desiredIndex = steps.findIndex(
     (step) => step.league === desiredFormatted
   );
-  if (highElo.includes(desired.league))
-    return (
-      (Math.round(parseFloat(decryptData(steps[desiredIndex]?.credits))) / 4) *
-        desired?.lps || 0
-    );
 
   if (rankIndex > desiredIndex) return 0;
 
@@ -574,6 +569,12 @@ export const calculateCreditsByDivisions = (rank, desired) => {
     total =
       Math.round((total + parseFloat(decryptData(steps[i].credits))) * 10) / 10;
   }
+
+  if (highElo.includes(desired.league))
+    total +=
+      (total * desired?.lps) /
+      parseInt(process.env.REACT_APP_REGULATION_POINTS);
+
   return total;
 };
 

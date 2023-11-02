@@ -38,7 +38,7 @@ const CardCoach = ({ color, data }) => {
   const { languaje } = useContext(LanguajeAppContext);
   const [showHoursPanel, setShowHoursPanel] = useState(false);
   const [currency, setCurrency] = useState(USD);
-  const [coachHours, setCoachHours] = useState(1);
+  const [coachHours, setCoachHours] = useState(0);
   const [coachType, setCoachType] = useState(
     coachingType.single[languaje] || ""
   );
@@ -134,7 +134,10 @@ const CardCoach = ({ color, data }) => {
                 </button>
                 <button
                   className="btn__pay cancel"
-                  onClick={() => setShowHoursPanel(false)}
+                  onClick={() => {
+                    setShowHoursPanel(false);
+                    setCoachHours(0);
+                  }}
                 >
                   {cancel[languaje]}
                 </button>

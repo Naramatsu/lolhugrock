@@ -191,6 +191,8 @@ export const SERVERS = {
   BR: "BR",
 };
 
+export const latamServers = [SERVERS.LAN, SERVERS.LAS];
+
 export const LEAGUE_COLORS = {
   Unranked: "#6b6b6b",
   Iron: "#4a3d38",
