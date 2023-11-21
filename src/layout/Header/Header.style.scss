@@ -63,7 +63,7 @@ header {
   }
 }
 
-@media (max-width: 935px) {
+@media (max-width: 1230px) {
   header .container-lg .herader__content {
     .hamburguer__menu {
       @include bd-blur-white;
@@ -81,7 +81,7 @@ header {
 
     .header__btns {
       border-radius: 10px;
-      bottom: -150%;
+      bottom: -220%;
       box-shadow: $box-shadow50;
       display: none !important;
       padding: 0.5em;

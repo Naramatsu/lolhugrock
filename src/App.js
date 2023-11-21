@@ -2,10 +2,11 @@ import React from "react";
 import AboutUs from "./pages/AboutUs";
 import Boosting from "./pages/Boosting";
 import Coaching from "./pages/Coaching";
+import FrequentQuestion from "./pages/FrequentQuestion";
 import Home from "./pages/Home";
 import RecentWorks from "./pages/RecentWorks";
-import { Switch, Route } from "react-router-dom";
 import { ROUTES } from "./utils/constants";
+import { Switch, Route } from "react-router-dom";
 
 const App = () => (
   <div className="App">
@@ -24,6 +25,9 @@ const App = () => (
       </Route>
       <Route path={ROUTES.RECENTWORKS}>
         <RecentWorks />
+      </Route>
+      <Route path={ROUTES.FREQUENTQUESTIONS}>
+        <FrequentQuestion />
       </Route>
     </Switch>
   </div>

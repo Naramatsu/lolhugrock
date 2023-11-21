@@ -21,6 +21,7 @@ export const ROUTES = {
   COACHING: "/coaching",
   ABOUTUS: "/aboutus",
   RECENTWORKS: "/works",
+  FREQUENTQUESTIONS: "/frequentquestions",
 };
 
 export const TITLES = {
@@ -148,6 +149,11 @@ export const FOOTER_LABEL = {
 export const RECENT_WORKS = {
   [SPANISH]: "Trabajos recientes",
   [ENGLISH]: "Recent works",
+};
+
+export const FREQUENT_QUESTIONS = {
+  [SPANISH]: "Preguntas frecuentes",
+  [ENGLISH]: "Frequent questions",
 };
 
 export const ABOUT_US = {

@@ -1,0 +1,67 @@
+@import "../../utils/variables.scss";
+
+.question__container {
+  display: inline-grid;
+  position: relative;
+  width: 100%;
+
+  h4 {
+    @include bd-blur-gradient;
+    border: solid 1px #fff;
+    border-radius: 20px 20px 0 0;
+    color: #fff;
+    cursor: pointer;
+    height: 100%;
+    margin-bottom: 0;
+    padding: 1em;
+    padding-right: calc(2em + 24px);
+    position: relative;
+    text-align: left;
+    transition: ease-in-out all 0.5s;
+    width: 100%;
+    z-index: 1;
+
+    svg {
+      color: #000;
+      color: #fff;
+      position: absolute;
+      right: 1em;
+      top: 50%;
+      transform: translateY(-50%) rotate(180deg);
+      transition: ease-in-out all 0.5s;
+      z-index: 1;
+    }
+  }
+
+  p {
+    @include bd-blur-gradient;
+    border: solid 1px;
+    border-radius: 0 0 20px 20px;
+    color: #fff;
+    cursor: default;
+    margin-top: 0px;
+    opacity: 1;
+    padding: 1em;
+    position: relative;
+    text-align: justify;
+    transition: ease-in-out all 0.5s;
+  }
+
+  &.hidden {
+    h4 {
+      border-radius: 20px;
+      transition: ease-in-out all 0.5s;
+
+      svg {
+        transform: translateY(-50%) rotate(0deg);
+        transition: ease-in-out all 0.5s;
+      }
+    }
+
+    p {
+      margin-top: -100px;
+      opacity: 0;
+      transition: ease-in-out all 0.5s;
+    }
+  }
+}
