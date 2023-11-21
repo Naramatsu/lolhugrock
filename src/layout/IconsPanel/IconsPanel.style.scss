@@ -1,0 +1,36 @@
+@import "../../utils/variables.scss";
+
+.float__icons__panel {
+  @include bd-blur-black;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: 50px;
+  height: max-content;
+  border-radius: 20px;
+  gap: 10px;
+  padding: 10px 0;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+
+  a {
+    img {
+      width: 40px;
+      height: 40px;
+      position: relative;
+      margin: auto;
+      transition: ease-in-out all 0.5s;
+
+      &:hover {
+        transform: rotate(360deg);
+        transition: ease-in-out all 0.5s;
+      }
+    }
+
+    &:nth-child(1) {
+      transform: scale(1.25);
+    }
+  }
+}
