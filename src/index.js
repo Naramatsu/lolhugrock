@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import IconsPanel from "./layout/IconsPanel";
 import LanguajeState from "./context/languaje/LanguajeState";
-import WhatsAppBtn from "./components/WhatsAppBtn";
 import { BrowserRouter as Router } from "react-router-dom";
 import "kromac-ui-18/src/css/style.css";
 import "./index.style.scss";
@@ -13,7 +13,7 @@ root.render(
     <LanguajeState>
       <Router>
         <App />
-        <WhatsAppBtn />
+        <IconsPanel />
       </Router>
     </LanguajeState>
   </React.StrictMode>
