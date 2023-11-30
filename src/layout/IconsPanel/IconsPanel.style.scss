@@ -2,26 +2,38 @@
 
 .float__icons__panel {
   @include bd-blur-black;
-  position: fixed;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
-  width: 50px;
-  height: max-content;
-  border-radius: 20px;
   gap: 10px;
+  height: max-content;
   padding: 10px 0;
+  position: fixed;
   right: 10px;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) scale(0);
+  transform-origin: center;
+  transition: ease-out all 0.5s;
+  width: 50px;
   z-index: 3;
+
+  &.open {
+    height: max-content;
+    transform: translateY(-50%) scale(1);
+    transition: ease-out all 0.5s;
+  }
+
+  .divisor {
+    height: 50px;
+  }
 
   a {
     img {
-      width: 40px;
       height: 40px;
-      position: relative;
       margin: auto;
+      position: relative;
       transition: ease-in-out all 0.5s;
+      width: 40px;
 
       &:hover {
         transform: rotate(360deg);
@@ -32,5 +44,25 @@
     &:nth-child(1) {
       transform: scale(1.25);
     }
+  }
+}
+
+.icon-plus {
+  @include bd-blur-black;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  height: 40px;
+  position: fixed;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: ease-in-out 0.5s all;
+  width: 40px;
+  z-index: 5;
+
+  &.open {
+    transform: translateY(-50%) rotateZ(135deg);
+    transition: ease-in-out 0.5s all;
   }
 }
