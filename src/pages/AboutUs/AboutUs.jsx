@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import Banner from "../../components/Banner";
+import Banner3 from "../../assets/Banners/Banner3.gif";
 import Header from "../../layout/Header";
 import Footer from "../../layout/Footer";
 import MainBanner from "../../components/MainBanner";
@@ -70,7 +71,7 @@ const AboutUs = () => {
           </section>
         </section>
         <Banner
-          img="https://s3-alpha-sig.figma.com/img/2443/ee90/c63dab058b241a69c3824b0699e15fbe?Expires=1694390400&Signature=i~yUGLpanjhJSxT9HibNbbAWOqVPyG5C8lw~lCa~gjTKLiISPw0UyfgBo4IiimtCov9g4UmUhw9iclkyL4eFWP-U-lZSsHTgVkAR9GfrA4IAfBPHAmRH6WxM9feqiM03tARBQHCrKEFerXhGVLIUnuZiYPKsdc-18vjPANI2jkBycurwIX0cjCqK1sypFlGn4PPsKDQGR3vMaJ1biDSY1~rknHw3m2dDOfYmZWcfItjYiIj~zyzhAilZs3noVuSN4Jy3-OPVJMcIFpFbLnJshKd-S8cirM4HstzajxTtczBWoFq7ImXsAfy84e-qIaWPx0qBC0mJzMANvEj1hpfcmw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+          img={Banner3}
           title="¡Únete a nosotros y empecemos a escalar divisiones juntos!"
         />
       </section>

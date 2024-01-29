@@ -1,4 +1,7 @@
 import { ENGLISH, SPANISH } from "../../context/languaje/types";
+import Banner1 from "../../assets/Banners/Banner1.png";
+import Banner2 from "../../assets/Banners/Banner2.png";
+import Banner4 from "../../assets/Banners/Banner4.jpg";
 
 export const title = {
   [SPANISH]: "Sobre Nosotros",
@@ -47,7 +50,7 @@ export const mainDescription = {
 };
 
 export const bannerMision = {
-  img: "https://s3-alpha-sig.figma.com/img/d221/97ee/9c96c6c488d68ba2da2c18707a83ea29?Expires=1694390400&Signature=TmpQDOF1ZSu1x9706f6DgX2GF5ZrTdsT-zlkLfAVl3j2Kx-wC~~LH33jytlzkxboRp1On07hRH-9pk4MdwRUbtVFHtdKrq3srqs7WptP56DQxfPpC0ftl6Jyh6vVFsZXX38QQY4zcCeGQvJBu9ao71xQXg8Yfp9iBeJnFTcfrQB-IyS0YjHnhfB40u2jwjSWhuGuy0Rvl9JkzM3JLRP-vQbFfneyjnBIb7O99KdeMJ3xdBncPu~8LK4nWuTTlyjTQ6kF2JvCDFyfvSyVS63Nk3WNlnbgNBGninold~Nk5NQmuH4ucVFmRaBpAIHAr0-DyRO96EgXfzR20GTKXWYyaQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
+  img: Banner1,
   side: "left",
   [SPANISH]: () => (
     <>
@@ -80,7 +83,7 @@ export const bannerMision = {
 };
 
 export const bannerTeam = {
-  img: "https://s3-alpha-sig.figma.com/img/3f91/b60d/2fa6ef1e136359ca171a2cd871737660?Expires=1694390400&Signature=GDto6wAKsnvs4rYzjuHJ~PO-m-nvYSGKNItvbNe0b9i5Fr39UNIgJc3zD~9NyuqTZRacu5i14xJA7TcncmHvWZZa-3g0eAMDWHhq9~EWyu9Ur2Uq6KgmwDbCSUl~AKP0HQTDg7sMS9vuC6kzsDWOXtVM9h5D825DjQpO4~O-7F4o05otHKk7J2NjzlxtWIKRL5iI8XGvbMy1h4Igms7Oxxe-18cVo5WVhUax6YOvd8sMmp7pk87Kz7OFfpFF9QL02RmBT6~B48S9LK5RRWLdyrcVVsEH0XG6ECEDeFtCPw309q8t0fZ4GtKz8F4Nbnry4XdkzinEztzoj4IXJmHjjg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
+  img: Banner2,
   side: "right",
   [SPANISH]: () => (
     <>
@@ -112,7 +115,7 @@ export const bannerTeam = {
 };
 
 export const bannerSecurity = {
-  img: "https://s3-alpha-sig.figma.com/img/3f91/b60d/2fa6ef1e136359ca171a2cd871737660?Expires=1694390400&Signature=GDto6wAKsnvs4rYzjuHJ~PO-m-nvYSGKNItvbNe0b9i5Fr39UNIgJc3zD~9NyuqTZRacu5i14xJA7TcncmHvWZZa-3g0eAMDWHhq9~EWyu9Ur2Uq6KgmwDbCSUl~AKP0HQTDg7sMS9vuC6kzsDWOXtVM9h5D825DjQpO4~O-7F4o05otHKk7J2NjzlxtWIKRL5iI8XGvbMy1h4Igms7Oxxe-18cVo5WVhUax6YOvd8sMmp7pk87Kz7OFfpFF9QL02RmBT6~B48S9LK5RRWLdyrcVVsEH0XG6ECEDeFtCPw309q8t0fZ4GtKz8F4Nbnry4XdkzinEztzoj4IXJmHjjg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
+  img: Banner4,
   side: "left",
   [SPANISH]: () => (
     <>
