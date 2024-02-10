@@ -12,6 +12,7 @@ import "./Boosting.style.scss";
 
 const Boosting = () => {
   const { languaje } = useContext(LanguajeAppContext);
+
   return (
     <>
       <Header />
@@ -28,16 +29,16 @@ const Boosting = () => {
       </MainBanner>
       <FormState>
         <Switch>
-          <Route exact path={ROUTES.DIVISIONBOOST}>
+          <Route path={ROUTES.DIVISIONBOOST}>
             <BoostingSection
               title={TITLES.DIVISIONBOOST}
               color={COLORS.PURPLE}
             />
           </Route>
-          <Route exact path={ROUTES.PLACEMENTS}>
+          <Route path={ROUTES.PLACEMENTS}>
             <BoostingSection title={TITLES.PLACEMENTS} color={COLORS.BLUE} />
           </Route>
-          <Route exact path={ROUTES.NETWINS}>
+          <Route path={ROUTES.NETWINS}>
             <BoostingSection title={TITLES.NETWINS} color={COLORS.GREEN} />
           </Route>
         </Switch>
