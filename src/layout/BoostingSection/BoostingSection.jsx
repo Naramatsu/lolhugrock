@@ -15,6 +15,7 @@ const BoostingSection = ({ title, color }) => {
   const { languaje } = useContext(LanguajeAppContext);
   const colorFormatted = convertColor(color);
   const formRank = formRankBuilder(title);
+
   return (
     <>
       <BackgroundAnimated color={colorFormatted}>
