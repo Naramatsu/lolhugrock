@@ -1,13 +1,18 @@
 import React, { useState, useContext, useEffect } from "react";
 import Panel from "../Panel";
+import SelectChip from "../SelectChip";
 import SelectCustom from "../SelectCustom";
 import Toggle from "kromac-ui-18/dist/Toggle";
-import { ANYFILL, FORM_TYPES, IS_FREE } from "../../utils/constants";
+import { FORM_TYPES, IS_FREE } from "../../utils/constants";
 import { FormAppContext } from "../../context/form";
-import { isSelected } from "../../utils";
 import { LanguajeAppContext } from "../../context/languaje";
 import { useHistory } from "react-router-dom";
 import "./PreferencePanel.style.scss";
+
+const isSelectedOrder = (orderSummary, labelLanguaje, label) =>
+  orderSummary.find(
+    (os) => (os.label === labelLanguaje || os.label === label) && os.item
+  )?.item;
 
 const sectionBuilder = (
   formtype,
@@ -17,7 +22,8 @@ const sectionBuilder = (
   preferences,
   formName,
   color,
-  languaje
+  languaje,
+  orderSummary
 ) => {
   switch (formtype) {
     case FORM_TYPES.SELECT:
@@ -30,6 +36,7 @@ const sectionBuilder = (
               options={options}
               color={color}
               onSelect={addPreferences}
+              selected={isSelectedOrder(orderSummary, label[languaje], label)}
             />
           ))}
         </section>
@@ -42,8 +49,12 @@ const sectionBuilder = (
         >
           {form.items.map(({ label, options, type }, index) => {
             if (type === FORM_TYPES.SELECT) {
-              const isFree =
-                !preferences[label] || preferences[label] === ANYFILL;
+              const champList = isSelectedOrder(
+                orderSummary,
+                label[languaje],
+                label
+              );
+              const isFree = !champList?.length;
               return (
                 <section key={index} className="form__select__champions">
                   <SelectCustom
@@ -53,6 +64,7 @@ const sectionBuilder = (
                     multiple
                     color={color}
                     onSelect={addPreferences}
+                    selected={champList}
                   />
                   {isFree && (
                     <label className="label__free">{IS_FREE[languaje]}</label>
@@ -66,7 +78,13 @@ const sectionBuilder = (
                   <Toggle
                     onColor={color}
                     offColor="#fff"
-                    checked={preferences[label[languaje]] || false}
+                    checked={
+                      preferences[label[languaje]] ||
+                      orderSummary.find(
+                        (os) => os.label === label[languaje] && os.item
+                      )?.item ||
+                      ""
+                    }
                     onChange={(event) => {
                       addPreferences(label[languaje], event.target.checked);
                     }}
@@ -81,16 +99,15 @@ const sectionBuilder = (
       return (
         <section className="form__select">
           {form.items.map(({ name, value }, index) => (
-            <label
+            <SelectChip
               key={index}
-              className={`form__choose ${shape} ${isSelected(
-                preferences[formName],
-                value
-              )}`}
-              onClick={() => addPreferences(form.name[languaje], value)}
-            >
-              {name}
-            </label>
+              shape={shape}
+              label={form.name[languaje]}
+              value={value}
+              name={name}
+              onSelect={addPreferences}
+              selected={isSelectedOrder(orderSummary, form.name[languaje])}
+            />
           ))}
         </section>
       );
@@ -107,11 +124,16 @@ const PreferencePanel = ({
 }) => {
   const [preferences, setPreferences] = useState({});
   const { languaje } = useContext(LanguajeAppContext);
-  const { setForm, resetForm } = useContext(FormAppContext);
+  const { setForm, form } = useContext(FormAppContext);
+  const formNames = Object.keys(form).join("");
+  const formProperties = form[formNames];
+  const orderSummary = Object.keys(formProperties).map((s) => ({
+    label: s,
+    item: formProperties[s],
+  }));
   const history = useHistory();
 
   useEffect(() => {
-    resetForm();
     setPreferences({});
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [history.location.pathname]);
@@ -138,7 +160,8 @@ const PreferencePanel = ({
         preferences,
         formName,
         color,
-        languaje
+        languaje,
+        orderSummary
       )}
     </Panel>
   );

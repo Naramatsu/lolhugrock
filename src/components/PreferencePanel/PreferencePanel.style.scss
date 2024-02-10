@@ -23,30 +23,4 @@
     @include displayFlex;
     padding: 2em;
   }
-
-  .form__choose {
-    align-items: center;
-    background: #fff;
-    border-radius: 20px;
-    box-shadow: $box-shadow25;
-    color: #000;
-    cursor: pointer;
-    display: flex;
-    font-size: 16px;
-    justify-content: center;
-    padding: 10px 24px;
-    text-align: center;
-    text-shadow: $text-shadowY4;
-    width: fit-content;
-
-    &.chip {
-      border-radius: 50%;
-      width: 50px;
-    }
-
-    &.selected {
-      background: var(--cl);
-      color: #fff;
-    }
-  }
 }

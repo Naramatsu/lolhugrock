@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { ANYFILL, FILLED } from "../../utils/constants";
 import { summonerAndLaneImgBuilder } from "../../utils";
@@ -17,6 +18,7 @@ const SelectCustom = ({
   noLabel = false,
   multiple = false,
   color = "#d441ff",
+  selected,
 }) => {
   const [optionSelected, setOptionSelected] = useState("");
   const [optionsSelected, setOptionsSelected] = useState([]);
@@ -25,8 +27,21 @@ const SelectCustom = ({
   useEffect(() => {
     setOptionSelected("");
     setOptionsSelected([]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [history.location.pathname]);
+
+  useEffect(() => {
+    if (selected) {
+      setOptionSelected(selected);
+      onSelect(label, selected);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (selected && multiple) {
+      setOptionsSelected(selected);
+      onSelect(label, selected);
+    }
+  }, []);
 
   const addPreferences = (event) => {
     const { value } = event.target;
