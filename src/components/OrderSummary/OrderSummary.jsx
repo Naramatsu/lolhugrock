@@ -2,8 +2,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import Panel from "../Panel";
 import SelectCurrency from "../SelectCurrency";
-import { FormAppContext } from "../../context/form";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
+import { FormAppContext } from "../../context/form";
 import {
   calculateCreditsByPreferences,
   currencyFormat,
@@ -15,14 +15,16 @@ import {
 import { LanguajeAppContext } from "../../context/languaje";
 import { PAY_LABEL, USD, YOUR_ORDER } from "../../utils/constants";
 import { useHistory } from "react-router-dom";
+import queryString from "query-string";
 import "./OrderSummary.style.scss";
 
 const OrderSummary = ({ color }) => {
   const { languaje } = useContext(LanguajeAppContext);
-  const { form, resetForm } = useContext(FormAppContext);
+  const { form, setFormByUrl } = useContext(FormAppContext);
   const [currency, setCurrency] = useState(USD);
   const [totalCredits, setTotalCredits] = useState(0);
   const history = useHistory();
+  const params = history.location.search;
   const formName = Object.keys(form).join("");
   const formProperties = form[formName];
   const orderSummary = formName ? summaryBuilder(formProperties, languaje) : [];
@@ -36,8 +38,9 @@ const OrderSummary = ({ color }) => {
   const isOrderEmpty = isOrderEmptyValidator(formProperties);
 
   useEffect(() => {
-    resetForm();
-  }, [history.location.pathname]);
+    if (isOrderEmpty && params)
+      setFormByUrl(JSON.parse(queryString.parse(params).form));
+  }, [params, isOrderEmpty]);
 
   useEffect(() => {
     const formatting_options = currencyFormat(currency);
@@ -53,6 +56,13 @@ const OrderSummary = ({ color }) => {
       );
     }
   }, [form, currency, totalOrderCredits]);
+
+  useEffect(() => {
+    history.push({
+      pathname: history.location.pathname,
+      search: `?form=${JSON.stringify(form)}`,
+    });
+  }, []);
 
   return (
     <section className="order__summary" style={{ "--cl": color }}>
@@ -82,14 +92,14 @@ const OrderSummary = ({ color }) => {
             value={currency}
             onChange={setCurrency}
           />
-
           <button
             className={`btn__pay ${isBtnDisabledClass}`}
             disabled={isBtnPayDisabled}
-            onClick={() => alert("Pending...")}
+            onClick={() => console.log(window.location)}
           >
             {PAY_LABEL[languaje]}
           </button>
+          <br />
         </section>
       </Panel>
     </section>
