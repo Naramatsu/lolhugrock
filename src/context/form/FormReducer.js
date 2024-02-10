@@ -1,10 +1,20 @@
-import { RESET_FORM, SET_FORM } from "./types";
+import { formInitialState } from "./FormState";
+import { RESET_FORM, SET_FORM, SET_FORM_BY_URL } from "./types";
 
 const reducer = (state, action) => {
   const { type, payload } = action;
   switch (type) {
     case SET_FORM:
       const { title, property, item } = payload;
+      localStorage.setItem(
+        "form",
+        JSON.stringify({
+          [title]: {
+            ...state.form[title],
+            [property]: item,
+          },
+        })
+      );
       return {
         ...state,
         form: {
@@ -14,8 +24,15 @@ const reducer = (state, action) => {
           },
         },
       };
+    case SET_FORM_BY_URL:
+      localStorage.setItem("form", JSON.stringify(payload));
+      return {
+        ...state,
+        form: payload,
+      };
     case RESET_FORM:
-      return payload;
+      localStorage.setItem("form", JSON.stringify(formInitialState));
+      return { form: formInitialState };
     default:
       return state;
   }

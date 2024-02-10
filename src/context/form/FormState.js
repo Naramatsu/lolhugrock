@@ -1,11 +1,18 @@
 import React, { useReducer } from "react";
 import FormReducer from "./FormReducer";
-import { RESET_FORM, SET_FORM } from "./types";
+import { RESET_FORM, SET_FORM, SET_FORM_BY_URL } from "./types";
 import { FormAppContext } from "./";
+
+export const formInitialState = {
+  "Division Boost": {
+    "Rango Actual": {},
+    "Rango Deseado": {},
+  },
+};
 
 const FormState = ({ children }) => {
   const initialState = {
-    form: {},
+    form: JSON.parse(localStorage.getItem("form")) || formInitialState,
   };
   const [globalState, dispatch] = useReducer(FormReducer, initialState);
 
@@ -16,15 +23,22 @@ const FormState = ({ children }) => {
     });
   };
 
+  const setFormByUrl = (form) => {
+    dispatch({
+      type: SET_FORM_BY_URL,
+      payload: form,
+    });
+  };
+
   const resetForm = () => {
     dispatch({
       type: RESET_FORM,
-      payload: initialState,
     });
   };
 
   const combineFunctions = {
     setForm,
+    setFormByUrl,
     resetForm,
   };
 
