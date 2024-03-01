@@ -20,7 +20,7 @@ const SelectCustom = ({
   color = "#d441ff",
   selected,
 }) => {
-  const [optionSelected, setOptionSelected] = useState("");
+  const [optionSelected, setOptionSelected] = useState(selected || "");
   const [optionsSelected, setOptionsSelected] = useState([]);
   const history = useHistory();
 
@@ -31,14 +31,12 @@ const SelectCustom = ({
 
   useEffect(() => {
     if (selected) {
-      setOptionSelected(selected);
-      onSelect(label, selected);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (selected && multiple) {
-      setOptionsSelected(selected);
+      if (multiple) {
+        setOptionSelected("");
+        setOptionsSelected(selected);
+      } else {
+        setOptionSelected(selected);
+      }
       onSelect(label, selected);
     }
   }, []);
@@ -52,8 +50,8 @@ const SelectCustom = ({
         onSelect(label, optionsTemp);
       }
     } else {
-      setOptionSelected(value);
       onSelect(label, value);
+      setOptionSelected(value);
     }
   };
 

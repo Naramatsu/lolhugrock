@@ -56,6 +56,28 @@
       h3 {
         margin-top: 20px;
       }
+
+      .button-sections {
+        @include displayFlex;
+
+        .reset {
+          background-color: #fff;
+          border-radius: 50%;
+          box-shadow: $box-shadow50;
+          color: var(--cl);
+          cursor: pointer;
+          font-weight: bolder;
+          height: 50px;
+          padding: 1em;
+          transition: ease-in-out 0.5s all;
+          width: 50px;
+
+          &:hover {
+            box-shadow: none;
+            transform: rotate(-360deg);
+          }
+        }
+      }
     }
   }
 }

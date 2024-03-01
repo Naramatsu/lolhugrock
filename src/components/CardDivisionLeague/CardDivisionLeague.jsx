@@ -5,7 +5,11 @@ import {
   divisionImgBuilder,
   isSelected,
 } from "../../utils";
-import { FORM_TYPES, PREFERENCES_PROPERTIES } from "../../utils/constants";
+import {
+  ANYFILL,
+  FORM_TYPES,
+  PREFERENCES_PROPERTIES,
+} from "../../utils/constants";
 
 const CardDivisionLeague = ({
   tilt,
@@ -18,6 +22,7 @@ const CardDivisionLeague = ({
   preferences,
 }) => {
   const colorOpacity = color + "8C";
+
   return (
     <section
       className="card__division"
@@ -37,6 +42,7 @@ const CardDivisionLeague = ({
         color={color}
         noImage
         noLabel
+        selected={divisionSelected || ANYFILL}
       />
       {divisionsConfig[divisionSelected]?.divisions && (
         <section className="card__division__icons">

@@ -20,7 +20,6 @@ const sectionBuilder = (
   addPreferences,
   shape,
   preferences,
-  formName,
   color,
   languaje,
   orderSummary
@@ -158,7 +157,6 @@ const PreferencePanel = ({
         addPreferences,
         shape,
         preferences,
-        formName,
         color,
         languaje,
         orderSummary

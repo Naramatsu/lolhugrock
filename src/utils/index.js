@@ -697,3 +697,27 @@ export const translateToEn = (item) => {
     return coachTypes.SINGLE;
   return coachTypes.TEAM;
 };
+
+export const boostingForm = (title, labels) => {
+  if (title === TITLES.DIVISIONBOOST)
+    return {
+      [TITLES.DIVISIONBOOST]: {
+        [labels.CURRENT_RANK]: {},
+        [labels.DESIRED_RANK]: {},
+      },
+    };
+  if (title === TITLES.PLACEMENTS)
+    return {
+      [TITLES.PLACEMENTS]: {
+        [labels.PREVIOUS_RANK]: {},
+        [labels.NUMBER_OF_GAMES]: {},
+      },
+    };
+  if (title === TITLES.NETWINS)
+    return {
+      [TITLES.NETWINS]: {
+        [labels.CURRENT_RANK]: {},
+        [labels.NUMBER_OF_WINS]: {},
+      },
+    };
+};

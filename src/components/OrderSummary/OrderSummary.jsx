@@ -13,18 +13,21 @@ import {
   summaryBuilder,
 } from "../../utils";
 import { LanguajeAppContext } from "../../context/languaje";
+import { noPreferencesSelectedLabel } from "./data";
 import { PAY_LABEL, USD, YOUR_ORDER } from "../../utils/constants";
-import { useHistory } from "react-router-dom";
+import { RxReset } from "react-icons/rx";
+import { useHistory, useLocation } from "react-router-dom";
 import queryString from "query-string";
 import "./OrderSummary.style.scss";
 
 const OrderSummary = ({ color }) => {
   const { languaje } = useContext(LanguajeAppContext);
-  const { form, setFormByUrl } = useContext(FormAppContext);
+  const { form, setFormByUrl, resetForm } = useContext(FormAppContext);
   const [currency, setCurrency] = useState(USD);
   const [totalCredits, setTotalCredits] = useState(0);
   const history = useHistory();
-  const params = history.location.search;
+  const location = useLocation();
+  const params = location.search;
   const formName = Object.keys(form).join("");
   const formProperties = form[formName];
   const orderSummary = formName ? summaryBuilder(formProperties, languaje) : [];
@@ -62,7 +65,7 @@ const OrderSummary = ({ color }) => {
       pathname: history.location.pathname,
       search: `?form=${JSON.stringify(form)}`,
     });
-  }, []);
+  }, [params, form]);
 
   return (
     <section className="order__summary" style={{ "--cl": color }}>
@@ -79,7 +82,7 @@ const OrderSummary = ({ color }) => {
               isOrderEmpty && (
                 <section key={index} className="no__order">
                   <AiOutlineExclamationCircle size={75} />
-                  Aun no hay preferencias seleccionadas.
+                  {noPreferencesSelectedLabel[languaje]}
                 </section>
               )
             )
@@ -92,13 +95,25 @@ const OrderSummary = ({ color }) => {
             value={currency}
             onChange={setCurrency}
           />
-          <button
-            className={`btn__pay ${isBtnDisabledClass}`}
-            disabled={isBtnPayDisabled}
-            onClick={() => console.log(window.location)}
-          >
-            {PAY_LABEL[languaje]}
-          </button>
+          <section className="button-sections">
+            <button
+              className={`btn__pay ${isBtnDisabledClass}`}
+              disabled={isBtnPayDisabled}
+              onClick={() => console.log(window.location)}
+            >
+              {PAY_LABEL[languaje]}
+            </button>
+            <RxReset
+              className="reset"
+              onClick={() => {
+                resetForm(formName, languaje);
+                history.push({
+                  pathname: history.location.pathname,
+                  search: `?form={}`,
+                });
+              }}
+            />
+          </section>
           <br />
         </section>
       </Panel>

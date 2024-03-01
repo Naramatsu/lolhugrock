@@ -13,6 +13,7 @@ header {
     position: relative;
 
     img {
+      filter: drop-shadow($box-shadow50);
       height: 150px;
       left: 0;
       position: absolute;

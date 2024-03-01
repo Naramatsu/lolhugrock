@@ -2,17 +2,16 @@ import React, { useReducer } from "react";
 import FormReducer from "./FormReducer";
 import { RESET_FORM, SET_FORM, SET_FORM_BY_URL } from "./types";
 import { FormAppContext } from "./";
-
-export const formInitialState = {
-  "Division Boost": {
-    "Rango Actual": {},
-    "Rango Deseado": {},
-  },
-};
+import {
+  FORM_PREFERENCES_NAMES_EN,
+  FORM_PREFERENCES_NAMES_ES,
+} from "../../utils/constants";
+import { SPANISH } from "../languaje/types";
+import { boostingForm } from "../../utils";
 
 const FormState = ({ children }) => {
   const initialState = {
-    form: JSON.parse(localStorage.getItem("form")) || formInitialState,
+    form: JSON.parse(localStorage.getItem("form")) || {},
   };
   const [globalState, dispatch] = useReducer(FormReducer, initialState);
 
@@ -30,9 +29,16 @@ const FormState = ({ children }) => {
     });
   };
 
-  const resetForm = () => {
+  const resetForm = (title, languaje) => {
+    const labels =
+      languaje === SPANISH
+        ? FORM_PREFERENCES_NAMES_ES
+        : FORM_PREFERENCES_NAMES_EN;
+    const actualForm = boostingForm(title, labels);
+
     dispatch({
       type: RESET_FORM,
+      payload: actualForm,
     });
   };
 

@@ -33,15 +33,15 @@ const CardDivision = ({
   min = 0,
   max = 5,
 }) => {
-  const { setForm, resetForm, form } = useContext(FormAppContext);
+  const { setForm, form } = useContext(FormAppContext);
   const [preferences, setPreferences] = useState({});
+  const isDivisionalCard = type === FORM_TYPES.DIVISIONAL;
   const [divisionSelected, setDivisionSelected] = useState(
-    PREFERENCES_PROPERTIES.UNRANKED
+    form[title][label]?.league || PREFERENCES_PROPERTIES.UNRANKED
   );
-  const [nroGames, setNroGames] = useState(0);
+  const [nroGames, setNroGames] = useState(form[title][label]?.nroGames || 0);
   const tilt = useRef(null);
   const history = useHistory();
-  const isDivisionalCard = type === FORM_TYPES.DIVISIONAL;
 
   const isLatamServer = !latamServers.includes(
     form[TITLES.DIVISIONBOOST]?.Servidor
@@ -57,20 +57,27 @@ const CardDivision = ({
   }, []);
 
   useEffect(() => {
-    resetForm();
     setPreferences({});
-    setDivisionSelected(PREFERENCES_PROPERTIES.UNRANKED);
-    setNroGames(0);
   }, [history.location.pathname]);
 
-  const addPreferences = useCallback((name, item) => {
+  useEffect(() => {
+    if ((isDivisionalCard || nroGames) && form[title][label]) {
+      const preferencesTemp = {};
+      Object.keys(form[title][label]).forEach((p) => {
+        preferencesTemp[p] = form[title][label][p];
+      });
+      setPreferences(preferencesTemp);
+    }
+  }, []);
+
+  const addPreferences = (name, item) => {
     setPreferences({
       ...preferences,
       [name]: item,
     });
     if (name === PREFERENCES_PROPERTIES.LEAGUE) setDivisionSelected(item);
     if (name === PREFERENCES_PROPERTIES.NRO_GAMES) setNroGames(parseInt(item));
-  });
+  };
 
   useEffect(() => {
     if (preferences)

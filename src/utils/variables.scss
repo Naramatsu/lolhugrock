@@ -249,6 +249,7 @@ $background-rainbow: linear-gradient(
       height: calc(100% - 20px);
       left: 10px;
       object-fit: cover;
+      object-position: top;
       position: absolute;
       width: calc(100% - 20px);
     }

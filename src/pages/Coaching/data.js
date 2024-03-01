@@ -1,6 +1,9 @@
 import { ENGLISH, SPANISH } from "../../context/languaje/types";
 import { coachCredits, coaches, decryptData } from "../../utils";
 import { COP, USD, coachTypes } from "../../utils/constants";
+import JujoImg from "../../assets/coachs/Jujo.webp";
+import HobblerImg from "../../assets/coachs/Hobbler.webp";
+import HugrockImg from "../../assets/coachs/Hugrock.webp";
 
 export const mainDescription = {
   [SPANISH]: `Las clases de coaching se hacen por discord o a preferencia del cliente, tiene una duracion de 1 hora por clase, para coordinar el horario se hace un grupo de whatsapp y siempre nos adaptamos a los horarios del cliente.`,
@@ -16,7 +19,7 @@ export const coachesList = [
   {
     name: "Jujo",
     lanes: ["TOP"],
-    img: "https://cdn.wallpapersafari.com/64/44/gYwV8P.jpg",
+    img: JujoImg,
     creditCost: {
       single: {
         [COP]: Math.round(
@@ -53,7 +56,7 @@ export const coachesList = [
   {
     name: "Hobbler",
     lanes: ["MID"],
-    img: "https://cdn.wallpapersafari.com/64/44/gYwV8P.jpg",
+    img: HobblerImg,
     creditCost: {
       single: {
         [COP]: Math.round(
@@ -90,7 +93,7 @@ export const coachesList = [
   {
     name: "Hugrock",
     lanes: ["JG", "ADC"],
-    img: "https://cdn.wallpapersafari.com/64/44/gYwV8P.jpg",
+    img: HugrockImg,
     creditCost: {
       single: {
         [COP]: Math.round(
