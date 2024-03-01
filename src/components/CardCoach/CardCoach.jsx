@@ -11,10 +11,10 @@ import SelectCurrency from "../SelectCurrency";
 import VanillaTilt from "vanilla-tilt";
 import {
   cancel,
+  coachMessageTemplate,
   coachingType,
   coachingTypesPreferences,
   hours,
-  lock,
   pick,
 } from "./data";
 import {
@@ -26,7 +26,7 @@ import {
 } from "../../utils";
 import { AiOutlineSolution } from "react-icons/ai";
 import { LanguajeAppContext } from "../../context/languaje";
-import { USD } from "../../utils/constants";
+import { QUOTE_LABEL, USD } from "../../utils/constants";
 import "./CardCoach.style.scss";
 
 const options = titlOptions({ max: 10 });
@@ -73,6 +73,18 @@ const CardCoach = ({ color, data }) => {
       coachHours > 0 && setCoachHours((prevCoachHours) => prevCoachHours - 1)
   );
 
+  const showPrices = false;
+  const isBtnDisabledClass = coachHours ? "" : "disabled";
+
+  const handlerPickCoach = () => {
+    const url = new URL(
+      `https://wa.me/${process.env.REACT_APP_WHATSAPP_NUMBER}`
+    );
+    const message = coachMessageTemplate({ name, coachType, coachHours });
+    url.searchParams.set("text", message[languaje]);
+    window.open(url.href, "_blank");
+  };
+
   return (
     <section
       className="card-coaching__box"
@@ -117,11 +129,16 @@ const CardCoach = ({ color, data }) => {
               ))}
             </section>
             <section className="card-coaching__elements__panel">
-              <SelectCurrency
-                gold={coachCreditTotal}
-                value={currency}
-                onChange={setCurrency}
-              />
+              {showPrices && (
+                <>
+                  <SelectCurrency
+                    gold={coachCreditTotal}
+                    value={currency}
+                    onChange={setCurrency}
+                  />
+                </>
+              )}
+              <br />
               <Counter
                 handlerAdd={handlerAddHours}
                 handlerReduce={handlerReduceHours}
@@ -129,8 +146,11 @@ const CardCoach = ({ color, data }) => {
               />
               <p>{hours[languaje]}</p>
               <section className="lock__cancel__btns">
-                <button className="btn__pay" onClick={() => {}}>
-                  {lock[languaje]}
+                <button
+                  className={`btn__pay ${isBtnDisabledClass}`}
+                  onClick={handlerPickCoach}
+                >
+                  {QUOTE_LABEL[languaje]}
                 </button>
                 <button
                   className="btn__pay cancel"

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { iconList } from "./data";
-import { BsPlusCircle } from "react-icons/bs";
+import { FaPlus } from "react-icons/fa";
 import "./IconsPanel.style.scss";
 
 const IconsPanel = () => {
@@ -8,7 +8,7 @@ const IconsPanel = () => {
   const isPanelOpen = togglePanel ? "open" : "close";
   return (
     <>
-      <BsPlusCircle
+      <FaPlus
         className={`icon-plus ${isPanelOpen}`}
         onClick={() => setTogglePanel(!togglePanel)}
       />

@@ -112,7 +112,7 @@ footer {
   justify-content: center;
   margin: 20px auto;
   padding: 14px;
-  text-shadow: $text-shadowY4;
+  text-shadow: 1px 1px 4px #000;
   width: 200px;
 
   &.disabled {
@@ -123,6 +123,7 @@ footer {
   &.cancel {
     background-color: #fff;
     color: #000;
+    text-shadow: none;
   }
 }
 

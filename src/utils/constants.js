@@ -176,6 +176,16 @@ export const PAY_LABEL = {
   [ENGLISH]: "Pay",
 };
 
+export const ORDER_LABEL = {
+  [SPANISH]: "Ordenar",
+  [ENGLISH]: "Order now",
+};
+
+export const QUOTE_LABEL = {
+  [SPANISH]: "Cotizar",
+  [ENGLISH]: "Quote now",
+};
+
 export const IS_FREE = {
   [SPANISH]: "Gratis",
   [ENGLISH]: "Free",

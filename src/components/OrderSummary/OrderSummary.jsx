@@ -13,8 +13,11 @@ import {
   summaryBuilder,
 } from "../../utils";
 import { LanguajeAppContext } from "../../context/languaje";
-import { noPreferencesSelectedLabel } from "./data";
-import { PAY_LABEL, USD, YOUR_ORDER } from "../../utils/constants";
+import {
+  noPreferencesSelectedLabel,
+  orderSummaryMessageTemplate,
+} from "./data";
+import { ORDER_LABEL, USD, YOUR_ORDER } from "../../utils/constants";
 import { RxReset } from "react-icons/rx";
 import { useHistory, useLocation } from "react-router-dom";
 import queryString from "query-string";
@@ -67,6 +70,15 @@ const OrderSummary = ({ color }) => {
     });
   }, [params, form]);
 
+  const handlerOrder = () => {
+    const url = new URL(
+      `https://wa.me/${process.env.REACT_APP_WHATSAPP_NUMBER}`
+    );
+    const message = orderSummaryMessageTemplate(window.location.href);
+    url.searchParams.set("text", message[languaje]);
+    window.open(url.href, "_blank");
+  };
+
   return (
     <section className="order__summary" style={{ "--cl": color }}>
       <Panel color={color}>
@@ -99,9 +111,9 @@ const OrderSummary = ({ color }) => {
             <button
               className={`btn__pay ${isBtnDisabledClass}`}
               disabled={isBtnPayDisabled}
-              onClick={() => console.log(window.location)}
+              onClick={handlerOrder}
             >
-              {PAY_LABEL[languaje]}
+              {ORDER_LABEL[languaje]}
             </button>
             <RxReset
               className="reset"

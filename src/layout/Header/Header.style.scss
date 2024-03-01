@@ -58,6 +58,12 @@ header {
           padding: 12px 27px;
           text-decoration: none;
           text-shadow: $text-shadow;
+          transform-origin: left;
+          transition: 0.5s ease-in-out all;
+
+          &:hover {
+            color: $color-gold-coach;
+          }
         }
       }
     }

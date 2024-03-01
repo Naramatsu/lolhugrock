@@ -49,10 +49,12 @@
 
 .icon-plus {
   @include bd-blur-black;
+  border: solid 1px;
   border-radius: 50%;
   color: #fff;
   cursor: pointer;
   height: 40px;
+  padding: 0.5em;
   position: fixed;
   right: 15px;
   top: 50%;
@@ -61,7 +63,12 @@
   width: 40px;
   z-index: 5;
 
+  &:hover {
+    color: $color-gold-coach;
+  }
+
   &.open {
+    color: $color-gold-coach;
     transform: translateY(-50%) rotateZ(135deg);
     transition: ease-in-out 0.5s all;
   }

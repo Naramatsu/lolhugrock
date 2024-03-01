@@ -36,7 +36,11 @@
   .banner__description,
   .aboutus__description {
     @extend .flexBox;
-    margin-top: 300px;
+    bottom: 20%;
+    justify-content: center;
+    margin: auto;
+    position: absolute;
+    width: 100%;
 
     p,
     h3 {
@@ -47,19 +51,33 @@
       text-shadow: $text-shadowY4;
       z-index: 2;
     }
+
+    p {
+      width: 80%;
+    }
   }
 
   .aboutus__description {
-    justify-content: center;
-    margin-top: 250px;
-
-    h3 {
-      font-size: 40px;
-      text-align: center;
-    }
+    align-items: center;
+    bottom: 5%;
+    flex-direction: column;
 
     h3 {
       color: var(--cl);
+      font-size: 40px;
+      text-align: center;
     }
+  }
+}
+
+@media (min-width: 1700px) {
+  .banner__main .aboutus__description {
+    bottom: 10%;
+  }
+}
+
+@media (min-width: 2101px) {
+  .banner__main .aboutus__description {
+    bottom: 15%;
   }
 }

@@ -32,3 +32,14 @@ export const coachingType = {
 };
 
 export const coachingTypesPreferences = ["single", "team"];
+
+export const coachMessageTemplate = ({ name, coachType, coachHours }) => ({
+  [SPANISH]: `Hola Coachboost!!!
+    Necesito los servicios del coach ${name}
+    para un servicio (${coachType})
+    por una(s) ${coachHours} hora(s).`,
+  [ENGLISH]: `Hey Coachboost!!!
+    I need the services of the coach ${name}
+    for a service (${coachType})
+    for ${coachHours} hour(s).`,
+});
