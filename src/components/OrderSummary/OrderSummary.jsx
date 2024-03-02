@@ -43,10 +43,10 @@ const OrderSummary = ({ color }) => {
   const isBtnDisabledClass = isBtnPayDisabled ? "disabled" : "";
   const isOrderEmpty = isOrderEmptyValidator(formProperties);
 
-  useEffect(() => {
-    if (isOrderEmpty && params)
-      setFormByUrl(JSON.parse(queryString.parse(params).form));
-  }, [params, isOrderEmpty]);
+  // useEffect(() => {
+  //   if (isOrderEmpty && params)
+  //     setFormByUrl(JSON.parse(queryString.parse(params).form));
+  // }, [params, isOrderEmpty]);
 
   useEffect(() => {
     const formatting_options = currencyFormat(currency);
@@ -69,6 +69,11 @@ const OrderSummary = ({ color }) => {
       search: `?form=${JSON.stringify(form)}`,
     });
   }, [params, form]);
+
+  useEffect(() => {
+    if (isOrderEmpty && params)
+      setFormByUrl(JSON.parse(queryString.parse(params).form));
+  }, [params, isOrderEmpty]);
 
   const handlerOrder = () => {
     const url = new URL(
