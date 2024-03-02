@@ -37,8 +37,7 @@ const BoostingSection = ({ title, color }) => {
   useEffect(() => {
     if (isOrderEmpty && params)
       setFormByUrl(JSON.parse(queryString.parse(params).form));
-  }, [params]);
-  // }, [params, isOrderEmpty]);
+  }, [params, isOrderEmpty]);
 
   return (
     <>

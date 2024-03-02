@@ -70,11 +70,6 @@ const OrderSummary = ({ color }) => {
     });
   }, [params, form]);
 
-  useEffect(() => {
-    if (isOrderEmpty && params)
-      setFormByUrl(JSON.parse(queryString.parse(params).form));
-  }, [params, isOrderEmpty]);
-
   const handlerOrder = () => {
     const url = new URL(
       `https://wa.me/${process.env.REACT_APP_WHATSAPP_NUMBER}`
