@@ -92,7 +92,7 @@ export const coachesList = [
   },
   {
     name: "Hugrock",
-    lanes: ["JG", "ADC"],
+    lanes: ["JG", "ADC", "SUPP"],
     img: HugrockImg,
     creditCost: {
       single: {
