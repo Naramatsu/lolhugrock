@@ -42,6 +42,9 @@ const OrderSummary = ({ color }) => {
     : false;
   const isBtnDisabledClass = isBtnPayDisabled ? "disabled" : "";
   const isOrderEmpty = isOrderEmptyValidator(formProperties);
+  const formNameByUrl = Object.keys(
+    JSON.parse(queryString.parse(params)?.form || "{}")
+  ).at(0);
 
   // useEffect(() => {
   //   if (isOrderEmpty && params)
@@ -64,16 +67,18 @@ const OrderSummary = ({ color }) => {
   }, [form, currency, totalOrderCredits]);
 
   useEffect(() => {
-    if (Object.keys(form).length)
+    if (Object.keys(form).length || formName === formNameByUrl)
       history.push({
         pathname: history.location.pathname,
         search: `?form=${JSON.stringify(form)}`,
       });
-  }, [params, form]);
+  }, [params, form, formName]);
 
   console.log({
     params,
     form,
+    formName,
+    formNameByUrl,
   });
 
   const handlerOrder = () => {
