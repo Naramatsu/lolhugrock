@@ -39,6 +39,14 @@ const BoostingSection = ({ title, color }) => {
     if (isOrderEmpty && params?.form) setFormByUrl(JSON.parse(params.form));
   }, [params.form, isOrderEmpty, history.location.search, title]);
 
+  useEffect(() => {
+    if (Object.keys(form).length)
+      history.push({
+        pathname: history.location.pathname,
+        search: `?form=${JSON.stringify(form)}`,
+      });
+  }, [params, form]);
+
   return (
     <>
       <BackgroundAnimated color={colorFormatted}>

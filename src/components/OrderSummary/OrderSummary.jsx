@@ -66,13 +66,13 @@ const OrderSummary = ({ color }) => {
     }
   }, [form, currency, totalOrderCredits]);
 
-  useEffect(() => {
-    if (Object.keys(form).length)
-      history.push({
-        pathname: history.location.pathname,
-        search: `?form=${JSON.stringify(form)}`,
-      });
-  }, [params, form]);
+  // useEffect(() => {
+  //   if (Object.keys(form).length)
+  //     history.push({
+  //       pathname: history.location.pathname,
+  //       search: `?form=${JSON.stringify(form)}`,
+  //     });
+  // }, [params, form]);
 
   const handlerOrder = () => {
     const url = new URL(
