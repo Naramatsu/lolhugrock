@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect } from "react";
 import BackgroundAnimated from "../BackgroundAnimated";
 import CardDivision from "../../components/CardDivision";
@@ -27,19 +26,19 @@ const BoostingSection = ({ title, color }) => {
   const isFormLoaded = form && Object.keys(form[title] || []).length;
   const formProperties = form[title];
   const history = useHistory();
-  // const params = history.location.search;
   const params = queryString.parse(history.location.search);
   const isOrderEmpty = isOrderEmptyValidator(formProperties);
   const paramsFormName = Object.keys(JSON.parse(params?.form || "{}")).at(0);
 
   useEffect(() => {
     resetForm(title, languaje);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [title, languaje]);
 
   useEffect(() => {
-    // if (isOrderEmpty && params?.form) setFormByUrl(JSON.parse(params.form));
     if (isOrderEmpty && params?.form && paramsFormName === title)
       setFormByUrl(JSON.parse(params.form));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params.form, isOrderEmpty, history.location.search, title]);
 
   useEffect(() => {
@@ -48,6 +47,7 @@ const BoostingSection = ({ title, color }) => {
         pathname: history.location.pathname,
         search: `?form=${JSON.stringify(form)}`,
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params, form, history.location.pathname]);
 
   return (

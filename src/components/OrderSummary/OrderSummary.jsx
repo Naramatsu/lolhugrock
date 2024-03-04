@@ -19,18 +19,15 @@ import {
 } from "./data";
 import { ORDER_LABEL, USD, YOUR_ORDER } from "../../utils/constants";
 import { RxReset } from "react-icons/rx";
-import { useHistory, useLocation } from "react-router-dom";
-import queryString from "query-string";
+import { useHistory } from "react-router-dom";
 import "./OrderSummary.style.scss";
 
 const OrderSummary = ({ color }) => {
   const { languaje } = useContext(LanguajeAppContext);
-  const { form, setFormByUrl, resetForm } = useContext(FormAppContext);
+  const { form, resetForm } = useContext(FormAppContext);
   const [currency, setCurrency] = useState(USD);
   const [totalCredits, setTotalCredits] = useState(0);
   const history = useHistory();
-  const location = useLocation();
-  const params = location.search;
   const formName = Object.keys(form).join("");
   const formProperties = form[formName];
   const orderSummary = formName ? summaryBuilder(formProperties, languaje) : [];
@@ -42,14 +39,6 @@ const OrderSummary = ({ color }) => {
     : false;
   const isBtnDisabledClass = isBtnPayDisabled ? "disabled" : "";
   const isOrderEmpty = isOrderEmptyValidator(formProperties);
-  const formNameByUrl = Object.keys(
-    JSON.parse(queryString.parse(params)?.form || "{}")
-  ).at(0);
-
-  // useEffect(() => {
-  //   if (isOrderEmpty && params)
-  //     setFormByUrl(JSON.parse(queryString.parse(params).form));
-  // }, [params, isOrderEmpty]);
 
   useEffect(() => {
     const formatting_options = currencyFormat(currency);
@@ -65,14 +54,6 @@ const OrderSummary = ({ color }) => {
       );
     }
   }, [form, currency, totalOrderCredits]);
-
-  // useEffect(() => {
-  //   if (Object.keys(form).length)
-  //     history.push({
-  //       pathname: history.location.pathname,
-  //       search: `?form=${JSON.stringify(form)}`,
-  //     });
-  // }, [params, form]);
 
   const handlerOrder = () => {
     const url = new URL(
@@ -122,12 +103,11 @@ const OrderSummary = ({ color }) => {
             <RxReset
               className="reset"
               onClick={() => {
-                console.log("asdasd");
-                // resetForm(formName, languaje);
-                // history.push({
-                //   pathname: history.location.pathname,
-                //   search: `?form={}`,
-                // });
+                resetForm(formName, languaje);
+                history.push({
+                  pathname: history.location.pathname,
+                  search: `?form={}`,
+                });
               }}
             />
           </section>
