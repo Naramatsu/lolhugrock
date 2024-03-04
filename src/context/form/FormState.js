@@ -11,7 +11,8 @@ import { boostingForm } from "../../utils";
 
 const FormState = ({ children }) => {
   const initialState = {
-    form: JSON.parse(localStorage.getItem("form")) || {},
+    // form: JSON.parse(localStorage.getItem("form")) || {},
+    form: {},
   };
   const [globalState, dispatch] = useReducer(FormReducer, initialState);
 

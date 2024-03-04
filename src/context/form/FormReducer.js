@@ -5,15 +5,15 @@ const reducer = (state, action) => {
   switch (type) {
     case SET_FORM:
       const { title, property, item } = payload;
-      localStorage.setItem(
-        "form",
-        JSON.stringify({
-          [title]: {
-            ...state.form[title],
-            [property]: item,
-          },
-        })
-      );
+      // localStorage.setItem(
+      //   "form",
+      //   JSON.stringify({
+      //     [title]: {
+      //       ...state.form[title],
+      //       [property]: item,
+      //     },
+      //   })
+      // );
       return {
         ...state,
         form: {
@@ -24,13 +24,13 @@ const reducer = (state, action) => {
         },
       };
     case SET_FORM_BY_URL:
-      localStorage.setItem("form", JSON.stringify(payload));
+      // localStorage.setItem("form", JSON.stringify(payload));
       return {
         ...state,
         form: payload,
       };
     case RESET_FORM:
-      localStorage.setItem("form", JSON.stringify(payload));
+      // localStorage.setItem("form", JSON.stringify(payload));
       return {
         form: payload,
       };
