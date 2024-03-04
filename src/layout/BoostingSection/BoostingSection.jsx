@@ -27,7 +27,8 @@ const BoostingSection = ({ title, color }) => {
   const isFormLoaded = form && Object.keys(form[title] || []).length;
   const formProperties = form[title];
   const history = useHistory();
-  const params = history.location.search;
+  // const params = history.location.search;
+  const params = queryString.parse(history.location.search);
   const isOrderEmpty = isOrderEmptyValidator(formProperties);
 
   useEffect(() => {
@@ -35,9 +36,9 @@ const BoostingSection = ({ title, color }) => {
   }, [title, languaje]);
 
   useEffect(() => {
-    if (isOrderEmpty && params && isFormLoaded)
-      setFormByUrl(JSON.parse(queryString.parse(params).form));
-  }, [params, isOrderEmpty, isFormLoaded]);
+    if (isOrderEmpty && params && params.form)
+      setFormByUrl(JSON.parse(params.form));
+  }, [params.form, isOrderEmpty]);
 
   return (
     <>
