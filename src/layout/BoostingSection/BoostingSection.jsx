@@ -45,7 +45,7 @@ const BoostingSection = ({ title, color }) => {
         pathname: history.location.pathname,
         search: `?form=${JSON.stringify(form)}`,
       });
-  }, [params, form]);
+  }, [params, form, history.location.pathname]);
 
   return (
     <>
