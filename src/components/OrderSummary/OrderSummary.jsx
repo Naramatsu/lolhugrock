@@ -64,11 +64,17 @@ const OrderSummary = ({ color }) => {
   }, [form, currency, totalOrderCredits]);
 
   useEffect(() => {
-    history.push({
-      pathname: history.location.pathname,
-      search: `?form=${JSON.stringify(form)}`,
-    });
+    if (Object.keys(form).length)
+      history.push({
+        pathname: history.location.pathname,
+        search: `?form=${JSON.stringify(form)}`,
+      });
   }, [params, form]);
+
+  console.log({
+    params,
+    form,
+  });
 
   const handlerOrder = () => {
     const url = new URL(

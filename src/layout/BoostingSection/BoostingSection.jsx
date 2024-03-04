@@ -39,8 +39,6 @@ const BoostingSection = ({ title, color }) => {
     if (isOrderEmpty && params?.form) setFormByUrl(JSON.parse(params.form));
   }, [params.form, isOrderEmpty, history.location.search]);
 
-  console.log({ params, isOrderEmpty, location: history.location.search });
-
   return (
     <>
       <BackgroundAnimated color={colorFormatted}>
