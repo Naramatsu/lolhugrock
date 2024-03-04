@@ -118,11 +118,12 @@ const OrderSummary = ({ color }) => {
             <RxReset
               className="reset"
               onClick={() => {
-                resetForm(formName, languaje);
-                history.push({
-                  pathname: history.location.pathname,
-                  search: `?form={}`,
-                });
+                console.log("asdasd");
+                // resetForm(formName, languaje);
+                // history.push({
+                //   pathname: history.location.pathname,
+                //   search: `?form={}`,
+                // });
               }}
             />
           </section>
